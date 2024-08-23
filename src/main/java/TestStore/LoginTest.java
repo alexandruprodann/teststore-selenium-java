@@ -20,8 +20,9 @@ public class LoginTest extends BaseTest {
         loginPage.clickLogin();
 
         // Assert current URL is the homepage URL
-        String currentUrl = driver.getCurrentUrl();
         String expectedUrl = TestConstants.BASE_URL;
-        Assert.assertEquals(currentUrl, expectedUrl, "The user is not redirected to the homepage.");
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl, "The user is not redirected to the homepage. " +
+                "\nCurrent URL is: " + driver.getCurrentUrl());
+
     }
 }

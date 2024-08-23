@@ -1,5 +1,6 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,25 +15,27 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    // Locate elements using @FindBy annotation
-    @FindBy(css = ".products > div")
-    private List<WebElement> productItems;
 
-    @FindBy(css = ".ui-autocomplete-input")
-    private WebElement searchBar;
+    // Elements
+    private By productItemsListBy() {
+        return By.cssSelector(".products > div");
+    }
 
-    @FindBy(linkText = "CLOTHES")
-    private WebElement clothesLink;
+    private By searchBarBy() {
+        return By.cssSelector(".ui-autocomplete-input");
+    }
+
+    private By clothesLinkBy() {
+        return By.linkText("CLOTHES");
+    }
 
 
-    /*
-     *
-     * Actions
-     *
-     * */
+    // Actions
     public void chooseRandomProduct() {
-        int randomProduct = random.nextInt(productItems.size());
-        WebElement chosenProduct = productItems.get(randomProduct);
+        List<WebElement> productItemsList = driver.findElements(productItemsListBy());
+
+        int randomProduct = random.nextInt(productItemsList.size());
+        WebElement chosenProduct = productItemsList.get(randomProduct);
         String chosenProductTitle = chosenProduct.getText();
 
         if (Objects.equals(chosenProductTitle, "Customizable Mug")) {
@@ -43,16 +46,15 @@ public class HomePage extends BasePage {
     }
 
     public void chooseRandomClothing() {
-        clothesLink.click();
+        driver.findElement(clothesLinkBy()).click();
         chooseRandomProduct();
     }
 
-
     public void searchSomething(String searchText) {
-        waitForVisibility(searchBar);
+        waitUntilElementIsVisible(searchBarBy());
+        WebElement searchBar = driver.findElement(searchBarBy());
         searchBar.sendKeys(searchText);
         pressEnter(searchBar);
     }
-
 
 }

@@ -1,5 +1,6 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,34 +13,33 @@ public class LoginPage extends BasePage {
     }
 
 
-    // Locate elements using @FindBy annotation
-    @FindBy(css = "input#field-email")
-    private WebElement emailField;
+    // Elements
+    private By emailFieldBy() {
+        return By.cssSelector("input#field-email");
+    }
 
-    @FindBy(css = "input#field-password")
-    private WebElement passwordField;
+    private By passwordFieldBy() {
+        return By.cssSelector("input#field-password");
+    }
 
-    @FindBy(css = "button#submit-login")
-    private WebElement loginBtn;
+    private By loginBtnBy() {
+        return By.cssSelector("button#submit-login");
+    }
 
 
-    /*
-    *
-    * Actions
-    *
-    * */
+    // Actions
     public void enterEmail(String email) {
-        waitForVisibility(emailField);
-        emailField.sendKeys(email);
+        waitUntilElementIsVisible(emailFieldBy());
+        driver.findElement(emailFieldBy()).sendKeys(email);
     }
 
     public void enterPassword(String password) {
-        waitForVisibility(emailField);
-        passwordField.sendKeys(password);
+        waitUntilElementIsVisible(passwordFieldBy());
+        driver.findElement(passwordFieldBy()).sendKeys(password);
     }
 
     public void clickLogin() {
-        waitForClickable(loginBtn);
-        loginBtn.click();
+        waitUntilElementIsClickable(loginBtnBy());
+        driver.findElement(loginBtnBy()).click();
     }
 }

@@ -1,5 +1,6 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,34 +14,43 @@ public class ProductPage extends BasePage {
         super(driver);
     }
 
-    // Locate elements using @FindBy annotation
-    @FindBy(css = "#group_1")
-    private WebElement sizeSelector;
+    // Elements
+    private By sizeSelectorBy() {
+        return By.cssSelector("#group_1");
+    }
 
-    @FindBy(css = ".bootstrap-touchspin-up")
-    private WebElement quantityIncreaseBtn;
+    private By quantityIncreaseBtnBy() {
+        return By.cssSelector(".bootstrap-touchspin-up");
+    }
 
-    @FindBy(css = ".bootstrap-touchspin-up")
-    private WebElement quantityDecreaseBtn;
+    private By quantityDecreaseBtnBy() {
+        return By.cssSelector(".bootstrap-touchspin-up");
+    }
 
-    @FindBy(css = "input#quantity_wanted")
-    private WebElement quantityInput;
+    private By quantityInputBy() {
+        return By.cssSelector("input#quantity_wanted");
+    }
 
-    @FindBy(css = "div:nth-of-type(1) > .control-label")
-    private WebElement sizeLabel;
+    private By sizeLabelBy() {
+        return By.cssSelector("div:nth-of-type(1) > .control-label");
+    }
 
-    @FindBy(css = ".add-to-cart")
-    private WebElement addToCartBtn;
+    private By addToCartBtnBy() {
+        return By.cssSelector(".add-to-cart");
+    }
 
-    @FindBy(linkText = "Home")
-    private WebElement homeLink;
+    private By homeLinkBy() {
+        return By.linkText("Home");
+    }
 
     // Modal buttons
-    @FindBy(css = ".modal-body .btn.btn-primary")
-    private WebElement proceedToCheckoutBtn;
+    private By proceedToCheckoutBtnBy() {
+        return By.cssSelector(".modal-body .btn.btn-primary");
+    }
 
-    @FindBy(css = ".modal-body .btn.btn-secondary")
-    private WebElement continueShoppingBtn;
+    private By continueShoppingBtnBy() {
+        return By.cssSelector(".modal-body .btn.btn-secondary");
+    }
 
     /*
      *
@@ -48,43 +58,44 @@ public class ProductPage extends BasePage {
      *
      * */
     public void selectSize(String size) {
-        waitForClickable(sizeSelector);
-        Select select = new Select(sizeSelector);
+        waitUntilElementIsClickable(sizeSelectorBy());
+        Select select = new Select(driver.findElement(sizeSelectorBy()));
         select.selectByVisibleText(size);
-        waitForElementToHaveText(sizeLabel, size);
+        waitForElementToHaveText(sizeLabelBy(), size);
     }
 
     public void increaseQuantity(int quantity) {
         for (int i = 0; i < quantity; i++) {
-            waitForClickable(quantityIncreaseBtn);
-            quantityIncreaseBtn.click();
+            waitUntilElementIsClickable(quantityIncreaseBtnBy());
+            driver.findElement(quantityIncreaseBtnBy()).click();
         }
     }
 
     public void setQuantity(String quantity) {
-        waitForVisibility(quantityInput);
+        waitUntilElementIsVisible(quantityInputBy());
+        WebElement quantityInput = driver.findElement(quantityInputBy());
         quantityInput.click();
         quantityInput.sendKeys(Keys.BACK_SPACE);
         quantityInput.sendKeys(quantity);
     }
 
     public void addItemToCart() {
-        waitForClickable(addToCartBtn);
-        addToCartBtn.click();
+        waitUntilElementIsClickable(addToCartBtnBy());
+        driver.findElement(addToCartBtnBy()).click();
     }
 
     public void proceedToCart() {
-        waitForVisibility(proceedToCheckoutBtn);
-        proceedToCheckoutBtn.click();
+        waitUntilElementIsVisible(proceedToCheckoutBtnBy());
+        driver.findElement(proceedToCheckoutBtnBy()).click();
     }
 
     public void clickContinueShoppingBtn() {
-        waitForVisibility(continueShoppingBtn);
-        continueShoppingBtn.click();
+        waitUntilElementIsVisible(continueShoppingBtnBy());
+        driver.findElement(continueShoppingBtnBy()).click();
     }
 
     public void clickHomeLink() {
-        waitForClickable(homeLink);
-        homeLink.click();
+        waitUntilElementIsClickable(homeLinkBy());
+        driver.findElement(homeLinkBy()).click();
     }
  }

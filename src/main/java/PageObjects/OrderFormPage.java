@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Utilities.TestUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,54 +14,65 @@ public class OrderFormPage extends BasePage {
     }
 
     // Locate elements using @FindBy annotation
-    @FindBy(css = "[for='field-id_gender-1']")
-    private WebElement maleGender;
+    private By maleGenderBy() {
+        return By.cssSelector("[for='field-id_gender-1']");
+    }
 
-    @FindBy(css = "[for='field-id_gender-2']")
-    private WebElement femaleGender;
+    private By firstNameFieldBy() {
+        return By.cssSelector("input#field-firstname");
+    }
 
-    @FindBy(css = "input#field-firstname")
-    private WebElement firstNameField;
+    private By lastNameFieldBy() {
+        return By.cssSelector("input#field-lastname");
+    }
 
-    @FindBy(css = "input#field-lastname")
-    private WebElement lastNameField;
+    private By emailFieldBy() {
+        return By.cssSelector("input#field-email");
+    }
 
-    @FindBy(css = "input#field-email")
-    private WebElement emailField;
+    private By termsConditionsCheckboxBy() {
+        return By.cssSelector("input[name='psgdpr']");
+    }
 
-    @FindBy(css = "input[name='psgdpr']")
-    private WebElement termsConditionsCheckbox;
+    private By continueBtnBy() {
+        return By.xpath("//form[@id='customer-form']//button[@name='continue']");
+    }
 
-    @FindBy(xpath = "//form[@id='customer-form']//button[@name='continue']")
-    private WebElement continueBtn;
+    private By addressFieldBy() {
+        return By.cssSelector("input[name='address1']");
+    }
 
-    @FindBy(css = "input[name='address1']")
-    private WebElement addressField;
+    private By cityFieldBy() {
+        return By.cssSelector("input#field-city");
+    }
 
-    @FindBy(css = "input#field-city")
-    private WebElement cityField;
+    private By stateSelectorBy() {
+        return By.cssSelector("select#field-id_state");
+    }
 
-    @FindBy(css = "select#field-id_state")
-    private WebElement stateSelector;
+    private By postCodeFieldBy() {
+        return By.cssSelector("input#field-postcode");
+    }
 
-    @FindBy(css = "input#field-postcode")
-    private WebElement postalCodeField;
+    private By confirmAddressBtnBy() {
+        return By.cssSelector("button[name='confirm-addresses']");
+    }
 
-    @FindBy(css = "button[name='confirm-addresses']")
-    private WebElement confirmAddressBtn;
+    private By payByCheckBy() {
+        return By.cssSelector("[data-module-name='ps_checkpayment']");
+    }
 
-    @FindBy(css = "[data-module-name='ps_checkpayment']")
-    private WebElement payByCheck;
+    private By tosFinalBy() {
+        return By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
+    }
 
-    @FindBy(xpath = "//input[@id='conditions_to_approve[terms-and-conditions]']")
-    private WebElement tosFinal;
+    private By placeOrderBtnBy() {
+        return By.cssSelector(".btn-primary.center-block");
+    }
 
-    @FindBy (css = ".btn-primary.center-block")
-    private WebElement placeOrderBtn;
-
-    @FindBy(css = "[name='confirmDeliveryOption']")
-    private WebElement confirmShippingMethodBtn;
-
+    private By confirmShippingMethodBtnBy() {
+        return By.cssSelector("[name='confirmDeliveryOption']");
+    }
 
 
     /*
@@ -89,27 +101,27 @@ public class OrderFormPage extends BasePage {
     * Personal Details
     * */
     public void setGenderMale() {
-        waitForVisibility(maleGender);
-        maleGender.click();
+        waitUntilElementIsVisible(maleGenderBy());
+        driver.findElement(maleGenderBy()).click();
     }
 
     public void enterFirstName(String name) {
-        waitForVisibility(firstNameField);
-        firstNameField.sendKeys(name);
+        waitUntilElementIsVisible(firstNameFieldBy());
+        driver.findElement(firstNameFieldBy()).sendKeys(name);
     }
 
     public void enterLastName(String name) {
-        waitForVisibility(lastNameField);
-        lastNameField.sendKeys(name);
+        waitUntilElementIsVisible(lastNameFieldBy());
+        driver.findElement(lastNameFieldBy()).sendKeys(name);
     }
 
     public void enterEmail(String email) {
-        waitForVisibility(emailField);
-        emailField.sendKeys(email);
+        waitUntilElementIsVisible(emailFieldBy());
+        driver.findElement(emailFieldBy()).sendKeys(email);
     }
 
     public void agreeTermsConditions() {
-        termsConditionsCheckbox.click();
+        driver.findElement(termsConditionsCheckboxBy()).click();
     }
 
 
@@ -117,23 +129,23 @@ public class OrderFormPage extends BasePage {
     * Address Fields
     * */
     public void enterAddress(String address) {
-        waitForVisibility(addressField);
-        addressField.sendKeys(address);
+        waitUntilElementIsVisible(addressFieldBy());
+        driver.findElement(addressFieldBy()).sendKeys(address);
     }
 
     public void enterCity(String city) {
-        waitForVisibility(cityField);
-        cityField.sendKeys(city);
+        waitUntilElementIsVisible(cityFieldBy());
+        driver.findElement(cityFieldBy()).sendKeys(city);
     }
 
     public void enterPostCode(String postcode) {
-        waitForVisibility(postalCodeField);
-        postalCodeField.sendKeys(postcode);
+        waitUntilElementIsVisible(postCodeFieldBy());
+        driver.findElement(postCodeFieldBy()).sendKeys(postcode);
     }
 
     public void selectRandomState() {
-        waitForClickable(stateSelector);
-        Select select = new Select(stateSelector);
+        waitUntilElementIsClickable(stateSelectorBy());
+        Select select = new Select(driver.findElement(stateSelectorBy()));
         int numberOfOptions = select.getOptions().size();
         int randomIndex = random.nextInt(numberOfOptions);
         select.selectByIndex(randomIndex);
@@ -144,16 +156,16 @@ public class OrderFormPage extends BasePage {
     * Last step fields
     * */
     public void selectPayByCheck() {
-        payByCheck.click();
+        driver.findElement(payByCheckBy()).click();
     }
 
     public void agreeTOS() {
-        tosFinal.click();
+        driver.findElement(tosFinalBy()).click();
     }
 
     public void clickPlaceOrderBtn() {
-        waitForClickable(placeOrderBtn);
-        placeOrderBtn.click();
+        waitUntilElementIsClickable(placeOrderBtnBy());
+        driver.findElement(placeOrderBtnBy()).click();
     }
 
 
@@ -162,19 +174,19 @@ public class OrderFormPage extends BasePage {
     * */
     // Continue Button - Personal Details
     public void clickContinueBtn() {
-        waitForClickable(continueBtn);
-        continueBtn.click();
+        waitUntilElementIsClickable(continueBtnBy());
+        driver.findElement(continueBtnBy()).click();
     }
 
     // Continue Button - Address
     public void clickContinueBtnAddresses() {
-        waitForClickable(confirmAddressBtn);
-        confirmAddressBtn.click();
+        waitUntilElementIsClickable(confirmAddressBtnBy());
+        driver.findElement(confirmAddressBtnBy()).click();
     }
 
     // Continue Button - Shipping
     public void clickContinueBtnShipping() {
-        waitForClickable(confirmShippingMethodBtn);
-        confirmShippingMethodBtn.click();
+        waitUntilElementIsClickable(confirmShippingMethodBtnBy());
+        driver.findElement(confirmShippingMethodBtnBy()).click();
     }
 }

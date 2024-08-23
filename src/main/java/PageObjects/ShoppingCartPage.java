@@ -1,5 +1,6 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,28 +14,34 @@ public class ShoppingCartPage extends BasePage {
         super(driver);
     }
 
-    // Locate elements using @FindBy annotation
-    @FindBy(css = ".js-cart-detailed-actions .btn-primary")
-    private WebElement proceedToCheckoutBtn;
+    // Elements
+    private By proceedToCheckoutBtnBy() {
+        return By.cssSelector(".js-cart-detailed-actions .btn-primary");
+    }
 
-    @FindBy(css = ".remove-from-cart")
-    private WebElement removeFromCartBtn;
+    private By removeFromCartBtnBy() {
+        return By.cssSelector(".remove-from-cart");
+    }
 
-    @FindBy(css = ".promo-code-button .collapse-button")
-    private WebElement promoCodeLink;
+    private By promoCodeLinkBy() {
+        return By.cssSelector(".promo-code-button .collapse-button");
+    }
 
-    @FindBy(css = "input[name='discount_name']")
-    private WebElement promoCodeInput;
+    private By promoCodeInputBy() {
+        return By.cssSelector("input[name='discount_name']");
+    }
 
-    @FindBy(css = ".promo-name .label")
-    private WebElement promoCodeLabel;
+    private By promoCodeLabelBy() {
+        return By.cssSelector(".promo-name .label");
+    }
 
-    @FindBy(css = ".js-subtotal")
-    private WebElement itemsInCartSpan;
+    private By itemsInCartSpanBy() {
+        return By.cssSelector(".js-subtotal");
+    }
 
-    @FindBy(css = "[data-id_customization]")
-    private List<WebElement> cartItemTitles;
-
+    private By cartItemTitles() {
+        return By.cssSelector("[data-id_customization]");
+    }
 
     /*
      *
@@ -42,22 +49,24 @@ public class ShoppingCartPage extends BasePage {
      *
      * */
     public void addPromoCode(String promoCode) {
-        waitForClickable(promoCodeLink);
-        promoCodeLink.click();
-        waitForVisibility(promoCodeInput);
+        waitUntilElementIsClickable(promoCodeLinkBy());
+        driver.findElement(promoCodeLinkBy()).click();
+
+        waitUntilElementIsVisible(promoCodeInputBy());
+        WebElement promoCodeInput = driver.findElement(promoCodeInputBy());
         promoCodeInput.sendKeys(promoCode);
         pressEnter(promoCodeInput);
-        waitForElementToHaveText(promoCodeLabel, promoCode);
+        waitForElementToHaveText(promoCodeLabelBy(), promoCode);
     }
 
     public void proceedToCheckout() {
-        waitForClickable(proceedToCheckoutBtn);
-        proceedToCheckoutBtn.click();
+        waitUntilElementIsClickable(proceedToCheckoutBtnBy());
+        driver.findElement(proceedToCheckoutBtnBy()).click();
     }
 
     public int getCartItemCount() {
-        waitForVisibility(itemsInCartSpan);
-        String itemText = itemsInCartSpan.getText();
+        waitUntilElementIsVisible(itemsInCartSpanBy());
+        String itemText = driver.findElement(itemsInCartSpanBy()).getText();
         String numberOnly = itemText.replaceAll("[^0-9]", "");
         return Integer.parseInt(numberOnly);
     }
@@ -65,14 +74,14 @@ public class ShoppingCartPage extends BasePage {
 
     public void removeItemsFromCart(int numberOfItems) {
         for (int i = 0; i <= numberOfItems; i++) {
-            waitForClickable(removeFromCartBtn);
-            removeFromCartBtn.click();
+            waitUntilElementIsClickable(removeFromCartBtnBy());
+            driver.findElement(removeFromCartBtnBy()).click();
         }
-        waitForElementToHaveText(itemsInCartSpan, String.valueOf((getCartItemCount() - numberOfItems)));
+        waitForElementToHaveText(itemsInCartSpanBy(), String.valueOf((getCartItemCount() - numberOfItems)));
     }
 
     public int getItemListSize() {
-        return cartItemTitles.size();
+        return driver.findElements(cartItemTitles()).size();
     }
 
 }

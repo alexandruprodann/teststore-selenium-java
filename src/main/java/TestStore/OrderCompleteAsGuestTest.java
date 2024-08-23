@@ -50,9 +50,10 @@ public class OrderCompleteAsGuestTest extends BaseTest {
         orderFormPage.clickPlaceOrderBtn();
 
         // Wait for the title to be "Order confirmation"
-        orderConfirmationPage.waitForTitle("Order confirmation");
+        orderConfirmationPage.waitForTitleToContain("Order confirmation");
 
         // Assert that the title is exactly "Order confirmation"
-        Assert.assertEquals(driver.getTitle(), "Order confirmation", "The page title is not 'Order confirmation'");
+        Assert.assertEquals(driver.getTitle(), "Order confirmation", "The page title is not 'Order confirmation'" +
+                "\nCurrent page title: " + driver.getTitle());
     }
 }
