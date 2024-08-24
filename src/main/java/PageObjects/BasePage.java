@@ -1,8 +1,8 @@
 package PageObjects;
 
+import Utilities.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,18 +11,18 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BasePage {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    Random random = new Random();
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected ThreadLocalRandom random;
 
-    // Constructor
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public BasePage() {
+        this.driver = WebDriverManager.getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.random = ThreadLocalRandom.current();
     }
 
     /**
@@ -116,9 +116,9 @@ public class BasePage {
 
 
     // Screenshot Taker
-    public void takeScreenshot(WebDriver driver) throws IOException {
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File("D:/Projects/IntelliJ/seleniumscreenshots/" + timestamp() + " .png");
+    public void takeScreenshot(String name) throws IOException {
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File(System.getProperty("user.dir") + "//target//screenshots//" + timestamp() + " .png");
 
         FileUtils.copyFile(screenshot, destinationFile);
     }

@@ -9,10 +9,10 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void login() {
-        driver.get(TestConstants.LOGIN_URL);
+        getDriver().get(TestConstants.LOGIN_URL);
 
         // Create instance of the LoginPage
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
 
         // Login Process
         loginPage.enterEmail(TestConstants.TEST_EMAIL);
@@ -21,8 +21,8 @@ public class LoginTest extends BaseTest {
 
         // Assert current URL is the homepage URL
         String expectedUrl = TestConstants.BASE_URL;
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl, "The user is not redirected to the homepage. " +
-                "\nCurrent URL is: " + driver.getCurrentUrl());
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The user is not redirected to the homepage. " +
+                "\nCurrent URL is: " + getDriver().getCurrentUrl());
 
     }
 }

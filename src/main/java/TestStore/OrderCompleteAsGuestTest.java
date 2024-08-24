@@ -9,14 +9,14 @@ public class OrderCompleteAsGuestTest extends BaseTest {
 
     @Test
     public void orderComplete() {
-        driver.get(TestConstants.BASE_URL);
+        getDriver().get(TestConstants.BASE_URL);
 
         // Create instances of pages
-        HomePage homePage = new HomePage(driver);
-        ProductPage productPage = new ProductPage(driver);
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        OrderFormPage orderFormPage = new OrderFormPage(driver);
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        HomePage homePage = new HomePage();
+        ProductPage productPage = new ProductPage();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        OrderFormPage orderFormPage = new OrderFormPage();
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage();
 
         // Select an item and size
         homePage.chooseRandomClothing();
@@ -53,7 +53,7 @@ public class OrderCompleteAsGuestTest extends BaseTest {
         orderConfirmationPage.waitForTitleToContain("Order confirmation");
 
         // Assert that the title is exactly "Order confirmation"
-        Assert.assertEquals(driver.getTitle(), "Order confirmation", "The page title is not 'Order confirmation'" +
-                "\nCurrent page title: " + driver.getTitle());
+        Assert.assertEquals(getDriver().getTitle(), "Order confirmation", "The page title is not 'Order confirmation'" +
+                "\nCurrent page title: " + getDriver().getTitle());
     }
 }

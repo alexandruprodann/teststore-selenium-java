@@ -1,9 +1,8 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+
 
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +10,8 @@ import java.util.Objects;
 public class HomePage extends BasePage {
 
     // Constructor
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage() {
+        super();
     }
 
 
@@ -33,9 +32,9 @@ public class HomePage extends BasePage {
     // Actions
     public void chooseRandomProduct() {
         List<WebElement> productItemsList = driver.findElements(productItemsListBy());
-
         int randomProduct = random.nextInt(productItemsList.size());
-        WebElement chosenProduct = productItemsList.get(randomProduct);
+
+        WebElement chosenProduct =  productItemsList.get(randomProduct);
         String chosenProductTitle = chosenProduct.getText();
 
         if (Objects.equals(chosenProductTitle, "Customizable Mug")) {

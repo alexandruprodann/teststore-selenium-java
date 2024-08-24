@@ -1,28 +1,22 @@
 package TestStore;
 
-import org.openqa.selenium.Point;
+import Utilities.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 public class BaseTest {
-        public WebDriver driver;
 
-        @BeforeClass
+        @BeforeTest
         public void setUp() {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--disable-search-engine-choice-screen");
-
-            driver = new ChromeDriver(options);
-            driver.manage().window().setPosition(new Point(-2000, 0));
-            driver.manage().window().maximize();
+            WebDriverManager.initializeDriver();
         }
 
-        @AfterClass
-        public void quit() {
-            if (driver != null) {
-                driver.quit();
-            }
+        @AfterTest
+        public void tearDown() {
+            WebDriverManager.quitDriver();
+        }
+
+        public WebDriver getDriver() {
+            return WebDriverManager.getDriver();
         }
 }
