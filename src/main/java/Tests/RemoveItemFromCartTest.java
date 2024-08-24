@@ -1,4 +1,4 @@
-package TestStore;
+package Tests;
 
 import PageObjects.HomePage;
 import PageObjects.ProductPage;

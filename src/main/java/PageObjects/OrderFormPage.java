@@ -6,10 +6,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class OrderFormPage extends BasePage {
 
-    public OrderFormPage() {
-        super();
-    }
-
     // Locate elements using @FindBy annotation
     private By maleGenderBy() {
         return By.cssSelector("[for='field-id_gender-1']");

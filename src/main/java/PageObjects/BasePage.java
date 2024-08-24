@@ -25,11 +25,6 @@ public class BasePage {
         this.random = ThreadLocalRandom.current();
     }
 
-    // Getter method for WebDriver
-    public WebDriver getDriver() {
-        return driver;
-    }
-
     /**
      * Wait until element is visible
      *

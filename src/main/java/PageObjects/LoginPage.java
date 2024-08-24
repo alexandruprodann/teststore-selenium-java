@@ -4,12 +4,6 @@ import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
 
-    // Constructor
-    public LoginPage() {
-        super();
-    }
-
-
     // Elements
     private By emailFieldBy() {
         return By.cssSelector("input#field-email");

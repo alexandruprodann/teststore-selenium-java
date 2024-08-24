@@ -1,4 +1,4 @@
-package TestStore;
+package Tests;
 
 import PageObjects.LoginPage;
 import Utilities.TestConstants;

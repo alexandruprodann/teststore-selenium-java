@@ -7,6 +7,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Login Test**: Ensures that a user can successfully log in to the Test Store.
 - **Order Complete As Guest Test**: Verifies the functionality to complete an order as a guest user.
 - **Remove Item From Cart Test**: Tests the ability to remove items from the shopping cart.
+- **Search Bar Test**: Tests that the search bar works and returns correct results.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used
@@ -22,7 +23,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 
 - **PageObjects**: Contains Page Object Model classes representing various pages of the Test Store.
 - **Utilities**: Contains utility classes like `TestConstants`.
-- **TestStore**: Contains the test classes that perform various E2E test scenarios.
+- **Tests**: Contains the test classes that perform various E2E test scenarios.
 - **pom.xml**: Maven configuration file for managing project dependencies.
 
 

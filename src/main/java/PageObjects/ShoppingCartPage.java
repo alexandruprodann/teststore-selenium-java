@@ -6,11 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class ShoppingCartPage extends BasePage {
 
-    // Constructor
-    public ShoppingCartPage() {
-        super();
-    }
-
     // Elements
     private By proceedToCheckoutBtnBy() {
         return By.cssSelector(".js-cart-detailed-actions .btn-primary");

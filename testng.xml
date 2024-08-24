@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Test Suite" parallel="tests" thread-count="3">
+<suite name="Test Suite" parallel="methods" thread-count="3">
 
     <test verbose="2" name="Login Test">
         <classes>
-            <class name="TestStore.LoginTest"/>
+            <class name="Tests.LoginTest"/>
         </classes>
     </test>
 
     <test verbose="2" name="Order Complete As Guest">
         <classes>
-            <class name="TestStore.OrderCompleteAsGuestTest"/>
+            <class name="Tests.OrderCompleteAsGuestTest"/>
         </classes>
     </test>
 
     <test verbose="2" name="Remove Item From Shopping Cart">
         <classes>
-            <class name="TestStore.RemoveItemFromCartTest"/>
+            <class name="Tests.RemoveItemFromCartTest"/>
         </classes>
     </test>
 

@@ -9,12 +9,6 @@ import java.util.Objects;
 
 public class HomePage extends BasePage {
 
-    // Constructor
-    public HomePage() {
-        super();
-    }
-
-
     // Elements
     private By productItemsListBy() {
         return By.cssSelector(".products > div");

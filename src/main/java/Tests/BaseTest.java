@@ -1,6 +1,5 @@
-package TestStore;
+package Tests;
 
-import PageObjects.BasePage;
 import Utilities.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;

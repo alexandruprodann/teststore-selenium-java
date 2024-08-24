@@ -7,11 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage extends BasePage {
 
-    // Constructor
-    public ProductPage() {
-        super();
-    }
-
     // Elements
     private By sizeSelectorBy() {
         return By.cssSelector("#group_1");
