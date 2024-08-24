@@ -2,17 +2,23 @@ package TestStore;
 
 import PageObjects.BasePage;
 import Utilities.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-public class BaseTest extends BasePage {
+public class BaseTest {
 
-        @BeforeTest
+        @BeforeMethod
         public void setUp() {
             WebDriverManager.initializeDriver();
         }
 
-        @AfterTest
+        @AfterMethod
         public void tearDown() {
             WebDriverManager.quitDriver();
+        }
+
+        // Getter method for WebDriver
+        public WebDriver getDriver() {
+            return WebDriverManager.getDriver();
         }
 }

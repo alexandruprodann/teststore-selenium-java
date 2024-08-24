@@ -17,18 +17,20 @@ public class WebDriverManager {
         driver.remove();
     }
 
-    public static WebDriver getDriver() {
-        return driver.get();
+    public static void initializeDriver() {
+        if (driver.get() == null) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-search-engine-choice-screen");
+
+            WebDriver webDriver = new ChromeDriver(options);
+            webDriver.manage().window().setPosition(new Point(-2000, 0));
+            webDriver.manage().window().maximize();
+            setDriver(webDriver);
+        }
     }
 
-    public static void initializeDriver() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
-
-        WebDriver webDriver = new ChromeDriver(options);
-        webDriver.manage().window().setPosition(new Point(-2000, 0));
-        webDriver.manage().window().maximize();
-        setDriver(webDriver);
+    public static WebDriver getDriver() {
+        return driver.get();
     }
 
     public static void quitDriver() {
