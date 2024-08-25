@@ -1,8 +1,9 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import org.openqa.selenium.By;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends BaseClass {
 
     // Elements
     private By emailFieldBy() {
@@ -21,16 +22,16 @@ public class LoginPage extends BasePage {
     // Actions
     public void enterEmail(String email) {
         waitUntilElementIsVisible(emailFieldBy());
-        driver.findElement(emailFieldBy()).sendKeys(email);
+        getDriver().findElement(emailFieldBy()).sendKeys(email);
     }
 
     public void enterPassword(String password) {
         waitUntilElementIsVisible(passwordFieldBy());
-        driver.findElement(passwordFieldBy()).sendKeys(password);
+        getDriver().findElement(passwordFieldBy()).sendKeys(password);
     }
 
     public void clickLogin() {
         waitUntilElementIsClickable(loginBtnBy());
-        driver.findElement(loginBtnBy()).click();
+        getDriver().findElement(loginBtnBy()).click();
     }
 }

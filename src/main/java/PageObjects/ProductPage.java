@@ -1,11 +1,12 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class ProductPage extends BasePage {
+public class ProductPage extends BaseClass {
 
     // Elements
     private By sizeSelectorBy() {
@@ -52,7 +53,7 @@ public class ProductPage extends BasePage {
      * */
     public void selectSize(String size) {
         waitUntilElementIsClickable(sizeSelectorBy());
-        Select select = new Select(driver.findElement(sizeSelectorBy()));
+        Select select = new Select(getDriver().findElement(sizeSelectorBy()));
         select.selectByVisibleText(size);
         waitForElementToHaveText(sizeLabelBy(), size);
     }
@@ -60,13 +61,13 @@ public class ProductPage extends BasePage {
     public void increaseQuantity(int quantity) {
         for (int i = 0; i < quantity; i++) {
             waitUntilElementIsClickable(quantityIncreaseBtnBy());
-            driver.findElement(quantityIncreaseBtnBy()).click();
+            getDriver().findElement(quantityIncreaseBtnBy()).click();
         }
     }
 
     public void setQuantity(String quantity) {
         waitUntilElementIsVisible(quantityInputBy());
-        WebElement quantityInput = driver.findElement(quantityInputBy());
+        WebElement quantityInput = getDriver().findElement(quantityInputBy());
         quantityInput.click();
         quantityInput.sendKeys(Keys.BACK_SPACE);
         quantityInput.sendKeys(quantity);
@@ -74,21 +75,21 @@ public class ProductPage extends BasePage {
 
     public void addItemToCart() {
         waitUntilElementIsClickable(addToCartBtnBy());
-        driver.findElement(addToCartBtnBy()).click();
+        getDriver().findElement(addToCartBtnBy()).click();
     }
 
     public void proceedToCart() {
         waitUntilElementIsVisible(proceedToCheckoutBtnBy());
-        driver.findElement(proceedToCheckoutBtnBy()).click();
+        getDriver().findElement(proceedToCheckoutBtnBy()).click();
     }
 
     public void clickContinueShoppingBtn() {
         waitUntilElementIsVisible(continueShoppingBtnBy());
-        driver.findElement(continueShoppingBtnBy()).click();
+        getDriver().findElement(continueShoppingBtnBy()).click();
     }
 
     public void clickHomeLink() {
         waitUntilElementIsClickable(homeLinkBy());
-        driver.findElement(homeLinkBy()).click();
+        getDriver().findElement(homeLinkBy()).click();
     }
  }

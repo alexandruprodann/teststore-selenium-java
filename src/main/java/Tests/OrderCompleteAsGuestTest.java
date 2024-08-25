@@ -1,11 +1,12 @@
 package Tests;
 
 import PageObjects.*;
+import Utilities.BaseClass;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class OrderCompleteAsGuestTest extends BaseTest {
+public class OrderCompleteAsGuestTest extends BaseClass {
 
     @Test
     public void orderComplete() {

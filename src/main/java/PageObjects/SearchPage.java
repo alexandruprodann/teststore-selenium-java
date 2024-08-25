@@ -1,8 +1,9 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import org.openqa.selenium.By;
 
-public class SearchPage extends BasePage {
+public class SearchPage extends BaseClass {
 
     // Elements
     public By searchResultsTitlesBy() {
@@ -15,10 +16,10 @@ public class SearchPage extends BasePage {
 
     // Actions
     public boolean searchResultsDisplayedBool() {
-        return driver.findElement(searchResultsTitlesBy()).isDisplayed();
+        return getDriver().findElement(searchResultsTitlesBy()).isDisplayed();
     }
 
     public String getSearchResultsText() {
-        return driver.findElement(searchResultsTitlesBy()).getText();
+        return getDriver().findElement(searchResultsTitlesBy()).getText();
     }
 }

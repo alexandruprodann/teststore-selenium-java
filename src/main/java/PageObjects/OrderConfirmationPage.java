@@ -1,6 +1,8 @@
 package PageObjects;
 
 
-public class OrderConfirmationPage extends BasePage {
+import Utilities.BaseClass;
+
+public class OrderConfirmationPage extends BaseClass {
 
 }

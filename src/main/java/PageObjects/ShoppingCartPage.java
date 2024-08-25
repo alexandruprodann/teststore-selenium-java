@@ -1,10 +1,11 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
-public class ShoppingCartPage extends BasePage {
+public class ShoppingCartPage extends BaseClass {
 
     // Elements
     private By proceedToCheckoutBtnBy() {
@@ -42,10 +43,10 @@ public class ShoppingCartPage extends BasePage {
      * */
     public void addPromoCode(String promoCode) {
         waitUntilElementIsClickable(promoCodeLinkBy());
-        driver.findElement(promoCodeLinkBy()).click();
+        getDriver().findElement(promoCodeLinkBy()).click();
 
         waitUntilElementIsVisible(promoCodeInputBy());
-        WebElement promoCodeInput = driver.findElement(promoCodeInputBy());
+        WebElement promoCodeInput = getDriver().findElement(promoCodeInputBy());
         promoCodeInput.sendKeys(promoCode);
         pressEnter(promoCodeInput);
         waitForElementToHaveText(promoCodeLabelBy(), promoCode);
@@ -53,12 +54,12 @@ public class ShoppingCartPage extends BasePage {
 
     public void proceedToCheckout() {
         waitUntilElementIsClickable(proceedToCheckoutBtnBy());
-        driver.findElement(proceedToCheckoutBtnBy()).click();
+        getDriver().findElement(proceedToCheckoutBtnBy()).click();
     }
 
     public int getCartItemCount() {
         waitUntilElementIsVisible(itemsInCartSpanBy());
-        String itemText = driver.findElement(itemsInCartSpanBy()).getText();
+        String itemText = getDriver().findElement(itemsInCartSpanBy()).getText();
         String numberOnly = itemText.replaceAll("[^0-9]", "");
         return Integer.parseInt(numberOnly);
     }
@@ -67,13 +68,13 @@ public class ShoppingCartPage extends BasePage {
     public void removeItemsFromCart(int numberOfItems) {
         for (int i = 0; i <= numberOfItems; i++) {
             waitUntilElementIsClickable(removeFromCartBtnBy());
-            driver.findElement(removeFromCartBtnBy()).click();
+            getDriver().findElement(removeFromCartBtnBy()).click();
         }
         waitForElementToHaveText(itemsInCartSpanBy(), String.valueOf((getCartItemCount() - numberOfItems)));
     }
 
     public int getItemListSize() {
-        return driver.findElements(cartItemTitles()).size();
+        return getDriver().findElements(cartItemTitles()).size();
     }
 
 }

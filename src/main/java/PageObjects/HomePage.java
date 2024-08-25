@@ -1,5 +1,6 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Objects;
 
-public class HomePage extends BasePage {
+public class HomePage extends BaseClass {
 
     // Elements
     private By productItemsListBy() {
@@ -25,7 +26,7 @@ public class HomePage extends BasePage {
 
     // Actions
     public void chooseRandomProduct() {
-        List<WebElement> productItemsList = driver.findElements(productItemsListBy());
+        List<WebElement> productItemsList = getDriver().findElements(productItemsListBy());
         int randomProduct = random.nextInt(productItemsList.size());
 
         WebElement chosenProduct =  productItemsList.get(randomProduct);
@@ -39,13 +40,13 @@ public class HomePage extends BasePage {
     }
 
     public void chooseRandomClothing() {
-        driver.findElement(clothesLinkBy()).click();
+        getDriver().findElement(clothesLinkBy()).click();
         chooseRandomProduct();
     }
 
     public void searchSomething(String searchText) {
         waitUntilElementIsVisible(searchBarBy());
-        WebElement searchBar = driver.findElement(searchBarBy());
+        WebElement searchBar = getDriver().findElement(searchBarBy());
         searchBar.sendKeys(searchText);
         pressEnter(searchBar);
     }

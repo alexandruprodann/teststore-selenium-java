@@ -1,10 +1,11 @@
 package PageObjects;
 
+import Utilities.BaseClass;
 import Utilities.TestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-public class OrderFormPage extends BasePage {
+public class OrderFormPage extends BaseClass {
 
     // Locate elements using @FindBy annotation
     private By maleGenderBy() {
@@ -95,26 +96,26 @@ public class OrderFormPage extends BasePage {
     * */
     public void setGenderMale() {
         waitUntilElementIsVisible(maleGenderBy());
-        driver.findElement(maleGenderBy()).click();
+        getDriver().findElement(maleGenderBy()).click();
     }
 
     public void enterFirstName(String name) {
         waitUntilElementIsVisible(firstNameFieldBy());
-        driver.findElement(firstNameFieldBy()).sendKeys(name);
+        getDriver().findElement(firstNameFieldBy()).sendKeys(name);
     }
 
     public void enterLastName(String name) {
         waitUntilElementIsVisible(lastNameFieldBy());
-        driver.findElement(lastNameFieldBy()).sendKeys(name);
+        getDriver().findElement(lastNameFieldBy()).sendKeys(name);
     }
 
     public void enterEmail(String email) {
         waitUntilElementIsVisible(emailFieldBy());
-        driver.findElement(emailFieldBy()).sendKeys(email);
+        getDriver().findElement(emailFieldBy()).sendKeys(email);
     }
 
     public void agreeTermsConditions() {
-        driver.findElement(termsConditionsCheckboxBy()).click();
+        getDriver().findElement(termsConditionsCheckboxBy()).click();
     }
 
 
@@ -123,22 +124,22 @@ public class OrderFormPage extends BasePage {
     * */
     public void enterAddress(String address) {
         waitUntilElementIsVisible(addressFieldBy());
-        driver.findElement(addressFieldBy()).sendKeys(address);
+        getDriver().findElement(addressFieldBy()).sendKeys(address);
     }
 
     public void enterCity(String city) {
         waitUntilElementIsVisible(cityFieldBy());
-        driver.findElement(cityFieldBy()).sendKeys(city);
+        getDriver().findElement(cityFieldBy()).sendKeys(city);
     }
 
     public void enterPostCode(String postcode) {
         waitUntilElementIsVisible(postCodeFieldBy());
-        driver.findElement(postCodeFieldBy()).sendKeys(postcode);
+        getDriver().findElement(postCodeFieldBy()).sendKeys(postcode);
     }
 
     public void selectRandomState() {
         waitUntilElementIsClickable(stateSelectorBy());
-        Select select = new Select(driver.findElement(stateSelectorBy()));
+        Select select = new Select(getDriver().findElement(stateSelectorBy()));
         int numberOfOptions = select.getOptions().size();
         int randomIndex = random.nextInt(numberOfOptions);
         select.selectByIndex(randomIndex);
@@ -149,16 +150,16 @@ public class OrderFormPage extends BasePage {
     * Last step fields
     * */
     public void selectPayByCheck() {
-        driver.findElement(payByCheckBy()).click();
+        getDriver().findElement(payByCheckBy()).click();
     }
 
     public void agreeTOS() {
-        driver.findElement(tosFinalBy()).click();
+        getDriver().findElement(tosFinalBy()).click();
     }
 
     public void clickPlaceOrderBtn() {
         waitUntilElementIsClickable(placeOrderBtnBy());
-        driver.findElement(placeOrderBtnBy()).click();
+        getDriver().findElement(placeOrderBtnBy()).click();
     }
 
 
@@ -168,18 +169,18 @@ public class OrderFormPage extends BasePage {
     // Continue Button - Personal Details
     public void clickContinueBtn() {
         waitUntilElementIsClickable(continueBtnBy());
-        driver.findElement(continueBtnBy()).click();
+        getDriver().findElement(continueBtnBy()).click();
     }
 
     // Continue Button - Address
     public void clickContinueBtnAddresses() {
         waitUntilElementIsClickable(confirmAddressBtnBy());
-        driver.findElement(confirmAddressBtnBy()).click();
+        getDriver().findElement(confirmAddressBtnBy()).click();
     }
 
     // Continue Button - Shipping
     public void clickContinueBtnShipping() {
         waitUntilElementIsClickable(confirmShippingMethodBtnBy());
-        driver.findElement(confirmShippingMethodBtnBy()).click();
+        getDriver().findElement(confirmShippingMethodBtnBy()).click();
     }
 }

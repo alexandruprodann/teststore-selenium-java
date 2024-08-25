@@ -1,11 +1,12 @@
 package Tests;
 
 import PageObjects.LoginPage;
+import Utilities.BaseClass;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+public class LoginTest extends BaseClass {
 
     @Test
     public void login() {

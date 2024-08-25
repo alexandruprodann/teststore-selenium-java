@@ -5,17 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class WebDriverManager {
+public class WebDriverFactory {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
-    public static void setDriver(WebDriver webDriver) {
-        driver.set(webDriver);
-    }
-
-    public static void removeDriver() {
-        driver.remove();
-    }
 
     public static void initializeDriver() {
         if (driver.get() == null) {
@@ -25,7 +17,7 @@ public class WebDriverManager {
             WebDriver webDriver = new ChromeDriver(options);
             webDriver.manage().window().setPosition(new Point(-2000, 0));
             webDriver.manage().window().maximize();
-            setDriver(webDriver);
+            driver.set(webDriver);
         }
     }
 
@@ -36,7 +28,7 @@ public class WebDriverManager {
     public static void quitDriver() {
         if (getDriver() != null) {
             getDriver().quit();
-            removeDriver();
+            driver.remove();
         }
     }
 }

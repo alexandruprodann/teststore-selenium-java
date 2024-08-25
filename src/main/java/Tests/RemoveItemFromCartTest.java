@@ -3,12 +3,13 @@ package Tests;
 import PageObjects.HomePage;
 import PageObjects.ProductPage;
 import PageObjects.ShoppingCartPage;
+import Utilities.BaseClass;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class RemoveItemFromCartTest extends BaseTest {
+public class RemoveItemFromCartTest extends BaseClass {
 
     @Test
     public void removeItemFromCart() {
