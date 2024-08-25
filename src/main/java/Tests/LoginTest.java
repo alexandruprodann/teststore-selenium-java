@@ -4,6 +4,7 @@ import PageObjects.LoginPage;
 import Utilities.BaseClass;
 import Utilities.TestConstants;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseClass {
@@ -12,17 +13,19 @@ public class LoginTest extends BaseClass {
     public void login() {
         getDriver().get(TestConstants.LOGIN_URL);
 
-        // Create instance of the LoginPage
+        // Pages
         LoginPage loginPage = new LoginPage();
 
-        // Login Process
+
+        // Steps
+        Reporter.log("Proceed to " + TestConstants.LOGIN_URL + " and log in to an account");
         loginPage.enterEmail(TestConstants.TEST_EMAIL);
         loginPage.enterPassword(TestConstants.TEST_PASSWORD);
         loginPage.clickLogin();
 
-        // Assert current URL is the homepage URL
+        Reporter.log("Observe user is redirected to homepage after log in");
         String expectedUrl = TestConstants.BASE_URL;
-        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The user is not redirected to the homepage. " +
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The user was not successfully logged in (not redirected to the homepage). " +
                 "\nCurrent URL is: " + getDriver().getCurrentUrl());
 
     }

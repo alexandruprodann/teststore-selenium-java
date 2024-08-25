@@ -15,12 +15,13 @@ public class RemoveItemFromCartTest extends BaseClass {
     public void removeItemFromCart() {
         getDriver().get(TestConstants.BASE_URL);
 
-        // Create instances of pages
+        // Pages
         HomePage homePage = new HomePage();
         ProductPage productPage = new ProductPage();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
 
+        // Steps
         Reporter.log("Select two random products and add them to the Shopping Cart");
         homePage.chooseRandomProduct();
         productPage.addItemToCart();

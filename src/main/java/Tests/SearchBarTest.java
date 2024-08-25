@@ -19,6 +19,7 @@ public class SearchBarTest extends BaseClass {
         HomePage homePage = new HomePage();
         SearchPage searchPage = new SearchPage();
 
+
         // Steps
         Reporter.log("Access TestStore Homepage: " + TestConstants.BASE_URL);
         getDriver().get(TestConstants.BASE_URL);
