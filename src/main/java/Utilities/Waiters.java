@@ -1,8 +1,6 @@
 package Utilities;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -86,24 +84,4 @@ public class Waiters {
         wait.until(ExpectedConditions.titleContains(expectedTitle));
     }
 
-
-    /**
-     * Get text from element
-     *
-     * @param element Web Element
-     * @return String
-     */
-    public String getTextFromElement(WebElement element) {
-        return element.getText();
-    }
-
-
-    /**
-     * Send ENTER key
-     *
-     * @param element Web Element
-     */
-    public void pressEnter(WebElement element) {
-        element.sendKeys(Keys.ENTER);
-    }
 }
