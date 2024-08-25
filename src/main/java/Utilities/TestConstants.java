@@ -9,6 +9,7 @@ public class TestConstants {
     // Account
     public static final String TEST_EMAIL = "alexautomation@test.com";
     public static final String TEST_PASSWORD = "Tester123";
+    public static final String BIRTHDAY = "01/01/2001";
 
     // Order Details
     public static final String FIRST_NAME = "John";

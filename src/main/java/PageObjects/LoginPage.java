@@ -18,6 +18,10 @@ public class LoginPage extends BaseClass {
         return By.cssSelector("button#submit-login");
     }
 
+    private By createAccountLinkBy() {
+        return By.cssSelector(".no-account a");
+    }
+
 
     // Actions
     public void enterEmail(String email) {
@@ -33,5 +37,10 @@ public class LoginPage extends BaseClass {
     public void clickLogin() {
         waitUntilElementIsClickable(loginBtnBy());
         getDriver().findElement(loginBtnBy()).click();
+    }
+
+    public void clickCreateAccountLink() {
+        waitUntilElementIsClickable(createAccountLinkBy());
+        getDriver().findElement(createAccountLinkBy()).click();
     }
 }

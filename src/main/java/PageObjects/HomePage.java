@@ -23,6 +23,10 @@ public class HomePage extends BaseClass {
         return By.linkText("CLOTHES");
     }
 
+    private By signInLinkBy() {
+        return By.cssSelector(".user-info a");
+    }
+
 
     // Actions
     public void chooseRandomProduct() {
@@ -41,6 +45,7 @@ public class HomePage extends BaseClass {
     }
 
     public void chooseRandomClothing() {
+        waitUntilElementIsClickable(clothesLinkBy());
         getDriver().findElement(clothesLinkBy()).click();
         chooseRandomProduct();
     }
@@ -50,6 +55,11 @@ public class HomePage extends BaseClass {
         WebElement searchBar = getDriver().findElement(searchBarBy());
         searchBar.sendKeys(searchText);
         pressEnter(searchBar);
+    }
+
+    public void clickSignIn() {
+        waitUntilElementIsClickable(signInLinkBy());
+        getDriver().findElement(signInLinkBy()).click();
     }
 
 }
