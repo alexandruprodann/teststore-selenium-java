@@ -27,12 +27,13 @@ public class HomePage extends BaseClass {
     // Actions
     public void chooseRandomProduct() {
         List<WebElement> productItemsList = getDriver().findElements(productItemsListBy());
-        int randomProduct = random.nextInt(productItemsList.size());
+        int randomIndex = random.nextInt(productItemsList.size());
+        WebElement chosenProduct = productItemsList.get(randomIndex);
 
-        WebElement chosenProduct =  productItemsList.get(randomProduct);
-        String chosenProductTitle = chosenProduct.getText();
+        WebElement chosenProductTitle = chosenProduct.findElement(By.cssSelector(".product-title"));
+        String chosenProductTitleString = chosenProductTitle.getText();
 
-        if (Objects.equals(chosenProductTitle, "Customizable Mug")) {
+        if (Objects.equals(chosenProductTitleString, "Customizable Mug")) {
             chooseRandomProduct();
         }
 
