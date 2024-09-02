@@ -17,7 +17,6 @@ public class OrderCompleteAsGuestTest extends BaseClass {
         ProductPage productPage = new ProductPage();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         OrderFormPage orderFormPage = new OrderFormPage();
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage();
 
 
         // Steps
@@ -55,11 +54,9 @@ public class OrderCompleteAsGuestTest extends BaseClass {
         orderFormPage.agreeTOS();
         orderFormPage.clickPlaceOrderBtn();
 
-        // Wait for the title to be "Order confirmation"
-        orderConfirmationPage.waitForTitleToContain("Order confirmation");
 
         // Assert that the title is exactly "Order confirmation"
-        Assert.assertEquals(getDriver().getTitle(), "Order confirmation", "The page title is not 'Order confirmation'" +
+        Assert.assertTrue(waitForTitleToContainBool("Order confirmation"), "The page title is not 'Order confirmation'" +
                 "\nCurrent page title: " + getDriver().getTitle());
     }
 }

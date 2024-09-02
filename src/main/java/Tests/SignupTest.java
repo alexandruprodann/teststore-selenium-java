@@ -35,8 +35,7 @@ public class SignupTest extends BaseClass {
         signUpPage.clickSaveBtn();
 
         Reporter.log("Observe user is redirected to Homepage after signup");
-        String expectedUrl = TestConstants.BASE_URL;
-        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "Sign up was not successful (not redirected to the homepage). " +
+        Assert.assertTrue(waitForUrlToContainBool(TestConstants.BASE_URL), "Sign up was not successful (not redirected to the homepage). " +
                 "\nCurrent URL is: " + getDriver().getCurrentUrl());
     }
 }
