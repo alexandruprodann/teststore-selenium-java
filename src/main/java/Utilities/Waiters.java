@@ -8,12 +8,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class Waiters {
+public interface Waiters {
 
-    private WebDriverWait wait;
-
-    public Waiters() {
-        this.wait = new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(10));
+    default WebDriverWait waiter() {
+        return new WebDriverWait(WebDriverFactory.getDriver(), Duration.ofSeconds(20));
     }
 
     /**
@@ -21,8 +19,8 @@ public class Waiters {
      *
      * @param element Web Element
      */
-    public void waitUntilElementIsVisible(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+    default void waitUntilElementIsVisible(WebElement element) {
+        waiter().until(ExpectedConditions.visibilityOf(element));
     }
 
     /**
@@ -30,8 +28,8 @@ public class Waiters {
      *
      * @param locator By
      */
-    public void waitUntilElementIsVisible(By locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    default void waitUntilElementIsVisible(By locator) {
+        waiter().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
 
@@ -40,8 +38,8 @@ public class Waiters {
      *
      * @param element Web Element
      */
-    public void waitUntilElementIsClickable(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    default void waitUntilElementIsClickable(WebElement element) {
+        waiter().until(ExpectedConditions.elementToBeClickable(element));
     }
 
     /**
@@ -49,8 +47,8 @@ public class Waiters {
      *
      * @param locator By
      */
-    public void waitUntilElementIsClickable(By locator) {
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    default void waitUntilElementIsClickable(By locator) {
+        waiter().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
 
@@ -60,8 +58,8 @@ public class Waiters {
      * @param element Web Element
      * @param expectedText String
      */
-    public void waitForElementToHaveText(WebElement element, String expectedText) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element, expectedText));
+    default void waitForElementToHaveText(WebElement element, String expectedText) {
+        waiter().until(ExpectedConditions.textToBePresentInElement(element, expectedText));
     }
 
     /**
@@ -70,8 +68,8 @@ public class Waiters {
      * @param locator Web Element
      * @param expectedText String
      */
-    public void waitForElementToHaveText(By locator, String expectedText) {
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, expectedText));
+    default void waitForElementToHaveText(By locator, String expectedText) {
+        waiter().until(ExpectedConditions.textToBePresentInElementLocated(locator, expectedText));
     }
 
 
@@ -80,8 +78,36 @@ public class Waiters {
      *
      * @param expectedTitle String
      */
-    public void waitForTitleToContain(String expectedTitle) {
-        wait.until(ExpectedConditions.titleContains(expectedTitle));
+    default void waitForTitleToContain(String expectedTitle) {
+        waiter().until(ExpectedConditions.titleContains(expectedTitle));
+    }
+
+    /**
+     * Wait for title to contain - Boolean
+     *
+     * @param expectedTitle String
+     * @return boolean
+     */
+    default boolean waitForTitleToContainBool(String expectedTitle) {
+        return waiter().until(ExpectedConditions.titleContains(expectedTitle));
+    }
+
+    /**
+     * Wait for URL to contain
+     *
+     * @param expectedUrl String
+     */
+    default void waitForUrlToContain(String expectedUrl) {
+        waiter().until(ExpectedConditions.urlContains(expectedUrl));
+    }
+
+    /**
+     * Wait for URL to contain
+     *
+     * @param expectedUrl String
+     */
+    default boolean waitForUrlToContainBool(String expectedUrl) {
+       return waiter().until(ExpectedConditions.urlContains(expectedUrl));
     }
 
 }
