@@ -102,7 +102,7 @@ public interface Waiters {
     }
 
     /**
-     * Wait for URL to contain
+     * Wait for URL to contain - Boolean
      *
      * @param expectedUrl String
      */

@@ -27,6 +27,10 @@ public class HomePage extends BaseClass {
         return By.cssSelector(".user-info a");
     }
 
+    private By contactUsLink() {
+        return By.cssSelector("div#contact-link a");
+    }
+
 
     // Actions
     public void chooseRandomProduct() {
@@ -60,6 +64,11 @@ public class HomePage extends BaseClass {
     public void clickSignIn() {
         waitUntilElementIsClickable(signInLinkBy());
         getDriver().findElement(signInLinkBy()).click();
+    }
+
+    public void clickContactLink() {
+        waitUntilElementIsClickable(contactUsLink());
+        getDriver().findElement(contactUsLink()).click();
     }
 
 }

@@ -8,6 +8,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Order Complete As Guest Test**: Verifies the functionality to complete an order as a guest user.
 - **Remove Item From Cart Test**: Tests the ability to remove items from the shopping cart.
 - **Search Bar Test**: Tests that the search bar works and returns correct results.
+- **Contact Us Form Test**: Ensures that users can successfully submit the Contact Us form.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used
