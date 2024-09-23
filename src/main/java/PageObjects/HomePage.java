@@ -20,15 +20,19 @@ public class HomePage extends BaseClass {
     }
 
     private By clothesLinkBy() {
-        return By.linkText("CLOTHES");
+        return By.cssSelector("#category-3");
     }
 
     private By signInLinkBy() {
         return By.cssSelector(".user-info a");
     }
 
-    private By contactUsLink() {
+    private By contactUsLinkBy() {
         return By.cssSelector("div#contact-link a");
+    }
+
+    private By hamburgerMenuBy() {
+        return By.cssSelector("#menu-icon");
     }
 
 
@@ -67,8 +71,14 @@ public class HomePage extends BaseClass {
     }
 
     public void clickContactLink() {
-        waitUntilElementIsClickable(contactUsLink());
-        getDriver().findElement(contactUsLink()).click();
+        waitUntilElementIsClickable(contactUsLinkBy());
+        getDriver().findElement(contactUsLinkBy()).click();
+    }
+
+
+    public void openHamburgerMenu() {
+        waitUntilElementIsClickable(hamburgerMenuBy());
+        getDriver().findElement(hamburgerMenuBy()).click();
     }
 
 }

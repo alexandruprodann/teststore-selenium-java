@@ -105,9 +105,20 @@ public interface Waiters {
      * Wait for URL to contain - Boolean
      *
      * @param expectedUrl String
+     * @return Boolean
      */
     default boolean waitForUrlToContainBool(String expectedUrl) {
        return waiter().until(ExpectedConditions.urlContains(expectedUrl));
+    }
+
+    /**
+     * Wait for URL to be - Boolean
+     *
+     * @param expectedUrl String
+     * @return Boolean
+     */
+    default boolean waitForUrlToBeBoolean(String expectedUrl) {
+        return waiter().until(ExpectedConditions.urlToBe(expectedUrl));
     }
 
 }

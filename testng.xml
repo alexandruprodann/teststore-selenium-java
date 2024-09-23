@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Test Suite" parallel="tests" thread-count="3">
+<suite name="Test Suite" parallel="methods" thread-count="6">
 
-    <test name="Login Test">
+    <test name="PC Chrome">
         <classes>
-            <class name="Tests.LoginTest"/>
+            <class name="Tests.Desktop.LoginTest"/>
+            <class name="Tests.Desktop.SearchBarTest"/>
+            <class name="Tests.Desktop.RemoveItemFromCartTest"/>
+            <class name="Tests.Desktop.OrderCompleteAsGuestTest"/>
+            <class name="Tests.Desktop.ContactFormTest"/>
+            <class name="Tests.Desktop.SignupTest"/>
         </classes>
     </test>
 
-    <test name="Search Bar Test">
+    <test name="Mobile Chrome">
         <classes>
-            <class name="Tests.SearchBarTest"/>
-        </classes>
-    </test>
-
-    <test name="Remove Item From Shopping Cart">
-        <classes>
-            <class name="Tests.RemoveItemFromCartTest"/>
+            <class name="Tests.Mobile.LoginTest"/>
+            <class name="Tests.Mobile.SearchBarTest"/>
+            <class name="Tests.Mobile.RemoveItemFromCartTest"/>
+            <class name="Tests.Mobile.OrderCompleteAsGuestTest"/>
+            <class name="Tests.Mobile.ContactFormTest"/>
+            <class name="Tests.Mobile.SignupTest"/>
         </classes>
     </test>
 
