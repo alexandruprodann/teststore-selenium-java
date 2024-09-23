@@ -1,9 +1,10 @@
-package Tests;
+package Tests.Desktop;
 
 import PageObjects.HomePage;
 import PageObjects.LoginPage;
 import PageObjects.SignUpPage;
 import Utilities.BaseClass;
+import Utilities.Platform;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class SignupTest extends BaseClass {
 
-    @Test
+    @Test(groups = {Platform.PC})
     public void signUp() {
 
         // Pages
@@ -35,7 +36,7 @@ public class SignupTest extends BaseClass {
         signUpPage.clickSaveBtn();
 
         Reporter.log("Observe user is redirected to Homepage after signup");
-        Assert.assertTrue(waitForUrlToContainBool(TestConstants.BASE_URL), "Sign up was not successful (not redirected to the homepage). " +
+        Assert.assertTrue(waitForUrlToBeBoolean(TestConstants.BASE_URL), "Sign up was not successful (not redirected to the homepage). " +
                 "\nCurrent URL is: " + getDriver().getCurrentUrl());
     }
 }

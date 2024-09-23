@@ -1,9 +1,10 @@
-package Tests;
+package Tests.Desktop;
 
 import PageObjects.HomePage;
 import PageObjects.ProductPage;
 import PageObjects.ShoppingCartPage;
 import Utilities.BaseClass;
+import Utilities.Platform;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class RemoveItemFromCartTest extends BaseClass {
 
-    @Test
+    @Test(groups = {Platform.PC})
     public void removeItemFromCart() {
         getDriver().get(TestConstants.BASE_URL);
 

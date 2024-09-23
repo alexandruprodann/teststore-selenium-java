@@ -1,7 +1,8 @@
-package Tests;
+package Tests.Desktop;
 
 import PageObjects.LoginPage;
 import Utilities.BaseClass;
+import Utilities.Platform;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseClass {
 
-    @Test
+    @Test(groups = {Platform.PC})
     public void login() {
 
         // Pages

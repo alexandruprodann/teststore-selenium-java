@@ -1,7 +1,8 @@
-package Tests;
+package Tests.Desktop;
 
 import PageObjects.*;
 import Utilities.BaseClass;
+import Utilities.Platform;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class OrderCompleteAsGuestTest extends BaseClass {
 
-    @Test
+    @Test(groups = {Platform.PC})
     public void orderComplete() {
 
         // Pages

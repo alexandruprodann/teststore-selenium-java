@@ -1,8 +1,9 @@
-package Tests;
+package Tests.Desktop;
 
 import PageObjects.HomePage;
 import PageObjects.SearchPage;
 import Utilities.BaseClass;
+import Utilities.Platform;
 import Utilities.TestConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -10,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class SearchBarTest extends BaseClass {
 
-    @Test
+    @Test(groups = {Platform.PC})
     public void searchBar() {
 
         String SEARCH_TERM = "Mug";
