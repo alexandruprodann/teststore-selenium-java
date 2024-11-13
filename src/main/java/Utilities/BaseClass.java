@@ -1,5 +1,6 @@
 package Utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
@@ -67,6 +68,18 @@ public class BaseClass extends WebDriverFactory implements Waiters {
      */
     public void navigateToUrl(String url) {
         getDriver().get(url);
+    }
+
+    /**
+     * Is element displayed
+     *
+     * @param element By
+     * @return boolean
+     */
+    public boolean isElementDisplayed(By element) {
+        waitUntilElementIsVisible(element);
+        WebElement webElement = getDriver().findElement(element);
+        return webElement.isDisplayed();
     }
 
 }
