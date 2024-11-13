@@ -42,10 +42,9 @@ public class HomePage extends BaseClass {
         int randomIndex = random.nextInt(productItemsList.size());
         WebElement chosenProduct = productItemsList.get(randomIndex);
 
-        WebElement chosenProductTitle = chosenProduct.findElement(By.cssSelector(".product-title"));
-        String chosenProductTitleString = chosenProductTitle.getText();
+        String chosenProductTitle = getProductTitle(chosenProduct);
 
-        if (Objects.equals(chosenProductTitleString, "Customizable Mug")) {
+        if (Objects.equals(chosenProductTitle, "Customizable Mug")) {
             chooseRandomProduct();
         }
 
@@ -75,10 +74,19 @@ public class HomePage extends BaseClass {
         getDriver().findElement(contactUsLinkBy()).click();
     }
 
-
     public void openHamburgerMenu() {
         waitUntilElementIsClickable(hamburgerMenuBy());
         getDriver().findElement(hamburgerMenuBy()).click();
+    }
+
+    public void clickProductByName(String productName) {
+        WebElement product = getDriver().findElement(By.xpath("//a[contains(text(),'" + productName + "')]"));
+        product.click();
+    }
+
+    public String getProductTitle(WebElement chosenProduct) {
+        WebElement chosenProductTitle = chosenProduct.findElement(By.cssSelector(".product-title"));
+        return chosenProductTitle.getText();
     }
 
 }

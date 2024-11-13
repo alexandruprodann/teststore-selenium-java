@@ -37,6 +37,14 @@ public class ProductPage extends BaseClass {
         return By.linkText("Home");
     }
 
+    private By addToWishlistBy() {
+        return By.cssSelector(".wishlist-button-add.wishlist-button-product");
+    }
+
+    private By wishlistSuccessAlertBy() {
+        return By.cssSelector(".wishlist-toast.success");
+    }
+
     // Modal buttons
     private By proceedToCheckoutBtnBy() {
         return By.cssSelector(".modal-body .btn.btn-primary");
@@ -45,6 +53,11 @@ public class ProductPage extends BaseClass {
     private By continueShoppingBtnBy() {
         return By.cssSelector(".modal-body .btn.btn-secondary");
     }
+
+    private By myWishlistBtnBy() {
+        return By.cssSelector(".wishlist-list-item");
+    }
+
 
     /*
      *
@@ -91,5 +104,20 @@ public class ProductPage extends BaseClass {
     public void clickHomeLink() {
         waitUntilElementIsClickable(homeLinkBy());
         getDriver().findElement(homeLinkBy()).click();
+    }
+
+    public void clickAddToWishlist() {
+        waitUntilElementIsClickable(addToWishlistBy());
+        getDriver().findElement(addToWishlistBy()).click();
+    }
+
+    public void clickMyWishlistBtn() {
+        waitUntilElementIsClickable(myWishlistBtnBy());
+        getDriver().findElement(myWishlistBtnBy()).click();
+    }
+
+    public boolean isWishlistSuccessAlertVisible() {
+        waitUntilElementIsVisible(wishlistSuccessAlertBy());
+        return getDriver().findElement(wishlistSuccessAlertBy()).isDisplayed();
     }
  }

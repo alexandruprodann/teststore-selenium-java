@@ -5,6 +5,7 @@ public class TestConstants {
     // URLs
     public static final String BASE_URL = "https://teststore.automationtesting.co.uk/index.php";
     public static final String LOGIN_URL = BASE_URL + "?controller=authentication";
+    public static final String MY_WISHLISTS_URL = BASE_URL + "?fc=module&module=blockwishlist&controller=lists";
 
     // Account
     public static final String TEST_EMAIL = "alexautomation@test.com";
@@ -20,4 +21,7 @@ public class TestConstants {
 
     // Promo Code
     public static final String PROMOCODE_TWENTY = "20OFF";
+
+    // Products
+    public static final String PRINTED_SWEATER = "Hummingbird printed sweater";
 }

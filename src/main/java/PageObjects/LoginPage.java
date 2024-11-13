@@ -43,4 +43,10 @@ public class LoginPage extends BaseClass {
         waitUntilElementIsClickable(createAccountLinkBy());
         getDriver().findElement(createAccountLinkBy()).click();
     }
+
+    public void loginAs(String email, String password) {
+        enterEmail(email);
+        enterPassword(password);
+        clickLogin();
+    }
 }
