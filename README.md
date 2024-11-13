@@ -10,6 +10,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Sign-Up Test**: Verifies that guests are able to successfully register.
 - **Search Bar Test**: Tests that the search bar works and returns correct results.
 - **Contact Us Form Test**: Ensures that users can successfully submit the Contact Us form.
+- **Add To Wishlist Test**: Check if logged-in users can add items to their wishlist.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used
