@@ -34,6 +34,26 @@ public interface Waiters {
 
 
     /**
+     * Wait for invisibility of element by locator
+     *
+     * @param locator By
+     */
+    default void waitForInvisibilityOfElement(By locator) {
+        waiter().until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
+    /**
+     * Wait for presence of element by locator
+     *
+     * @param locator By
+     */
+    default void waitForPresenceOfElement(By locator) {
+        waiter().until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+
+    /**
      * Wait until element is clickable
      *
      * @param element Web Element
