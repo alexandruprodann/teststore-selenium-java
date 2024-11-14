@@ -1,8 +1,6 @@
 package Utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -80,6 +78,24 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         waitUntilElementIsVisible(element);
         WebElement webElement = getDriver().findElement(element);
         return webElement.isDisplayed();
+    }
+
+    /**
+     * Scroll to element center with Javascript
+     *
+     * @param locator By
+     */
+    public void scrollToElementCenter(By locator) {
+        try {
+            WebElement element = getDriver().findElement(locator);
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (NoSuchElementException e) {
+            System.out.println("No such element exception " + locator);
+        }
     }
 
 }
