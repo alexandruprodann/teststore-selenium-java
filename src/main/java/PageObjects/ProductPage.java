@@ -9,52 +9,52 @@ import org.openqa.selenium.support.ui.Select;
 public class ProductPage extends BaseClass {
 
     // Elements
-    private By sizeSelectorBy() {
+    private By sizeSelector() {
         return By.cssSelector("#group_1");
     }
 
-    private By quantityIncreaseBtnBy() {
+    private By quantityIncreaseBtn() {
         return By.cssSelector(".bootstrap-touchspin-up");
     }
 
-    private By quantityDecreaseBtnBy() {
+    private By quantityDecreaseBtn() {
         return By.cssSelector(".bootstrap-touchspin-up");
     }
 
-    private By quantityInputBy() {
+    private By quantityInput() {
         return By.cssSelector("input#quantity_wanted");
     }
 
-    private By sizeLabelBy() {
+    private By sizeLabel() {
         return By.cssSelector("div:nth-of-type(1) > .control-label");
     }
 
-    private By addToCartBtnBy() {
+    private By addToCartBtn() {
         return By.cssSelector(".add-to-cart");
     }
 
-    private By homeLinkBy() {
+    private By homeLink() {
         return By.linkText("Home");
     }
 
-    private By addToWishlistBy() {
+    private By addToWishlist() {
         return By.cssSelector(".wishlist-button-add.wishlist-button-product");
     }
 
-    private By wishlistSuccessAlertBy() {
+    private By wishlistSuccessAlert() {
         return By.cssSelector(".wishlist-toast.success");
     }
 
     // Modal buttons
-    private By proceedToCheckoutBtnBy() {
+    private By proceedToCheckoutBtn() {
         return By.cssSelector(".modal-body .btn.btn-primary");
     }
 
-    private By continueShoppingBtnBy() {
+    private By continueShoppingBtn() {
         return By.cssSelector(".modal-body .btn.btn-secondary");
     }
 
-    private By myWishlistBtnBy() {
+    private By myWishlistBtn() {
         return By.cssSelector(".wishlist-list-item");
     }
 
@@ -65,59 +65,59 @@ public class ProductPage extends BaseClass {
      *
      * */
     public void selectSize(String size) {
-        waitUntilElementIsClickable(sizeSelectorBy());
-        Select select = new Select(getDriver().findElement(sizeSelectorBy()));
+        waitUntilElementIsClickable(sizeSelector());
+        Select select = new Select(getDriver().findElement(sizeSelector()));
         select.selectByVisibleText(size);
-        waitForElementToHaveText(sizeLabelBy(), size);
+        waitForElementToHaveText(sizeLabel(), size);
     }
 
     public void increaseQuantity(int quantity) {
         for (int i = 0; i < quantity; i++) {
-            waitUntilElementIsClickable(quantityIncreaseBtnBy());
-            getDriver().findElement(quantityIncreaseBtnBy()).click();
+            waitUntilElementIsClickable(quantityIncreaseBtn());
+            getDriver().findElement(quantityIncreaseBtn()).click();
         }
     }
 
     public void setQuantity(String quantity) {
-        waitUntilElementIsVisible(quantityInputBy());
-        WebElement quantityInput = getDriver().findElement(quantityInputBy());
+        waitUntilElementIsVisible(quantityInput());
+        WebElement quantityInput = getDriver().findElement(quantityInput());
         quantityInput.click();
         quantityInput.sendKeys(Keys.BACK_SPACE);
         quantityInput.sendKeys(quantity);
     }
 
     public void addItemToCart() {
-        waitUntilElementIsClickable(addToCartBtnBy());
-        getDriver().findElement(addToCartBtnBy()).click();
+        waitUntilElementIsClickable(addToCartBtn());
+        getDriver().findElement(addToCartBtn()).click();
     }
 
     public void proceedToCart() {
-        waitUntilElementIsVisible(proceedToCheckoutBtnBy());
-        getDriver().findElement(proceedToCheckoutBtnBy()).click();
+        waitUntilElementIsVisible(proceedToCheckoutBtn());
+        getDriver().findElement(proceedToCheckoutBtn()).click();
     }
 
     public void clickContinueShoppingBtn() {
-        waitUntilElementIsVisible(continueShoppingBtnBy());
-        getDriver().findElement(continueShoppingBtnBy()).click();
+        waitUntilElementIsVisible(continueShoppingBtn());
+        getDriver().findElement(continueShoppingBtn()).click();
     }
 
     public void clickHomeLink() {
-        waitUntilElementIsClickable(homeLinkBy());
-        getDriver().findElement(homeLinkBy()).click();
+        waitUntilElementIsClickable(homeLink());
+        getDriver().findElement(homeLink()).click();
     }
 
     public void clickAddToWishlist() {
-        waitUntilElementIsClickable(addToWishlistBy());
-        getDriver().findElement(addToWishlistBy()).click();
+        waitUntilElementIsClickable(addToWishlist());
+        getDriver().findElement(addToWishlist()).click();
     }
 
     public void clickMyWishlistBtn() {
-        waitUntilElementIsClickable(myWishlistBtnBy());
-        getDriver().findElement(myWishlistBtnBy()).click();
+        waitUntilElementIsClickable(myWishlistBtn());
+        getDriver().findElement(myWishlistBtn()).click();
     }
 
     public boolean isWishlistSuccessAlertVisible() {
-        waitUntilElementIsVisible(wishlistSuccessAlertBy());
-        return getDriver().findElement(wishlistSuccessAlertBy()).isDisplayed();
+        waitUntilElementIsVisible(wishlistSuccessAlert());
+        return getDriver().findElement(wishlistSuccessAlert()).isDisplayed();
     }
  }

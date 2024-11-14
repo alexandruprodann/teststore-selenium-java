@@ -10,7 +10,7 @@ import java.util.List;
 public class MyWishlistsPage extends BaseClass {
 
     // Elements
-    private By myWishlistLinkBy() {
+    private By myWishlistLink() {
         return By.cssSelector(".wishlist-list-item-link");
     }
 
@@ -37,8 +37,8 @@ public class MyWishlistsPage extends BaseClass {
 
     // Actions
     public void clickMyWishlistLink() {
-        waitUntilElementIsClickable(myWishlistLinkBy());
-        getDriver().findElement(myWishlistLinkBy()).click();
+        waitUntilElementIsClickable(myWishlistLink());
+        getDriver().findElement(myWishlistLink()).click();
     }
 
     public void removeProductFromWishlists(String productName) {

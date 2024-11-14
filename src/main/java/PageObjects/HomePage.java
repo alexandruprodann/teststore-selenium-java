@@ -11,34 +11,38 @@ import java.util.Objects;
 public class HomePage extends BaseClass {
 
     // Elements
-    private By productItemsListBy() {
+    private By productItemsList() {
         return By.cssSelector(".products > div");
     }
 
-    private By searchBarBy() {
+    private By searchBar() {
         return By.cssSelector(".ui-autocomplete-input");
     }
 
-    private By clothesLinkBy() {
+    private By clothesLink() {
         return By.cssSelector("#category-3");
     }
 
-    private By signInLinkBy() {
+    private By accessoriesLink() {
+        return By.cssSelector("#category-6");
+    }
+
+    private By signInLink() {
         return By.cssSelector(".user-info a");
     }
 
-    private By contactUsLinkBy() {
+    private By contactUsLink() {
         return By.cssSelector("div#contact-link a");
     }
 
-    private By hamburgerMenuBy() {
+    private By hamburgerMenu() {
         return By.cssSelector("#menu-icon");
     }
 
 
     // Actions
     public void chooseRandomProduct() {
-        List<WebElement> productItemsList = getDriver().findElements(productItemsListBy());
+        List<WebElement> productItemsList = getDriver().findElements(productItemsList());
         int randomIndex = random.nextInt(productItemsList.size());
         WebElement chosenProduct = productItemsList.get(randomIndex);
 
@@ -52,31 +56,36 @@ public class HomePage extends BaseClass {
     }
 
     public void chooseRandomClothing() {
-        waitUntilElementIsClickable(clothesLinkBy());
-        getDriver().findElement(clothesLinkBy()).click();
+        waitUntilElementIsClickable(clothesLink());
+        getDriver().findElement(clothesLink()).click();
         chooseRandomProduct();
     }
 
     public void searchSomething(String searchText) {
-        waitUntilElementIsVisible(searchBarBy());
-        WebElement searchBar = getDriver().findElement(searchBarBy());
+        waitUntilElementIsVisible(searchBar());
+        WebElement searchBar = getDriver().findElement(searchBar());
         searchBar.sendKeys(searchText);
         pressEnter(searchBar);
     }
 
     public void clickSignIn() {
-        waitUntilElementIsClickable(signInLinkBy());
-        getDriver().findElement(signInLinkBy()).click();
+        waitUntilElementIsClickable(signInLink());
+        getDriver().findElement(signInLink()).click();
+    }
+
+    public void clickAccessoriesLink() {
+        waitUntilElementIsClickable(accessoriesLink());
+        getDriver().findElement(accessoriesLink()).click();
     }
 
     public void clickContactLink() {
-        waitUntilElementIsClickable(contactUsLinkBy());
-        getDriver().findElement(contactUsLinkBy()).click();
+        waitUntilElementIsClickable(contactUsLink());
+        getDriver().findElement(contactUsLink()).click();
     }
 
     public void openHamburgerMenu() {
-        waitUntilElementIsClickable(hamburgerMenuBy());
-        getDriver().findElement(hamburgerMenuBy()).click();
+        waitUntilElementIsClickable(hamburgerMenu());
+        getDriver().findElement(hamburgerMenu()).click();
     }
 
     public void clickProductByName(String productName) {

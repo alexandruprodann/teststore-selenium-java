@@ -6,42 +6,42 @@ import org.openqa.selenium.By;
 public class LoginPage extends BaseClass {
 
     // Elements
-    private By emailFieldBy() {
+    private By emailField() {
         return By.cssSelector("input#field-email");
     }
 
-    private By passwordFieldBy() {
+    private By passwordField() {
         return By.cssSelector("input#field-password");
     }
 
-    private By loginBtnBy() {
+    private By loginBtn() {
         return By.cssSelector("button#submit-login");
     }
 
-    private By createAccountLinkBy() {
+    private By createAccountLink() {
         return By.cssSelector(".no-account a");
     }
 
 
     // Actions
     public void enterEmail(String email) {
-        waitUntilElementIsVisible(emailFieldBy());
-        getDriver().findElement(emailFieldBy()).sendKeys(email);
+        waitUntilElementIsVisible(emailField());
+        getDriver().findElement(emailField()).sendKeys(email);
     }
 
     public void enterPassword(String password) {
-        waitUntilElementIsVisible(passwordFieldBy());
-        getDriver().findElement(passwordFieldBy()).sendKeys(password);
+        waitUntilElementIsVisible(passwordField());
+        getDriver().findElement(passwordField()).sendKeys(password);
     }
 
     public void clickLogin() {
-        waitUntilElementIsClickable(loginBtnBy());
-        getDriver().findElement(loginBtnBy()).click();
+        waitUntilElementIsClickable(loginBtn());
+        getDriver().findElement(loginBtn()).click();
     }
 
     public void clickCreateAccountLink() {
-        waitUntilElementIsClickable(createAccountLinkBy());
-        getDriver().findElement(createAccountLinkBy()).click();
+        waitUntilElementIsClickable(createAccountLink());
+        getDriver().findElement(createAccountLink()).click();
     }
 
     public void loginAs(String email, String password) {

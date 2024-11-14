@@ -6,20 +6,20 @@ import org.openqa.selenium.By;
 public class SearchPage extends BaseClass {
 
     // Elements
-    public By searchResultsTitlesBy() {
+    private By searchResultsTitles() {
         return By.cssSelector(".product-title");
     }
 
-    private By sortByDropdownBy() {
+    private By sortByDropdown() {
         return By.cssSelector(".sort-by-row button");
     }
 
     // Actions
     public boolean searchResultsDisplayedBool() {
-        return getDriver().findElement(searchResultsTitlesBy()).isDisplayed();
+        return getDriver().findElement(searchResultsTitles()).isDisplayed();
     }
 
     public String getSearchResultsText() {
-        return getDriver().findElement(searchResultsTitlesBy()).getText();
+        return getDriver().findElement(searchResultsTitles()).getText();
     }
 }

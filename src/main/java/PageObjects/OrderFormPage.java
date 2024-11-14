@@ -8,63 +8,63 @@ import org.openqa.selenium.support.ui.Select;
 public class OrderFormPage extends BaseClass {
 
     // Locate elements using @FindBy annotation
-    private By maleGenderBy() {
+    private By maleGender() {
         return By.cssSelector("[for='field-id_gender-1']");
     }
 
-    private By firstNameFieldBy() {
+    private By firstNameField() {
         return By.cssSelector("input#field-firstname");
     }
 
-    private By lastNameFieldBy() {
+    private By lastNameField() {
         return By.cssSelector("input#field-lastname");
     }
 
-    private By emailFieldBy() {
+    private By emailField() {
         return By.cssSelector("input#field-email");
     }
 
-    private By termsConditionsCheckboxBy() {
+    private By termsConditionsCheckbox() {
         return By.cssSelector("input[name='psgdpr']");
     }
 
-    private By continueBtnBy() {
+    private By continueBtn() {
         return By.xpath("//form[@id='customer-form']//button[@name='continue']");
     }
 
-    private By addressFieldBy() {
+    private By addressField() {
         return By.cssSelector("input[name='address1']");
     }
 
-    private By cityFieldBy() {
+    private By cityField() {
         return By.cssSelector("input#field-city");
     }
 
-    private By stateSelectorBy() {
+    private By stateSelector() {
         return By.cssSelector("select#field-id_state");
     }
 
-    private By postCodeFieldBy() {
+    private By postCodeField() {
         return By.cssSelector("input#field-postcode");
     }
 
-    private By confirmAddressBtnBy() {
+    private By confirmAddressBtn() {
         return By.cssSelector("button[name='confirm-addresses']");
     }
 
-    private By payByCheckBy() {
+    private By payByCheck() {
         return By.cssSelector("[data-module-name='ps_checkpayment']");
     }
 
-    private By tosFinalBy() {
+    private By tosFinal() {
         return By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
     }
 
-    private By placeOrderBtnBy() {
+    private By placeOrderBtn() {
         return By.cssSelector(".btn-primary.center-block");
     }
 
-    private By confirmShippingMethodBtnBy() {
+    private By confirmShippingMethodBtn() {
         return By.cssSelector("[name='confirmDeliveryOption']");
     }
 
@@ -95,27 +95,27 @@ public class OrderFormPage extends BaseClass {
     * Personal Details
     * */
     public void setGenderMale() {
-        waitUntilElementIsVisible(maleGenderBy());
-        getDriver().findElement(maleGenderBy()).click();
+        waitUntilElementIsVisible(maleGender());
+        getDriver().findElement(maleGender()).click();
     }
 
     public void enterFirstName(String name) {
-        waitUntilElementIsVisible(firstNameFieldBy());
-        getDriver().findElement(firstNameFieldBy()).sendKeys(name);
+        waitUntilElementIsVisible(firstNameField());
+        getDriver().findElement(firstNameField()).sendKeys(name);
     }
 
     public void enterLastName(String name) {
-        waitUntilElementIsVisible(lastNameFieldBy());
-        getDriver().findElement(lastNameFieldBy()).sendKeys(name);
+        waitUntilElementIsVisible(lastNameField());
+        getDriver().findElement(lastNameField()).sendKeys(name);
     }
 
     public void enterEmail(String email) {
-        waitUntilElementIsVisible(emailFieldBy());
-        getDriver().findElement(emailFieldBy()).sendKeys(email);
+        waitUntilElementIsVisible(emailField());
+        getDriver().findElement(emailField()).sendKeys(email);
     }
 
     public void agreeTermsConditions() {
-        getDriver().findElement(termsConditionsCheckboxBy()).click();
+        getDriver().findElement(termsConditionsCheckbox()).click();
     }
 
 
@@ -123,23 +123,23 @@ public class OrderFormPage extends BaseClass {
     * Address Fields
     * */
     public void enterAddress(String address) {
-        waitUntilElementIsVisible(addressFieldBy());
-        getDriver().findElement(addressFieldBy()).sendKeys(address);
+        waitUntilElementIsVisible(addressField());
+        getDriver().findElement(addressField()).sendKeys(address);
     }
 
     public void enterCity(String city) {
-        waitUntilElementIsVisible(cityFieldBy());
-        getDriver().findElement(cityFieldBy()).sendKeys(city);
+        waitUntilElementIsVisible(cityField());
+        getDriver().findElement(cityField()).sendKeys(city);
     }
 
     public void enterPostCode(String postcode) {
-        waitUntilElementIsVisible(postCodeFieldBy());
-        getDriver().findElement(postCodeFieldBy()).sendKeys(postcode);
+        waitUntilElementIsVisible(postCodeField());
+        getDriver().findElement(postCodeField()).sendKeys(postcode);
     }
 
     public void selectRandomState() {
-        waitUntilElementIsClickable(stateSelectorBy());
-        Select select = new Select(getDriver().findElement(stateSelectorBy()));
+        waitUntilElementIsClickable(stateSelector());
+        Select select = new Select(getDriver().findElement(stateSelector()));
         int numberOfOptions = select.getOptions().size();
         int randomIndex = random.nextInt(numberOfOptions);
         select.selectByIndex(randomIndex);
@@ -150,16 +150,16 @@ public class OrderFormPage extends BaseClass {
     * Last step fields
     * */
     public void selectPayByCheck() {
-        getDriver().findElement(payByCheckBy()).click();
+        getDriver().findElement(payByCheck()).click();
     }
 
     public void agreeTOS() {
-        getDriver().findElement(tosFinalBy()).click();
+        getDriver().findElement(tosFinal()).click();
     }
 
     public void clickPlaceOrderBtn() {
-        waitUntilElementIsClickable(placeOrderBtnBy());
-        getDriver().findElement(placeOrderBtnBy()).click();
+        waitUntilElementIsClickable(placeOrderBtn());
+        getDriver().findElement(placeOrderBtn()).click();
     }
 
 
@@ -168,19 +168,19 @@ public class OrderFormPage extends BaseClass {
     * */
     // Continue Button - Personal Details
     public void clickContinueBtn() {
-        waitUntilElementIsClickable(continueBtnBy());
-        getDriver().findElement(continueBtnBy()).click();
+        waitUntilElementIsClickable(continueBtn());
+        getDriver().findElement(continueBtn()).click();
     }
 
     // Continue Button - Address
     public void clickContinueBtnAddresses() {
-        waitUntilElementIsClickable(confirmAddressBtnBy());
-        getDriver().findElement(confirmAddressBtnBy()).click();
+        waitUntilElementIsClickable(confirmAddressBtn());
+        getDriver().findElement(confirmAddressBtn()).click();
     }
 
     // Continue Button - Shipping
     public void clickContinueBtnShipping() {
-        waitUntilElementIsClickable(confirmShippingMethodBtnBy());
-        getDriver().findElement(confirmShippingMethodBtnBy()).click();
+        waitUntilElementIsClickable(confirmShippingMethodBtn());
+        getDriver().findElement(confirmShippingMethodBtn()).click();
     }
 }

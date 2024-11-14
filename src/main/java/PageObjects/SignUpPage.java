@@ -8,19 +8,19 @@ import org.openqa.selenium.By;
 public class SignUpPage extends BaseClass {
 
     // Elements
-    private By signUpFormFieldBy(String name) {
+    private By signUpFormField(String name) {
         return By.cssSelector(String.format("[name='%s']", name));
     }
 
-    private By maleGenderBy() {
+    private By maleGender() {
         return By.cssSelector("input#field-id_gender-1");
     }
 
-    private By tosCheckboxBy() {
+    private By tosCheckbox() {
         return By.cssSelector("input[name='psgdpr']");
     }
 
-    private By saveBtnBy() {
+    private By saveBtn() {
         return By.cssSelector("button.form-control-submit");
     }
 
@@ -36,20 +36,20 @@ public class SignUpPage extends BaseClass {
     }
 
     public void enterField(String name, String text) {
-        waitUntilElementIsVisible(signUpFormFieldBy(name));
-        getDriver().findElement(signUpFormFieldBy(name)).sendKeys(text);
+        waitUntilElementIsVisible(signUpFormField(name));
+        getDriver().findElement(signUpFormField(name)).sendKeys(text);
     }
 
     public void selectMaleGender() {
-        getDriver().findElement(maleGenderBy()).click();
+        getDriver().findElement(maleGender()).click();
     }
 
     public void agreeTOS() {
-        getDriver().findElement(tosCheckboxBy()).click();
+        getDriver().findElement(tosCheckbox()).click();
     }
 
     public void clickSaveBtn() {
-        waitUntilElementIsClickable(saveBtnBy());
-        getDriver().findElement(saveBtnBy()).click();
+        waitUntilElementIsClickable(saveBtn());
+        getDriver().findElement(saveBtn()).click();
     }
 }

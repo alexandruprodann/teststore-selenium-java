@@ -8,27 +8,27 @@ import org.openqa.selenium.WebElement;
 public class ShoppingCartPage extends BaseClass {
 
     // Elements
-    private By proceedToCheckoutBtnBy() {
+    private By proceedToCheckoutBtn() {
         return By.cssSelector(".js-cart-detailed-actions .btn-primary");
     }
 
-    private By removeFromCartBtnBy() {
+    private By removeFromCartBtn() {
         return By.cssSelector(".remove-from-cart");
     }
 
-    private By promoCodeLinkBy() {
+    private By promoCodeLink() {
         return By.cssSelector(".promo-code-button .collapse-button");
     }
 
-    private By promoCodeInputBy() {
+    private By promoCodeInput() {
         return By.cssSelector("input[name='discount_name']");
     }
 
-    private By promoCodeLabelBy() {
+    private By promoCodeLabel() {
         return By.cssSelector(".promo-name .label");
     }
 
-    private By itemsInCartSpanBy() {
+    private By itemsInCartSpan() {
         return By.cssSelector(".js-subtotal");
     }
 
@@ -42,24 +42,24 @@ public class ShoppingCartPage extends BaseClass {
      *
      * */
     public void addPromoCode(String promoCode) {
-        waitUntilElementIsClickable(promoCodeLinkBy());
-        getDriver().findElement(promoCodeLinkBy()).click();
+        waitUntilElementIsClickable(promoCodeLink());
+        getDriver().findElement(promoCodeLink()).click();
 
-        waitUntilElementIsVisible(promoCodeInputBy());
-        WebElement promoCodeInput = getDriver().findElement(promoCodeInputBy());
+        waitUntilElementIsVisible(promoCodeInput());
+        WebElement promoCodeInput = getDriver().findElement(promoCodeInput());
         promoCodeInput.sendKeys(promoCode);
         pressEnter(promoCodeInput);
-        waitForElementToHaveText(promoCodeLabelBy(), promoCode);
+        waitForElementToHaveText(promoCodeLabel(), promoCode);
     }
 
     public void proceedToCheckout() {
-        waitUntilElementIsClickable(proceedToCheckoutBtnBy());
-        getDriver().findElement(proceedToCheckoutBtnBy()).click();
+        waitUntilElementIsClickable(proceedToCheckoutBtn());
+        getDriver().findElement(proceedToCheckoutBtn()).click();
     }
 
     public int getCartItemCount() {
-        waitUntilElementIsVisible(itemsInCartSpanBy());
-        String itemText = getDriver().findElement(itemsInCartSpanBy()).getText();
+        waitUntilElementIsVisible(itemsInCartSpan());
+        String itemText = getDriver().findElement(itemsInCartSpan()).getText();
         String numberOnly = itemText.replaceAll("[^0-9]", "");
         return Integer.parseInt(numberOnly);
     }
@@ -67,10 +67,10 @@ public class ShoppingCartPage extends BaseClass {
 
     public void removeItemsFromCart(int numberOfItems) {
         for (int i = 0; i <= numberOfItems; i++) {
-            waitUntilElementIsClickable(removeFromCartBtnBy());
-            getDriver().findElement(removeFromCartBtnBy()).click();
+            waitUntilElementIsClickable(removeFromCartBtn());
+            getDriver().findElement(removeFromCartBtn()).click();
         }
-        waitForElementToHaveText(itemsInCartSpanBy(), String.valueOf((getCartItemCount() - numberOfItems)));
+        waitForElementToHaveText(itemsInCartSpan(), String.valueOf((getCartItemCount() - numberOfItems)));
     }
 
     public int getItemListSize() {
