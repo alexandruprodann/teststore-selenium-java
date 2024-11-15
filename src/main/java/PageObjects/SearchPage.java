@@ -78,9 +78,9 @@ public class SearchPage extends BaseClass {
         return getDriver().findElements(productPrice());
     }
 
-    public boolean areItemsSortedByDescendingPrice() {
+    public boolean areItemsSortedByPrice(String order) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -88,20 +88,13 @@ public class SearchPage extends BaseClass {
         double firstPrice = Double.parseDouble(listOfPrices.getFirst().getText().replace("$", ""));
         double lastPrice = Double.parseDouble(listOfPrices.getLast().getText().replace("$", ""));
 
-        return firstPrice > lastPrice;
-    }
-
-    public boolean areItemsSortedByAscendingPrice() {
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if (order.equalsIgnoreCase("ascending")) {
+            return firstPrice < lastPrice;
+        } else if (order.equalsIgnoreCase("descending")) {
+            return firstPrice > lastPrice;
+        } else {
+            throw new IllegalArgumentException("Invalid sort order: " + order);
         }
-        List<WebElement> listOfPrices = getListOfPrices();
-        double firstPrice = Double.parseDouble(listOfPrices.getFirst().getText().replace("$", ""));
-        double lastPrice = Double.parseDouble(listOfPrices.getLast().getText().replace("$", ""));
-
-        return firstPrice < lastPrice;
     }
 
     public boolean areItemsSortedByName(String order) {
@@ -124,7 +117,7 @@ public class SearchPage extends BaseClass {
         } else if (order.equalsIgnoreCase("ZtoA")){
             Collections.sort(sortedTitles.reversed());
         } else {
-            System.out.println("Invalid sort order: " + order);
+            throw new IllegalArgumentException("Invalid sort order: " + order);
         }
 
         return titles.equals(sortedTitles);
