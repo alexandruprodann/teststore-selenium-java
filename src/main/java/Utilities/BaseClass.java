@@ -1,12 +1,18 @@
 package Utilities;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BaseClass extends WebDriverFactory implements Waiters {
@@ -33,7 +39,25 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+        if (!result.isSuccess()) {
+            TakesScreenshot screenshot = (TakesScreenshot) getDriver();
+            File file = screenshot.getScreenshotAs(OutputType.FILE);
+
+            String failureImageFileName = "Screenshots" + File.separator
+                    + result.getMethod().getMethodName()
+                    + "_"
+                    + new SimpleDateFormat("dd-MM-yyyy_HH-mm").format(new GregorianCalendar().getTime())
+                    + ".png";
+
+            try {
+                FileUtils.copyFile(file, new File(failureImageFileName));
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
        quitDriver();
     }
 
