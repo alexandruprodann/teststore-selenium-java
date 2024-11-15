@@ -3,8 +3,9 @@ package PageObjects;
 import Utilities.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SearchPage extends BaseClass {
@@ -28,7 +29,7 @@ public class SearchPage extends BaseClass {
 
 
     // Elements
-    private By productTitle() {
+    public By productTitle() {
         return By.cssSelector(".product-title");
     }
 
@@ -101,5 +102,31 @@ public class SearchPage extends BaseClass {
         double lastPrice = Double.parseDouble(listOfPrices.getLast().getText().replace("$", ""));
 
         return firstPrice < lastPrice;
+    }
+
+    public boolean areItemsSortedByName(String order) {
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        List<WebElement> productTitlesList = getDriver().findElements(productTitle());
+        ArrayList<String> titles = new ArrayList<>();
+
+        for (WebElement title : productTitlesList) {
+            titles.add(title.getText());
+        }
+
+        List<String> sortedTitles = new ArrayList<>(titles);
+        if (order.equalsIgnoreCase("AtoZ")) {
+            Collections.sort(sortedTitles);
+        } else if (order.equalsIgnoreCase("ZtoA")){
+            Collections.sort(sortedTitles.reversed());
+        } else {
+            System.out.println("Invalid sort order: " + order);
+        }
+
+        return titles.equals(sortedTitles);
     }
 }
