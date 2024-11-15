@@ -150,6 +150,7 @@ public class OrderFormPage extends BaseClass {
     * Last step fields
     * */
     public void selectPayByCheck() {
+        waitUntilElementIsClickable(payByCheck());
         getDriver().findElement(payByCheck()).click();
     }
 
