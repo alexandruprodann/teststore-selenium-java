@@ -12,6 +12,8 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Contact Us Form Test**: Ensures that users can successfully submit the Contact Us form.
 - **Add To Wishlist Test**: Check if logged-in users can add items to their wishlist.
 - **Sort by Price Test**: Verify that products sort correctly by price, from low to high and high to low.
+- **Sort by Name Test**: Check that products sort correctly by name, A to Z and Z to A.
+- **Coupon Code Test**: Ensure that applying a valid coupon correctly adjusts the total price.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used
