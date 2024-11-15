@@ -17,8 +17,9 @@ public class WebDriverFactory {
         if (driver.get() == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
+//            options.addArguments("--headless");
 
-            if (device.equals("Mobile")) {
+            if (device.equals(Platform.MOBILE)) {
                 // Mobile Emulation
                 Map<String, String> mobileEmulation = new HashMap<>();
                 mobileEmulation.put("deviceName", "iPhone 12 Pro");
@@ -27,12 +28,14 @@ public class WebDriverFactory {
                 WebDriver webDriver = new ChromeDriver(options);
                 webDriver.manage().window().setSize(new Dimension(420, 1000));
                 driver.set(webDriver);
-            } else {
-                // PC Setup
+            } else if (device.equals(Platform.PC)) {
+                // PC
                 WebDriver webDriver = new ChromeDriver(options);
                 webDriver.manage().window().setPosition(new Point(-2000, 0));
                 webDriver.manage().window().maximize();
                 driver.set(webDriver);
+            } else {
+                throw new IllegalArgumentException("Invalid platform: " + device);
             }
         }
     }
