@@ -41,16 +41,6 @@ public class BaseClass extends WebDriverFactory implements Waiters {
 
     // Actions
     /**
-     * Get text from element
-     *
-     * @param element Web Element
-     * @return String
-     */
-    public String getTextFromElement(WebElement element) {
-        return element.getText();
-    }
-
-    /**
      * Send ENTER key
      *
      * @param element Web Element
@@ -96,6 +86,17 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         } catch (NoSuchElementException e) {
             System.out.println("No such element exception " + locator);
         }
+    }
+
+    /**
+     * Extract numeric price (double) from text of element
+     *
+     * @param locator By
+     * @return price as 'double'
+     */
+    public double getPriceFromElement(By locator) {
+        String priceText = getDriver().findElement(locator).getText();
+        return Double.parseDouble(priceText.replace("$", ""));
     }
 
 }

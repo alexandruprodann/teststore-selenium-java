@@ -36,6 +36,22 @@ public class ShoppingCartPage extends BaseClass {
         return By.cssSelector("[data-id_customization]");
     }
 
+    private By subTotalProductsValue() {
+        return By.cssSelector("#cart-subtotal-products .value");
+    }
+
+    private By discountValue() {
+        return By.cssSelector("#cart-subtotal-discount .value");
+    }
+
+    private By shippingPrice() {
+        return By.cssSelector("#cart-subtotal-shipping .value");
+    }
+
+    private By cartTotal() {
+        return By.cssSelector(".cart-summary-line.cart-total .value");
+    }
+
     /*
      *
      * Actions
@@ -64,7 +80,6 @@ public class ShoppingCartPage extends BaseClass {
         return Integer.parseInt(numberOnly);
     }
 
-
     public void removeItemsFromCart(int numberOfItems) {
         for (int i = 0; i <= numberOfItems; i++) {
             waitUntilElementIsClickable(removeFromCartBtn());
@@ -75,6 +90,17 @@ public class ShoppingCartPage extends BaseClass {
 
     public int getItemListSize() {
         return getDriver().findElements(cartItemTitles()).size();
+    }
+
+    public double getExpectedTotalAfterDiscount(int discountValue) {
+        double itemsTotal = getPriceFromElement(subTotalProductsValue());
+        double expectedDiscountValue = itemsTotal * (discountValue / 100.0);
+
+        return itemsTotal - expectedDiscountValue + getPriceFromElement(shippingPrice());
+    }
+
+    public double getCartTotal() {
+        return getPriceFromElement(cartTotal());
     }
 
 }
