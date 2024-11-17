@@ -14,6 +14,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Sort by Price Test**: Verify that products sort correctly by price, from low to high and high to low.
 - **Sort by Name Test**: Check that products sort correctly by name, A to Z and Z to A.
 - **Coupon Code Test**: Ensure that applying a valid coupon correctly adjusts the total price.
+- **Update Item Quantity Test**: Verify that users can change the quantity of items in their cart.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used

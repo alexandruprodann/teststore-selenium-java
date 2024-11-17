@@ -2,6 +2,7 @@ package PageObjects;
 
 import Utilities.BaseClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 
@@ -28,7 +29,7 @@ public class ShoppingCartPage extends BaseClass {
         return By.cssSelector(".promo-name .label");
     }
 
-    private By itemsInCartSpan() {
+    public By itemsInCartSpan() {
         return By.cssSelector(".js-subtotal");
     }
 
@@ -51,6 +52,11 @@ public class ShoppingCartPage extends BaseClass {
     private By cartTotal() {
         return By.cssSelector(".cart-summary-line.cart-total .value");
     }
+
+    private By quantityInput() {
+        return By.cssSelector("input.js-cart-line-product-quantity");
+    }
+
 
     /*
      *
@@ -101,6 +107,15 @@ public class ShoppingCartPage extends BaseClass {
 
     public double getCartTotal() {
         return getPriceFromElement(cartTotal());
+    }
+
+    public void setQuantity(String quantity) {
+        waitUntilElementIsVisible(quantityInput());
+        WebElement quantityInput = getDriver().findElement(quantityInput());
+        quantityInput.click();
+        quantityInput.sendKeys(Keys.BACK_SPACE);
+        quantityInput.sendKeys(quantity);
+        quantityInput.sendKeys(Keys.ENTER);
     }
 
 }

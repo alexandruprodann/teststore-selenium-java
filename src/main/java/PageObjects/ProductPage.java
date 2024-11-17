@@ -18,7 +18,7 @@ public class ProductPage extends BaseClass {
     }
 
     private By quantityDecreaseBtn() {
-        return By.cssSelector(".bootstrap-touchspin-up");
+        return By.cssSelector(".bootstrap-touchspin-down");
     }
 
     private By quantityInput() {
