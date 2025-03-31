@@ -26,6 +26,10 @@ public class LoginPage extends BaseClass {
         return By.cssSelector(".logout");
     }
 
+    public By authFailedAlert() {
+        return By.cssSelector(".alert.alert-danger");
+    }
+
 
     // Actions
     public void enterEmail(String email) {
