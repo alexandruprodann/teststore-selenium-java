@@ -22,6 +22,10 @@ public class LoginPage extends BaseClass {
         return By.cssSelector(".no-account a");
     }
 
+    public By signOutBtn() {
+        return By.cssSelector(".logout");
+    }
+
 
     // Actions
     public void enterEmail(String email) {

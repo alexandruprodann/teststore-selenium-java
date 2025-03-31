@@ -26,9 +26,8 @@ public class LoginTest extends BaseClass {
         loginPage.enterPassword(TestConstants.TEST_PASSWORD);
         loginPage.clickLogin();
 
-        Reporter.log("Observe user is redirected to homepage after log in");
-        Assert.assertTrue(waitForUrlToContainBool(TestConstants.BASE_URL), "The user was not successfully logged in (not redirected to the homepage). " +
-                "\nCurrent URL is: " + getDriver().getCurrentUrl());
+        Reporter.log("Check if the user is successfully logged in");
+        Assert.assertTrue(isElementDisplayed(loginPage.signOutBtn()), "User was not logged in!");
 
     }
 }
