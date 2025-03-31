@@ -70,15 +70,12 @@ public class OrderFormPage extends BaseClass {
 
 
     /*
-    *
     * Actions
-    *
     * */
-
-    public void enterPersonalInformation(String f_name, String l_name) {
+    public void enterPersonalInformation(String firstName, String lastName) {
         setGenderMale();
-        enterFirstName(f_name);
-        enterLastName(l_name);
+        enterFirstName(firstName);
+        enterLastName(lastName);
         enterEmail(TestUtils.generateRandomEmail());
         agreeTermsConditions();
     }
@@ -150,7 +147,6 @@ public class OrderFormPage extends BaseClass {
     * Last step fields
     * */
     public void selectPayByCheck() {
-        waitUntilElementIsClickable(payByCheck());
         getDriver().findElement(payByCheck()).click();
     }
 

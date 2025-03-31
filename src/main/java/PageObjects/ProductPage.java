@@ -60,9 +60,7 @@ public class ProductPage extends BaseClass {
 
 
     /*
-     *
      * Actions
-     *
      * */
     public void selectSize(String size) {
         waitUntilElementIsClickable(sizeSelector());
@@ -71,7 +69,7 @@ public class ProductPage extends BaseClass {
         waitForElementToHaveText(sizeLabel(), size);
     }
 
-    public void increaseQuantity(int quantity) {
+    public void increaseQuantityBy(int quantity) {
         for (int i = 0; i < quantity; i++) {
             waitUntilElementIsClickable(quantityIncreaseBtn());
             getDriver().findElement(quantityIncreaseBtn()).click();

@@ -39,7 +39,7 @@ public class UpdateItemQuantityTest extends BaseClass {
         productPage.proceedToCart();
 
         Reporter.log("Increase the item quantity in the cart by " + increaseValue + " units using the up arrow button");
-        productPage.increaseQuantity(increaseValue);
+        productPage.increaseQuantityBy(increaseValue);
 
         Reporter.log("Verify that the quantity of the item in the shopping cart is updated correctly");
         try {

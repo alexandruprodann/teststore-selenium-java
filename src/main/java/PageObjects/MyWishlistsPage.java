@@ -41,7 +41,7 @@ public class MyWishlistsPage extends BaseClass {
         getDriver().findElement(myWishlistLink()).click();
     }
 
-    public void removeProductFromWishlists(String productName) {
+    public void removeProductFromWishlist(String productName) {
         List<WebElement> wishlistItems = getDriver().findElements(wishlistItem());
 
         for (WebElement item : wishlistItems) {

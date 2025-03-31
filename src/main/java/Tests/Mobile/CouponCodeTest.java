@@ -36,7 +36,7 @@ public class CouponCodeTest extends BaseClass {
         productPage.selectSize("M");
 
         Reporter.log("Increase item quantity by any amount");
-        productPage.increaseQuantity(4);
+        productPage.increaseQuantityBy(4);
 
         Reporter.log("Add the product to cart and proceed to Shopping Cart");
         productPage.addItemToCart();

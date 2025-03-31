@@ -54,6 +54,6 @@ public class AddToWishlistTest extends BaseClass {
         Assert.assertTrue(myWishlistsPage.isElementDisplayed(myWishlistsPage.productTitleWithText(PRINTED_SWEATER)), PRINTED_SWEATER + " is not displayed in the wishlist!");
 
         Reporter.log("Remove the " + PRINTED_SWEATER + " from wishlist");
-        myWishlistsPage.removeProductFromWishlists(PRINTED_SWEATER);
+        myWishlistsPage.removeProductFromWishlist(PRINTED_SWEATER);
     }
 }

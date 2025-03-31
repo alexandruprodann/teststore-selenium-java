@@ -61,7 +61,7 @@ public class HomePage extends BaseClass {
         chooseRandomProduct();
     }
 
-    public void searchSomething(String searchText) {
+    public void searchFor(String searchText) {
         waitUntilElementIsVisible(searchBar());
         WebElement searchBar = getDriver().findElement(searchBar());
         searchBar.sendKeys(searchText);

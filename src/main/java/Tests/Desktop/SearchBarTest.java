@@ -26,7 +26,7 @@ public class SearchBarTest extends BaseClass {
         getDriver().get(TestConstants.BASE_URL);
 
         Reporter.log("Search for: " + SEARCH_TERM);
-        homePage.searchSomething(SEARCH_TERM);
+        homePage.searchFor(SEARCH_TERM);
 
         Reporter.log("Verify that search results are displayed");
         Assert.assertTrue(searchPage.searchResultsDisplayedBool(), "Search results are not displayed!");
