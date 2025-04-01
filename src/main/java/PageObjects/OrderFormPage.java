@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Utilities.BaseClass;
-import Utilities.TestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
@@ -76,7 +75,7 @@ public class OrderFormPage extends BaseClass {
         setGenderMale();
         enterFirstName(firstName);
         enterLastName(lastName);
-        enterEmail(TestUtils.generateRandomEmail());
+        enterEmail(generateRandomEmail());
         agreeTermsConditions();
     }
 

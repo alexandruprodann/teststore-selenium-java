@@ -63,7 +63,7 @@ public class BaseClass extends WebDriverFactory implements Waiters {
 
 
 
-    // Actions
+    // Test Utils
     /**
      * Send ENTER key
      *
@@ -121,6 +121,31 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     public double getPriceFromElement(By locator) {
         String priceText = getDriver().findElement(locator).getText();
         return Double.parseDouble(priceText.replace("$", ""));
+    }
+
+    public String generateRandomEmail() {
+        return generateRandomString() + "@test.com";
+    }
+
+    public String generateRandomString() {
+        final String letterString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder s = new StringBuilder(8);
+
+        for (int i = 0; i < 8; i++) {
+            int ch = (int) (letterString.length() * Math.random());
+            s.append(letterString.charAt(ch));
+        }
+
+        return s.toString();
+    }
+
+    public String getTextFromElement(By locator) {
+        return getDriver().findElement(locator).getText();
+    }
+
+    public String getAttributeFromElement(By locator, String attribute) {
+
+        return getDriver().findElement(locator).getAttribute(attribute);
     }
 
 }

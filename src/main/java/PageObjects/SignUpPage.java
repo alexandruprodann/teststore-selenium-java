@@ -2,7 +2,6 @@ package PageObjects;
 
 import Utilities.BaseClass;
 import Utilities.TestConstants;
-import Utilities.TestUtils;
 import org.openqa.selenium.By;
 
 public class SignUpPage extends BaseClass {
@@ -29,7 +28,7 @@ public class SignUpPage extends BaseClass {
         selectMaleGender();
         enterField("firstname", TestConstants.FIRST_NAME);
         enterField("lastname", TestConstants.LAST_NAME);
-        enterField("email", TestUtils.generateRandomEmail());
+        enterField("email", generateRandomEmail());
         enterField("password", TestConstants.TEST_PASSWORD);
         enterField("birthday", TestConstants.BIRTHDAY);
         agreeTOS();
