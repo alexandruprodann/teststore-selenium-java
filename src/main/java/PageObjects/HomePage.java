@@ -39,6 +39,10 @@ public class HomePage extends BaseClass {
         return By.cssSelector("#menu-icon");
     }
 
+    public By myAccountLink() {
+        return By.cssSelector("a[title='View my customer account']");
+    }
+
 
     // Actions
     public void chooseRandomProduct() {
@@ -91,6 +95,11 @@ public class HomePage extends BaseClass {
     public void clickProductByName(String productName) {
         WebElement product = getDriver().findElement(By.xpath("//a[contains(text(),'" + productName + "')]"));
         product.click();
+    }
+
+    public void clickMyAccountLink() {
+        waitUntilElementIsClickable(myAccountLink());
+        getDriver().findElement(myAccountLink()).click();
     }
 
     public String getProductTitle(WebElement chosenProduct) {

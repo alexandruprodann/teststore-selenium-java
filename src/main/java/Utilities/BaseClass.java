@@ -140,11 +140,12 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     }
 
     public String getTextFromElement(By locator) {
+        waitUntilElementIsVisible(locator);
         return getDriver().findElement(locator).getText();
     }
 
     public String getAttributeFromElement(By locator, String attribute) {
-
+        waitUntilElementIsVisible(locator);
         return getDriver().findElement(locator).getAttribute(attribute);
     }
 
