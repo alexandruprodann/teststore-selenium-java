@@ -1,12 +1,20 @@
 package Utilities;
 
-import java.util.UUID;
-
 public class TestUtils {
 
-    // Method to generate a random email
     public static String generateRandomEmail() {
-        String randomString = UUID.randomUUID().toString().replace("-", "");
-        return randomString + "@test.com";
+        return generateRandomString() + "@test.com";
+    }
+
+    public static String generateRandomString() {
+        final String letterString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder s = new StringBuilder(8);
+
+        for (int i = 0; i < 8; i++) {
+            int ch = (int) (letterString.length() * Math.random());
+            s.append(letterString.charAt(ch));
+        }
+
+        return s.toString();
     }
 }
