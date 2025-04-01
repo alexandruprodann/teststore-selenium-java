@@ -23,7 +23,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Java 21**: The programming language used for writing the tests.
 - **Maven**: For dependency management.
 - **Selenium**: The tool used for automating web browser interactions.
-- **TestNG**: TestNG: The testing framework used for organizing and running test cases.
+- **TestNG**: The testing framework used for organizing and running test cases.
 - **ChromeDriver**: The WebDriver used to control the Chrome browser.
 - **Git**: Version control for managing the project.
 - **IntelliJ IDEA**: The IDE used for development.
