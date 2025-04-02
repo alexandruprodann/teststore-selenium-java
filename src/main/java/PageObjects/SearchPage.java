@@ -49,6 +49,10 @@ public class SearchPage extends BaseClass {
         return By.cssSelector("#auto-clicker-autofill-popup-tr");
     }
 
+    public By productSearchNoMatches() {
+        return By.cssSelector("#product-search-no-matches");
+    }
+
 
     // Actions
     public boolean searchResultsDisplayedBool() {

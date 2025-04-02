@@ -17,6 +17,7 @@ This project is a personal initiative to automate end-to-end (E2E) testing for a
 - **Update Item Quantity Test**: Verify that users can change the quantity of items in their cart.
 - **Login with Invalid Credentials Test**: Verify that users are unable to login with invalid credentials.
 - **Profile Update Test**: Check that users can update their profile details, such as name.
+- **Invalid Search Test**: Ensure that searching for a non-existent product displays a "No matches were found" message.
 - _[more to come...]_
 
 ## 🛠️ Technologies Used
