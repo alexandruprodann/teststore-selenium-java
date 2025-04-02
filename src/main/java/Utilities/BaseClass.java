@@ -63,7 +63,9 @@ public class BaseClass extends WebDriverFactory implements Waiters {
 
 
 
-    // Test Utils
+    /*
+    Test Utils
+     */
     /**
      * Send ENTER key
      *
@@ -89,9 +91,12 @@ public class BaseClass extends WebDriverFactory implements Waiters {
      * @return boolean
      */
     public boolean isElementDisplayed(By element) {
-        waitUntilElementIsVisible(element);
-        WebElement webElement = getDriver().findElement(element);
-        return webElement.isDisplayed();
+        try {
+            waitUntilElementIsVisible(element);
+            return getDriver().findElement(element).isDisplayed();
+        } catch (TimeoutException | NoSuchElementException exception) {
+            return false;
+        }
     }
 
     /**
@@ -123,10 +128,20 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         return Double.parseDouble(priceText.replace("$", ""));
     }
 
+    /**
+     * Random email generator
+     *
+     * @return String
+     */
     public String generateRandomEmail() {
         return generateRandomString() + "@test.com";
     }
 
+    /**
+     * Random string generator
+     *
+     * @return String
+     */
     public String generateRandomString() {
         final String letterString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         StringBuilder s = new StringBuilder(8);
@@ -139,11 +154,24 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         return s.toString();
     }
 
+    /**
+     * Get text from element
+     *
+     * @param locator By
+     * @return String
+     */
     public String getTextFromElement(By locator) {
         waitUntilElementIsVisible(locator);
         return getDriver().findElement(locator).getText();
     }
 
+    /**
+     * Get attribute from element
+     *
+     * @param locator By
+     * @param attribute String
+     * @return String
+     */
     public String getAttributeFromElement(By locator, String attribute) {
         waitUntilElementIsVisible(locator);
         return getDriver().findElement(locator).getAttribute(attribute);
