@@ -29,7 +29,7 @@ public class SearchPage extends BaseClass {
 
 
     // Elements
-    public By productTitle() {
+    private By productTitle() {
         return By.cssSelector(".product-title");
     }
 

@@ -60,8 +60,7 @@ public class HomePage extends BaseClass {
     }
 
     public void chooseRandomClothing() {
-        waitUntilElementIsClickable(clothesLink());
-        getDriver().findElement(clothesLink()).click();
+        clickClothesLink();
         chooseRandomProduct();
     }
 
@@ -80,6 +79,11 @@ public class HomePage extends BaseClass {
     public void clickAccessoriesLink() {
         waitUntilElementIsClickable(accessoriesLink());
         getDriver().findElement(accessoriesLink()).click();
+    }
+
+    public void clickClothesLink() {
+        waitUntilElementIsClickable(clothesLink());
+        getDriver().findElement(clothesLink()).click();
     }
 
     public void clickContactLink() {

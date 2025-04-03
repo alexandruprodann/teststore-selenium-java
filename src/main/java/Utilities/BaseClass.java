@@ -3,6 +3,7 @@ package Utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -66,6 +67,16 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     /*
     Test Utils
      */
+
+    /**
+     * Checks if test is made for mobile
+     *
+     * @return boolean
+     */
+    public boolean isMobile() {
+        return Arrays.asList(Reporter.getCurrentTestResult().getMethod().getGroups()).contains(Platform.MOBILE);
+    }
+
     /**
      * Send ENTER key
      *
@@ -115,6 +126,17 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         } catch (NoSuchElementException e) {
             System.out.println("No such element exception " + locator);
         }
+    }
+
+    /**
+     * Element click with Javascript
+     *
+     * @param locator By
+     */
+    public void jsClick(By locator) {
+        WebElement element = getDriver().findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].click();", element);
     }
 
     /**
