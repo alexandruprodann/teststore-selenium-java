@@ -5,23 +5,23 @@
 
     <test name="PC Chrome">
         <classes>
-            <class name="Tests.Desktop.LoginTest"/>
-            <class name="Tests.Desktop.SearchBarTest"/>
-            <class name="Tests.Desktop.RemoveItemFromCartTest"/>
-            <class name="Tests.Desktop.OrderCompleteAsGuestTest"/>
-            <class name="Tests.Desktop.ContactFormTest"/>
-            <class name="Tests.Desktop.SignupTest"/>
+            <class name="Tests.Desktop.auth.LoginTest"/>
+            <class name="Tests.Desktop.search.SearchBarTest"/>
+            <class name="Tests.Desktop.cart.RemoveItemFromCartTest"/>
+            <class name="Tests.Desktop.order.OrderCompleteAsGuestTest"/>
+            <class name="Tests.Desktop.forms.ContactFormTest"/>
+            <class name="Tests.Desktop.auth.SignupTest"/>
         </classes>
     </test>
 
     <test name="Mobile Chrome">
         <classes>
-            <class name="Tests.Mobile.LoginTest"/>
-            <class name="Tests.Mobile.SearchBarTest"/>
-            <class name="Tests.Mobile.RemoveItemFromCartTest"/>
-            <class name="Tests.Mobile.OrderCompleteAsGuestTest"/>
-            <class name="Tests.Mobile.ContactFormTest"/>
-            <class name="Tests.Mobile.SignupTest"/>
+            <class name="Tests.Mobile.auth.LoginTest"/>
+            <class name="Tests.Mobile.search.SearchBarTest"/>
+            <class name="Tests.Mobile.cart.RemoveItemFromCartTest"/>
+            <class name="Tests.Mobile.order.OrderCompleteAsGuestTest"/>
+            <class name="Tests.Mobile.forms.ContactFormTest"/>
+            <class name="Tests.Mobile.auth.SignupTest"/>
         </classes>
     </test>
 
