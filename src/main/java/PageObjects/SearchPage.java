@@ -59,7 +59,7 @@ public class SearchPage extends BaseClass {
         return getDriver().findElement(productTitle()).isDisplayed();
     }
 
-    public String getSearchResultsText() {
+    public String getProductTitleText() {
         return getDriver().findElement(productTitle()).getText();
     }
 

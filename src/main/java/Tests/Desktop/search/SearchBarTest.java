@@ -32,7 +32,7 @@ public class SearchBarTest extends BaseClass {
         Assert.assertTrue(searchPage.searchResultsDisplayedBool(), "Search results are not displayed!");
 
         Reporter.log("Verify that search results contain the search term: " + SEARCH_TERM);
-        Assert.assertTrue(searchPage.getSearchResultsText().contains(SEARCH_TERM), "The search result text does not contain the search term: " + SEARCH_TERM);
+        Assert.assertTrue(searchPage.getProductTitleText().contains(SEARCH_TERM), "The search result text does not contain the search term: " + SEARCH_TERM);
 
     }
 
