@@ -14,6 +14,7 @@ public class InvalidSearchTest extends BaseClass {
     @Test(groups = {Platform.PC})
     public void invalidSearch() {
 
+        // Variables
         String INVALID_SEARCH_TERM = "invalid search";
 
         // Pages

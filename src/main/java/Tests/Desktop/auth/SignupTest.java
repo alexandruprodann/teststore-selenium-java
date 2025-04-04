@@ -20,7 +20,6 @@ public class SignupTest extends BaseClass {
         LoginPage loginPage = new LoginPage();
         SignUpPage signUpPage = new SignUpPage();
 
-
         // Steps
         Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
         navigateToUrl(TestConstants.BASE_URL);

@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 
 public class ContactFormTest extends BaseClass {
 
-
     @Test(groups = {Platform.MOBILE})
     public void contactForm() {
 

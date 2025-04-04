@@ -22,10 +22,9 @@ public class CouponCodeTest extends BaseClass {
         ProductPage productPage = new ProductPage();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
-
         // Steps
-        Reporter.log("Proceed to " + TestConstants.BASE_URL);
-        getDriver().get(TestConstants.BASE_URL);
+        Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
+        navigateToUrl(TestConstants.BASE_URL);
 
         Reporter.log("Open Hamburger Menu and click Clothing Link");
         // Clicking Clothing link is done in chooseRandomClothing method
@@ -50,6 +49,5 @@ public class CouponCodeTest extends BaseClass {
                 "The discount code was not applied correctly!" +
                 "\nExpected value: " + shoppingCartPage.getExpectedTotalAfterDiscount(20) +
                 "\nActual value: " + shoppingCartPage.getCartTotal());
-
     }
 }

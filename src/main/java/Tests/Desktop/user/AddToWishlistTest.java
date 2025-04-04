@@ -21,7 +21,6 @@ public class AddToWishlistTest extends BaseClass {
         ProductPage productPage = new ProductPage();
         MyWishlistsPage myWishlistsPage = new MyWishlistsPage();
 
-
         // Steps
         Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
         navigateToUrl(TestConstants.BASE_URL);

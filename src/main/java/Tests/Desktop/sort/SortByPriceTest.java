@@ -34,6 +34,7 @@ public class SortByPriceTest extends BaseClass {
         Assert.assertTrue(searchPage.areItemsSortedByPrice("descending"), "Items are not sorted by descending price!");
     }
 
+
     @Test(groups = {Platform.PC})
     public void sortByPriceLowToHigh() {
 

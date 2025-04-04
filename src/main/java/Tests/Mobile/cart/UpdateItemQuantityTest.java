@@ -16,6 +16,7 @@ public class UpdateItemQuantityTest extends BaseClass {
     @Test(groups = {Platform.MOBILE})
     public void updateItemQuantity() {
 
+        // Variables
         int increaseValue = 2;
         String setValue = "5";
         String expectedTotalValue = String.valueOf(increaseValue + 1);
@@ -26,8 +27,8 @@ public class UpdateItemQuantityTest extends BaseClass {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
         // Steps
-        Reporter.log("Proceed to " + TestConstants.BASE_URL);
-        getDriver().get(TestConstants.BASE_URL);
+        Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
+        navigateToUrl(TestConstants.BASE_URL);
 
         Reporter.log("Select a random clothing item and size");
         homePage.openHamburgerMenu();
@@ -59,7 +60,5 @@ public class UpdateItemQuantityTest extends BaseClass {
                     "\nExpected: " + setValue +
                     "\nFound: " + shoppingCartPage.getCartItemCount());
         }
-
-
     }
 }

@@ -22,7 +22,6 @@ public class OrderCompleteAsGuestTest extends BaseClass {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         OrderFormPage orderFormPage = new OrderFormPage();
 
-
         // Steps
         Reporter.log("Proceed to " + TestConstants.BASE_URL);
         getDriver().get(TestConstants.BASE_URL);
@@ -61,7 +60,6 @@ public class OrderCompleteAsGuestTest extends BaseClass {
         orderFormPage.selectPayByCheck();
         orderFormPage.agreeTOS();
         orderFormPage.clickPlaceOrderBtn();
-
 
         // Assert that the title is exactly "Order confirmation"
         Assert.assertTrue(waitForTitleToContainBool("Order confirmation"), "The page title is not 'Order confirmation'" +

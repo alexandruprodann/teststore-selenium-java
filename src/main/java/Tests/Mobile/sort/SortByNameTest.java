@@ -36,6 +36,7 @@ public class SortByNameTest extends BaseClass {
         Assert.assertTrue(searchPage.areItemsSortedByName("AtoZ"), "Items are not sorted alphabetically, A to Z!");
     }
 
+
     @Test(groups = {Platform.MOBILE})
     public void sortByNameZtoA() {
 

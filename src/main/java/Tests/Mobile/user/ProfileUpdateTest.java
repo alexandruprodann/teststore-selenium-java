@@ -14,6 +14,7 @@ public class ProfileUpdateTest extends BaseClass {
     @Test(groups = {Platform.MOBILE})
     public void profileUpdate() {
 
+        // Variables
         String randomString = generateRandomString();
 
         // Pages
@@ -21,7 +22,6 @@ public class ProfileUpdateTest extends BaseClass {
         LoginPage loginPage = new LoginPage();
         MyAccountPage myAccountPage = new MyAccountPage();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage();
-
 
         // Steps
         Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);

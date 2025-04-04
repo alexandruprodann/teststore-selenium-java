@@ -15,6 +15,7 @@ public class FilterByPropertyTest extends BaseClass {
     @Test(groups = {Platform.MOBILE})
     public void filterByProperty() {
 
+        // Variables
         String filterCategory = "Property";
         String filter = "Short sleeves";
 

@@ -14,15 +14,16 @@ public class RemoveItemFromCartTest extends BaseClass {
 
     @Test(groups = {Platform.PC})
     public void removeItemFromCart() {
-        getDriver().get(TestConstants.BASE_URL);
 
         // Pages
         HomePage homePage = new HomePage();
         ProductPage productPage = new ProductPage();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
-
         // Steps
+        Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
+        navigateToUrl(TestConstants.BASE_URL);
+
         Reporter.log("Select two random products and add them to the Shopping Cart");
         homePage.chooseRandomProduct();
         productPage.addItemToCart();
@@ -43,7 +44,7 @@ public class RemoveItemFromCartTest extends BaseClass {
         }
         shoppingCartPage.removeItemsFromCart(1);
 
-        Reporter.log("Ensure that there is only 1 iem in the Shopping Cart");
+        Reporter.log("Ensure that there is only 1 item in the Shopping Cart");
         Assert.assertEquals(shoppingCartPage.getCartItemCount(), 1, "There is more than 1 item in the Shopping Cart!");
     }
 }
