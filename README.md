@@ -4,21 +4,14 @@
 This project is a personal initiative to automate end-to-end (E2E) testing for a [Test Store website](https://teststore.automationtesting.co.uk/index.php). The tests are developed using Java, Selenium, and Maven, with IntelliJ IDEA as the development environment.
 
 ## 💻 Tests
+- **Sign-Up Test**: Verifies that guests are able to successfully register.
 - **Login Test**: Ensures that a user can successfully log in to the Test Store.
+- **Login with Invalid Credentials Test**: Verify that users are unable to login with invalid credentials.
 - **Order Complete As Guest Test**: Verifies the functionality to complete an order as a guest user.
 - **Remove Item From Cart Test**: Tests the ability to remove items from the shopping cart.
-- **Sign-Up Test**: Verifies that guests are able to successfully register.
-- **Search Bar Test**: Tests that the search bar works and returns correct results.
-- **Contact Us Form Test**: Ensures that users can successfully submit the Contact Us form.
 - **Add To Wishlist Test**: Check if logged-in users can add items to their wishlist.
 - **Sort by Price Test**: Verify that products sort correctly by price, from low to high and high to low.
-- **Sort by Name Test**: Check that products sort correctly by name, A to Z and Z to A.
-- **Coupon Code Test**: Ensure that applying a valid coupon correctly adjusts the total price.
-- **Update Item Quantity Test**: Verify that users can change the quantity of items in their cart.
-- **Login with Invalid Credentials Test**: Verify that users are unable to login with invalid credentials.
-- **Profile Update Test**: Check that users can update their profile details, such as name.
-- **Invalid Search Test**: Ensure that searching for a non-existent product displays a "No matches were found" message.
-- _[more to come...]_
+- _[many more not listed here...]_
 
 ## 🛠️ Technologies Used
 
