@@ -5,7 +5,7 @@
 
     <test name="PC Chrome">
         <classes>
-            <class name="Tests.Desktop.auth.LoginTest"/>
+            <class name="Tests.Desktop.auth.LoginTests"/>
             <class name="Tests.Desktop.search.SearchBarTest"/>
             <class name="Tests.Desktop.cart.RemoveItemFromCartTest"/>
             <class name="Tests.Desktop.order.OrderCompleteAsGuestTest"/>
@@ -16,7 +16,7 @@
 
     <test name="Mobile Chrome">
         <classes>
-            <class name="Tests.Mobile.auth.LoginTest"/>
+            <class name="Tests.Mobile.auth.LoginTests"/>
             <class name="Tests.Mobile.search.SearchBarTest"/>
             <class name="Tests.Mobile.cart.RemoveItemFromCartTest"/>
             <class name="Tests.Mobile.order.OrderCompleteAsGuestTest"/>

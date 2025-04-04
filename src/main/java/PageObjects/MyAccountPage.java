@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class MyAccountPage extends BaseClass {
 
     // Elements
-    private By informationBtn() {
+    public By informationBtn() {
         return By.cssSelector("#identity-link");
     }
 
