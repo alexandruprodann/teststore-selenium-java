@@ -59,9 +59,7 @@ public class ProductPage extends BaseClass {
     }
 
 
-    /*
-     * Actions
-     * */
+    // Actions
     public void selectSize(String size) {
         waitUntilElementIsClickable(sizeSelector());
         Select select = new Select(getDriver().findElement(sizeSelector()));

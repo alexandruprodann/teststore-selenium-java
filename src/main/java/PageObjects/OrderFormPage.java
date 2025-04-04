@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class OrderFormPage extends BaseClass {
 
-    // Locate elements using @FindBy annotation
+    // Elements
     private By maleGender() {
         return By.cssSelector("[for='field-id_gender-1']");
     }
@@ -68,9 +68,7 @@ public class OrderFormPage extends BaseClass {
     }
 
 
-    /*
-    * Actions
-    * */
+    // Actions
     public void enterPersonalInformation(String firstName, String lastName) {
         setGenderMale();
         enterFirstName(firstName);

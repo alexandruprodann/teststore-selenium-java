@@ -58,11 +58,7 @@ public class ShoppingCartPage extends BaseClass {
     }
 
 
-    /*
-     *
-     * Actions
-     *
-     * */
+    // Actions
     public void addPromoCode(String promoCode) {
         waitUntilElementIsClickable(promoCodeLink());
         getDriver().findElement(promoCodeLink()).click();

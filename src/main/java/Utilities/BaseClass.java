@@ -63,11 +63,7 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     }
 
 
-
-    /*
-    Test Utils
-     */
-
+    // Test Utils
     /**
      * Checks if test is made for mobile
      *

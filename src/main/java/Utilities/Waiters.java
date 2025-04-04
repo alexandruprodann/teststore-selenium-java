@@ -32,7 +32,6 @@ public interface Waiters {
         waiter().until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-
     /**
      * Wait for invisibility of element by locator
      *
@@ -42,7 +41,6 @@ public interface Waiters {
         waiter().until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-
     /**
      * Wait for presence of element by locator
      *
@@ -51,7 +49,6 @@ public interface Waiters {
     default void waitForPresenceOfElement(By locator) {
         waiter().until(ExpectedConditions.presenceOfElementLocated(locator));
     }
-
 
     /**
      * Wait until element is clickable
@@ -70,7 +67,6 @@ public interface Waiters {
     default void waitUntilElementIsClickable(By locator) {
         waiter().until(ExpectedConditions.elementToBeClickable(locator));
     }
-
 
     /**
      * Wait for element to have text
@@ -91,7 +87,6 @@ public interface Waiters {
     default void waitForElementToHaveText(By locator, String expectedText) {
         waiter().until(ExpectedConditions.textToBePresentInElementLocated(locator, expectedText));
     }
-
 
     /**
      * Wait for title to contain
@@ -140,5 +135,4 @@ public interface Waiters {
     default boolean waitForUrlToBeBoolean(String expectedUrl) {
         return waiter().until(ExpectedConditions.urlToBe(expectedUrl));
     }
-
 }

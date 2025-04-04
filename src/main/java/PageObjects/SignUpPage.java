@@ -23,6 +23,7 @@ public class SignUpPage extends BaseClass {
         return By.cssSelector("button.form-control-submit");
     }
 
+
     // Actions
     public void enterSignUpDetails() {
         selectMaleGender();
