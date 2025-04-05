@@ -135,7 +135,7 @@ public class OrderFormPage extends BaseClass {
         waitUntilElementIsClickable(stateSelector());
         Select select = new Select(getDriver().findElement(stateSelector()));
         int numberOfOptions = select.getOptions().size();
-        int randomIndex = random.nextInt(numberOfOptions);
+        int randomIndex = random.nextInt(numberOfOptions - 1);
         select.selectByIndex(randomIndex);
     }
 
@@ -144,6 +144,7 @@ public class OrderFormPage extends BaseClass {
     * Last step fields
     * */
     public void selectPayByCheck() {
+        scrollToElementCenter(payByCheck());
         getDriver().findElement(payByCheck()).click();
     }
 
@@ -174,6 +175,7 @@ public class OrderFormPage extends BaseClass {
 
     // Continue Button - Shipping
     public void clickContinueBtnShipping() {
+        scrollToElementCenter(confirmShippingMethodBtn());
         waitUntilElementIsClickable(confirmShippingMethodBtn());
         getDriver().findElement(confirmShippingMethodBtn()).click();
     }

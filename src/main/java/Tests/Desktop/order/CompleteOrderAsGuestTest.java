@@ -8,10 +8,10 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class OrderCompleteAsGuestTest extends BaseClass {
+public class CompleteOrderAsGuestTest extends BaseClass {
 
     @Test(groups = {Platform.PC})
-    public void orderComplete() {
+    public void completeOrderAsGuest() {
 
         // Pages
         HomePage homePage = new HomePage();
