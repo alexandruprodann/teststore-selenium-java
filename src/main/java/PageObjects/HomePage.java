@@ -31,6 +31,10 @@ public class HomePage extends BaseClass {
         return By.cssSelector(".user-info a");
     }
 
+    private By cartLink() {
+        return By.cssSelector(".blockcart");
+    }
+
     private By contactUsLink() {
         return By.cssSelector("div#contact-link a");
     }
@@ -60,6 +64,9 @@ public class HomePage extends BaseClass {
     }
 
     public void chooseRandomClothing() {
+        if (isMobile()) {
+            openHamburgerMenu();
+        }
         clickClothesLink();
         chooseRandomProduct();
     }
@@ -89,6 +96,11 @@ public class HomePage extends BaseClass {
     public void clickContactLink() {
         waitUntilElementIsClickable(contactUsLink());
         getDriver().findElement(contactUsLink()).click();
+    }
+
+    public void clickCartLink() {
+        waitUntilElementIsClickable(cartLink());
+        getDriver().findElement(cartLink()).click();
     }
 
     public void openHamburgerMenu() {
