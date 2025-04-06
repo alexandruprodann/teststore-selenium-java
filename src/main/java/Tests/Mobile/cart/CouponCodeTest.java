@@ -26,10 +26,6 @@ public class CouponCodeTest extends BaseClass {
         Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
         navigateToUrl(TestConstants.BASE_URL);
 
-        Reporter.log("Open Hamburger Menu and click Clothing Link");
-        // Clicking Clothing link is done in chooseRandomClothing method
-        homePage.openHamburgerMenu();
-
         Reporter.log("Select a random clothing item and size");
         homePage.chooseRandomClothing();
         productPage.selectSize("M");

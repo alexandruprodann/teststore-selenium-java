@@ -31,7 +31,6 @@ public class UpdateItemQuantityTest extends BaseClass {
         navigateToUrl(TestConstants.BASE_URL);
 
         Reporter.log("Select a random clothing item and size");
-        homePage.openHamburgerMenu();
         homePage.chooseRandomClothing();
         productPage.selectSize("L");
 

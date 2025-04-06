@@ -23,12 +23,8 @@ public class CompleteOrderAsGuestTest extends BaseClass {
         OrderFormPage orderFormPage = new OrderFormPage();
 
         // Steps
-        Reporter.log("Proceed to " + TestConstants.BASE_URL);
-        getDriver().get(TestConstants.BASE_URL);
-
-        Reporter.log("Open Hamburger Menu and click Clothing Link");
-        // Clicking Clothing link is done in chooseRandomClothing method
-        homePage.openHamburgerMenu();
+        Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
+        navigateToUrl(TestConstants.BASE_URL);
 
         Reporter.log("Select a random clothing item and size");
         homePage.chooseRandomClothing();
