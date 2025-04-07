@@ -156,6 +156,15 @@ public class BaseClass extends WebDriverFactory implements Waiters {
     }
 
     /**
+     * Random password generator
+     *
+     * @return String
+     */
+    public String generateRandomPassword() {
+        return generateRandomString() + "test1!";
+    }
+
+    /**
      * Random string generator
      *
      * @return String

@@ -30,7 +30,7 @@ public class SignUpPage extends BaseClass {
         enterField("firstname", TestConstants.FIRST_NAME);
         enterField("lastname", TestConstants.LAST_NAME);
         enterField("email", generateRandomEmail());
-        enterField("password", TestConstants.TEST_PASSWORD);
+        enterField("password", generateRandomPassword());
         enterField("birthday", TestConstants.BIRTHDAY);
         agreeTOS();
     }
