@@ -9,6 +9,26 @@ import org.openqa.selenium.support.ui.Select;
 public class ProductPage extends BaseClass {
 
     // Elements
+    public By productTitle() {
+        return By.cssSelector(".h1");
+    }
+
+    public By productPrice() {
+        return By.cssSelector(".current-price");
+    }
+
+    public By productImage() {
+        return By.cssSelector(".product-cover");
+    }
+
+    public By productShortDescription() {
+        return By.xpath("(//div[@class='product-description']//p)[1]");
+    }
+
+    public By productLongDescription() {
+        return By.cssSelector("#description");
+    }
+
     private By sizeSelector() {
         return By.cssSelector("#group_1");
     }
@@ -29,7 +49,7 @@ public class ProductPage extends BaseClass {
         return By.cssSelector("div:nth-of-type(1) > .control-label");
     }
 
-    private By addToCartBtn() {
+    public By addToCartBtn() {
         return By.cssSelector(".add-to-cart");
     }
 
@@ -43,6 +63,10 @@ public class ProductPage extends BaseClass {
 
     private By wishlistSuccessAlert() {
         return By.cssSelector(".wishlist-toast.success");
+    }
+
+    public By breadCrumb() {
+        return By.cssSelector(".breadcrumb");
     }
 
     // Modal buttons
