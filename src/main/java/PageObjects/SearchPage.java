@@ -53,6 +53,14 @@ public class SearchPage extends BaseClass {
         return By.cssSelector("#product-search-no-matches");
     }
 
+    public By paginationControls() {
+        return By.cssSelector(".page-list");
+    }
+
+    private By nextPage() {
+        return By.cssSelector(".next.js-search-link");
+    }
+
 
     // Actions
     public boolean searchResultsDisplayedBool() {
@@ -76,6 +84,11 @@ public class SearchPage extends BaseClass {
     public void sortBy(DropdownOptions option) {
         clickSortByDropdownBtn();
         clickDropdownOption(option);
+    }
+
+    public void clickNext() {
+        waitUntilElementIsClickable(nextPage());
+        getDriver().findElement(nextPage()).click();
     }
 
     public List<WebElement> getListOfPrices() {

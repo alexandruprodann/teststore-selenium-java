@@ -47,6 +47,10 @@ public class HomePage extends BaseClass {
         return By.cssSelector("a[title='View my customer account']");
     }
 
+    private By allProductsLink() {
+        return By.xpath("//a[contains(.,'All products')]");
+    }
+
 
     // Actions
     public void chooseRandomProduct() {
@@ -116,6 +120,11 @@ public class HomePage extends BaseClass {
     public void clickMyAccountLink() {
         waitUntilElementIsClickable(myAccountLink());
         getDriver().findElement(myAccountLink()).click();
+    }
+
+    public void clickAllProductsLink() {
+        waitUntilElementIsClickable(allProductsLink());
+        getDriver().findElement(allProductsLink()).click();
     }
 
     public String getProductTitle(WebElement chosenProduct) {
