@@ -44,4 +44,9 @@ public class MyAccountPage extends BaseClass {
         waitUntilElementIsClickable(informationBtn());
         getDriver().findElement(informationBtn()).click();
     }
+
+    public void clickOrderHistoryBtn() {
+        waitUntilElementIsClickable(orderHistoryBtn());
+        getDriver().findElement(orderHistoryBtn()).click();
+    }
 }
