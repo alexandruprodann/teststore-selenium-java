@@ -29,7 +29,7 @@ public class SearchPage extends BaseClass {
 
 
     // Elements
-    private By productTitle() {
+    public By productTitle() {
         return By.cssSelector(".product-title");
     }
 
@@ -63,10 +63,6 @@ public class SearchPage extends BaseClass {
 
 
     // Actions
-    public boolean searchResultsDisplayedBool() {
-        return getDriver().findElement(productTitle()).isDisplayed();
-    }
-
     public String getProductTitleText() {
         return getDriver().findElement(productTitle()).getText();
     }

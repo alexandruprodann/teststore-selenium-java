@@ -61,7 +61,7 @@ public class ProductPage extends BaseClass {
         return By.cssSelector(".wishlist-button-add.wishlist-button-product");
     }
 
-    private By wishlistSuccessAlert() {
+    public By wishlistSuccessAlert() {
         return By.cssSelector(".wishlist-toast.success");
     }
 
@@ -134,10 +134,5 @@ public class ProductPage extends BaseClass {
     public void clickMyWishlistBtn() {
         waitUntilElementIsClickable(myWishlistBtn());
         getDriver().findElement(myWishlistBtn()).click();
-    }
-
-    public boolean isWishlistSuccessAlertVisible() {
-        waitUntilElementIsVisible(wishlistSuccessAlert());
-        return getDriver().findElement(wishlistSuccessAlert()).isDisplayed();
     }
  }

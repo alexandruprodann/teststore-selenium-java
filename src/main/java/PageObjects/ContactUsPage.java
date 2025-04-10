@@ -23,7 +23,7 @@ public class ContactUsPage extends BaseClass {
         return By.cssSelector("input[name='submitMessage']");
     }
 
-    private By successAlert() {
+    public By successAlert() {
         return By.cssSelector(".alert-success");
     }
 
@@ -48,9 +48,5 @@ public class ContactUsPage extends BaseClass {
     public void clickSendBtn() {
         waitUntilElementIsClickable(sendButton());
         getDriver().findElement(sendButton()).click();
-    }
-
-    public boolean isSuccessAlertDisplayed() {
-        return getDriver().findElement(successAlert()).isDisplayed();
     }
 }

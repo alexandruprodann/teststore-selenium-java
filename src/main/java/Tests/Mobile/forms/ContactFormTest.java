@@ -35,6 +35,6 @@ public class ContactFormTest extends BaseClass {
         contactUsPage.clickSendBtn();
 
         Reporter.log("Observe the success alert");
-        Assert.assertTrue(contactUsPage.isSuccessAlertDisplayed(), "The Success Alert is not displayed! Form was not submitted successfully!");
+        Assert.assertTrue(isElementDisplayed(contactUsPage.successAlert()), "The Success Alert is not displayed! Form was not submitted successfully!");
     }
 }

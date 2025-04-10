@@ -52,7 +52,7 @@ public class OrderFormPage extends BaseClass {
     }
 
     private By payByCheck() {
-        return By.cssSelector("[data-module-name='ps_checkpayment']");
+        return By.cssSelector("#payment-option-2-container>label");
     }
 
     private By tosFinal() {
@@ -145,6 +145,7 @@ public class OrderFormPage extends BaseClass {
     * */
     public void selectPayByCheck() {
         scrollToElementCenter(payByCheck());
+        waitUntilElementIsClickable(payByCheck());
         getDriver().findElement(payByCheck()).click();
     }
 

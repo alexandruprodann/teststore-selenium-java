@@ -29,7 +29,7 @@ public class SearchBarTest extends BaseClass {
         homePage.searchFor(SEARCH_TERM);
 
         Reporter.log("Verify that search results are displayed");
-        Assert.assertTrue(searchPage.searchResultsDisplayedBool(), "Search results are not displayed!");
+        Assert.assertTrue(isElementDisplayed(searchPage.productTitle()), "Search results are not displayed!");
 
         Reporter.log("Verify that search results contain the search term: " + SEARCH_TERM);
         Assert.assertTrue(searchPage.getProductTitleText().contains(SEARCH_TERM),

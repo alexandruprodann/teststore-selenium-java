@@ -38,7 +38,7 @@ public class AddToWishlistTest extends BaseClass {
         homePage.clickProductByName(PRINTED_SWEATER);
         productPage.clickAddToWishlist();
         productPage.clickMyWishlistBtn();
-        Assert.assertTrue(productPage.isWishlistSuccessAlertVisible(), "Wishlist success alert 'Product added' is not displayed!");
+        Assert.assertTrue(isElementDisplayed(productPage.wishlistSuccessAlert()), "Wishlist success alert 'Product added' is not displayed!");
 
         Reporter.log("Navigate to 'My Wishlists'");
         navigateToUrl(TestConstants.MY_WISHLISTS_URL);
@@ -47,7 +47,7 @@ public class AddToWishlistTest extends BaseClass {
         myWishlistsPage.clickMyWishlistLink();
 
         Reporter.log("Check if " + PRINTED_SWEATER + " is in the wishlist");
-        Assert.assertTrue(myWishlistsPage.isElementDisplayed(myWishlistsPage.productTitleWithText(PRINTED_SWEATER)), PRINTED_SWEATER + " is not displayed in the wishlist!");
+        Assert.assertTrue(isElementDisplayed(myWishlistsPage.productTitleWithText(PRINTED_SWEATER)), PRINTED_SWEATER + " is not displayed in the wishlist!");
 
         Reporter.log("Remove the " + PRINTED_SWEATER + " from wishlist");
         myWishlistsPage.removeProductFromWishlist(PRINTED_SWEATER);
