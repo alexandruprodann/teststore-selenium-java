@@ -5,6 +5,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Reporter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,12 @@ public class WebDriverFactory {
         if (driver.get() == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
-//            options.addArguments("--headless");
+
+            if (isHeadless()) {
+                options.addArguments("--headless=new");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920, 1080");
+            }
 
             WebDriver webDriver;
 
@@ -52,6 +58,19 @@ public class WebDriverFactory {
         if (getDriver() != null) {
             getDriver().quit();
             driver.remove();
+        }
+    }
+
+    public static boolean isHeadless() {
+        try {
+            String headlessParam = Reporter.getCurrentTestResult()
+                    .getTestContext()
+                    .getCurrentXmlTest()
+                    .getParameter("headless");
+
+            return headlessParam.equalsIgnoreCase("true");
+        } catch (Exception e) {
+            return false;
         }
     }
 }
