@@ -14,7 +14,7 @@ import java.util.List;
 public class BreadcrumbNavigationTest extends BaseClass {
 
     @Test(groups = {Platform.MOBILE})
-    public void productDetails() {
+    public void breadcrumbNavigation() {
 
         // Pages
         HomePage homePage = new HomePage();
