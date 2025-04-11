@@ -1,13 +1,15 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
+import Utilities.LocatorFactory.LocatorType;
 import org.openqa.selenium.By;
 
 public class OrderHistoryPage extends BaseClass {
 
     // Elements
     public By orderHistoryTable() {
-        return isMobile() ? By.cssSelector(".orders") : By.cssSelector(".table.table-striped");
+        return LocatorFactory.createLocator(LocatorType.CSS_SELECTOR, "table.table-striped", ".orders");
     }
 
     private By orderReference(int row) {

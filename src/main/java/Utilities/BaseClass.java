@@ -69,7 +69,7 @@ public class BaseClass extends WebDriverFactory implements Waiters {
      *
      * @return boolean
      */
-    public boolean isMobile() {
+    public static boolean isMobile() {
         return Arrays.asList(Reporter.getCurrentTestResult().getMethod().getGroups()).contains(Platform.MOBILE);
     }
 
