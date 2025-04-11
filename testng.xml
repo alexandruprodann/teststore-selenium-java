@@ -5,26 +5,32 @@
 
     <test name="PC Chrome">
         <parameter name="headless" value="true"/>
-        <classes>
-            <class name="Tests.Desktop.auth.LoginTests"/>
-            <class name="Tests.Desktop.auth.SignupTest"/>
-            <class name="Tests.Desktop.search.SearchBarTest"/>
-            <class name="Tests.Desktop.cart.RemoveItemFromCartTest"/>
-            <class name="Tests.Desktop.order.CompleteOrderAsGuestTest"/>
-            <class name="Tests.Desktop.forms.ContactFormTest"/>
-        </classes>
+        <packages>
+            <package name="Tests.Desktop.auth"/>
+            <package name="Tests.Desktop.cart"/>
+            <package name="Tests.Desktop.filter"/>
+            <package name="Tests.Desktop.forms"/>
+            <package name="Tests.Desktop.order"/>
+            <package name="Tests.Desktop.product"/>
+            <package name="Tests.Desktop.search"/>
+            <package name="Tests.Desktop.sort"/>
+            <package name="Tests.Desktop.user"/>
+        </packages>
     </test>
 
     <test name="Mobile Chrome">
         <parameter name="headless" value="true"/>
-        <classes>
-            <class name="Tests.Mobile.auth.LoginTests"/>
-            <class name="Tests.Mobile.auth.SignupTest"/>
-            <class name="Tests.Mobile.search.SearchBarTest"/>
-            <class name="Tests.Mobile.cart.RemoveItemFromCartTest"/>
-            <class name="Tests.Mobile.order.CompleteOrderAsGuestTest"/>
-            <class name="Tests.Mobile.forms.ContactFormTest"/>
-        </classes>
+        <packages>
+            <package name="Tests.Desktop.auth"/>
+            <package name="Tests.Desktop.cart"/>
+            <package name="Tests.Desktop.filter"/>
+            <package name="Tests.Desktop.forms"/>
+            <package name="Tests.Desktop.order"/>
+            <package name="Tests.Desktop.product"/>
+            <package name="Tests.Desktop.search"/>
+            <package name="Tests.Desktop.sort"/>
+            <package name="Tests.Desktop.user"/>
+        </packages>
     </test>
 
 </suite>
