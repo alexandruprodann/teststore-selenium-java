@@ -55,6 +55,6 @@ public class SortByPriceTest extends BaseClass {
         searchPage.sortBy(PRICE_LOW_TO_HIGH);
 
         Reporter.log("Verify that items are sorted by ascending price");
-        Assert.assertTrue(searchPage.areItemsSortedByPrice("descending"), "Items are not sorted by ascending price!");
+        Assert.assertTrue(searchPage.areItemsSortedByPrice("ascending"), "Items are not sorted by ascending price!");
     }
 }
