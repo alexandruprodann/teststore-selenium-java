@@ -6,6 +6,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductPage extends BaseClass {
 
     // Elements
@@ -67,6 +70,10 @@ public class ProductPage extends BaseClass {
 
     public By breadCrumb() {
         return By.cssSelector(".breadcrumb");
+    }
+
+    private By breadCrumbLinks() {
+        return By.xpath("//nav[@class='breadcrumb']//li//a");
     }
 
     // Modal buttons
@@ -134,5 +141,16 @@ public class ProductPage extends BaseClass {
     public void clickMyWishlistBtn() {
         waitUntilElementIsClickable(myWishlistBtn());
         getDriver().findElement(myWishlistBtn()).click();
+    }
+
+    public List<String> getBreadcrumbHrefs() {
+        List<WebElement> breadCrumbLinks = getDriver().findElements(breadCrumbLinks());
+        List<String> hrefs = new ArrayList<>();
+
+        for (WebElement link : breadCrumbLinks) {
+            hrefs.add(link.getDomAttribute("href"));
+        }
+
+        return hrefs;
     }
  }
