@@ -11,6 +11,9 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
@@ -204,4 +207,26 @@ public class BaseClass extends WebDriverFactory implements Waiters {
         return getDriver().findElement(locator).getDomAttribute(attribute);
     }
 
+    /**
+     * Checks if a link is valid
+     *
+     * @param url link
+     * @return boolean
+     */
+    public boolean isLinkValid(String url) {
+        try {
+            URI uri = new URI(url);
+            URL validatedURL = uri.toURL();
+            HttpURLConnection connection = (HttpURLConnection) validatedURL.openConnection();
+
+            connection.setConnectTimeout(3000);
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+
+            return responseCode >= 200 && responseCode < 400;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

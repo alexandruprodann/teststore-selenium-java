@@ -6,6 +6,7 @@ public class TestConstants {
     public static final String BASE_URL = "https://teststore.automationtesting.co.uk/index.php";
     public static final String LOGIN_URL = BASE_URL + "?controller=authentication";
     public static final String MY_WISHLISTS_URL = BASE_URL + "?fc=module&module=blockwishlist&controller=lists";
+    public static final String SITEMAP_URL = BASE_URL + "?controller=sitemap";
 
     // Account
     public static final String TEST_EMAIL = "alexautomation@test.com";

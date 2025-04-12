@@ -15,6 +15,7 @@
             <package name="Tests.Desktop.search"/>
             <package name="Tests.Desktop.sort"/>
             <package name="Tests.Desktop.user"/>
+            <package name="Tests.Desktop.linkvalidator"/>
         </packages>
     </test>
 
