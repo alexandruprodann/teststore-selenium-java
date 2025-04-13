@@ -1,30 +1,33 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 public class ContactUsPage extends BaseClass {
 
     // Elements
     private By subjectSelect() {
-        return By.cssSelector("select#id_contact");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "select#id_contact");
     }
 
     private By emailField() {
-        return By.cssSelector("input#email");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#email");
     }
 
     private By messageField() {
-        return By.cssSelector("textarea#contactform-message");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "textarea#contactform-message");
     }
 
     private By sendButton() {
-        return By.cssSelector("input[name='submitMessage']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='submitMessage']");
     }
 
     public By successAlert() {
-        return By.cssSelector(".alert-success");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".alert-success");
     }
 
 

@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -9,84 +10,86 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Utilities.LocatorFactory.LocatorType.*;
+
 public class ProductPage extends BaseClass {
 
     // Elements
     public By productTitle() {
-        return By.cssSelector(".h1");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".h1");
     }
 
     public By productPrice() {
-        return By.cssSelector(".current-price");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".current-price");
     }
 
     public By productImage() {
-        return By.cssSelector(".product-cover");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".product-cover");
     }
 
     public By productShortDescription() {
-        return By.xpath("(//div[@class='product-description']//p)[1]");
+        return LocatorFactory.createLocator(XPATH, "(//div[@class='product-description']//p)[1]");
     }
 
     public By productLongDescription() {
-        return By.cssSelector("#description");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#description");
     }
 
     private By sizeSelector() {
-        return By.cssSelector("#group_1");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#group_1");
     }
 
     private By quantityIncreaseBtn() {
-        return By.cssSelector(".bootstrap-touchspin-up");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".bootstrap-touchspin-up");
     }
 
     private By quantityDecreaseBtn() {
-        return By.cssSelector(".bootstrap-touchspin-down");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".bootstrap-touchspin-down");
     }
 
     private By quantityInput() {
-        return By.cssSelector("input#quantity_wanted");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#quantity_wanted");
     }
 
     private By sizeLabel() {
-        return By.cssSelector("div:nth-of-type(1) > .control-label");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "div:nth-of-type(1) > .control-label");
     }
 
     public By addToCartBtn() {
-        return By.cssSelector(".add-to-cart");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".add-to-cart");
     }
 
     private By homeLink() {
-        return By.linkText("Home");
+        return LocatorFactory.createLocator(LINK_TEXT, "Home");
     }
 
     private By addToWishlist() {
-        return By.cssSelector(".wishlist-button-add.wishlist-button-product");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".wishlist-button-add.wishlist-button-product");
     }
 
     public By wishlistSuccessAlert() {
-        return By.cssSelector(".wishlist-toast.success");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".wishlist-toast.success");
     }
 
     public By breadCrumb() {
-        return By.cssSelector(".breadcrumb");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".breadcrumb");
     }
 
     private By breadCrumbLinks() {
-        return By.xpath("//nav[@class='breadcrumb']//li//a");
+        return LocatorFactory.createLocator(XPATH, "//nav[@class='breadcrumb']//li//a");
     }
 
     // Modal buttons
     private By proceedToCheckoutBtn() {
-        return By.cssSelector(".modal-body .btn.btn-primary");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".modal-body .btn.btn-primary");
     }
 
     private By continueShoppingBtn() {
-        return By.cssSelector(".modal-body .btn.btn-secondary");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".modal-body .btn.btn-secondary");
     }
 
     private By myWishlistBtn() {
-        return By.cssSelector(".wishlist-list-item");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".wishlist-list-item");
     }
 
 

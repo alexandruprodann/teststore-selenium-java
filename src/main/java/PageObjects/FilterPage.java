@@ -1,29 +1,33 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
+import static Utilities.LocatorFactory.LocatorType.XPATH;
 
 public class FilterPage extends BaseClass {
 
     // Elements
     private By filterOption(String optionName) {
-        return By.xpath(String.format("//a[contains(text(),'%s')]", optionName));
+        return LocatorFactory.createLocator(XPATH, String.format("//a[contains(text(),'%s')]", optionName));
     }
 
     private By filterBtnMob() {
-        return By.cssSelector("#search_filter_toggler");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#search_filter_toggler");
     }
 
     private By filterCategoryMob(String filterCategory) {
-        return By.xpath(String.format("//p[@class='h6 facet-title'][text()='%s']", filterCategory));
+        return LocatorFactory.createLocator(XPATH, String.format("//p[@class='h6 facet-title'][text()='%s']", filterCategory));
     }
 
     private By okBtnMob() {
-        return By.cssSelector(".btn.btn-secondary.ok");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".btn.btn-secondary.ok");
     }
 
     public By filterBlock() {
-        return By.cssSelector(".filter-block");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".filter-block");
     }
 
 

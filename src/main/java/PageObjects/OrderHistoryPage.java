@@ -5,6 +5,8 @@ import Utilities.LocatorFactory;
 import Utilities.LocatorFactory.LocatorType;
 import org.openqa.selenium.By;
 
+import static Utilities.LocatorFactory.LocatorType.XPATH;
+
 public class OrderHistoryPage extends BaseClass {
 
     // Elements
@@ -13,23 +15,23 @@ public class OrderHistoryPage extends BaseClass {
     }
 
     private By orderReference(int row) {
-        return By.xpath(String.format("//table/tbody/tr[%d]/th", row));
+        return LocatorFactory.createLocator(XPATH, String.format("//table/tbody/tr[%d]/th", row));
     }
 
     private By orderDateByReference(String orderReference) {
-        return By.xpath("//table/tbody/tr[th[text()='" + orderReference + "']]/td[1]");
+        return LocatorFactory.createLocator(XPATH, "//table/tbody/tr[th[text()='" + orderReference + "']]/td[1]");
     }
 
     private By orderTotalPriceByReference(String orderReference) {
-        return By.xpath("//table/tbody/tr[th[text()='" + orderReference + "']]/td[2]");
+        return LocatorFactory.createLocator(XPATH, "//table/tbody/tr[th[text()='" + orderReference + "']]/td[2]");
     }
 
     private By orderPaymentMethodByReference(String orderReference) {
-        return By.xpath("//table/tbody/tr[th[text()='" + orderReference + "']]/td[3]");
+        return LocatorFactory.createLocator(XPATH, "//table/tbody/tr[th[text()='" + orderReference + "']]/td[3]");
     }
 
     private By orderStatusByReference(String orderReference) {
-        return By.xpath("//table/tbody/tr[th[text()='" + orderReference + "']]/td[4]/span");
+        return LocatorFactory.createLocator(XPATH, "//table/tbody/tr[th[text()='" + orderReference + "']]/td[4]/span");
     }
 
 

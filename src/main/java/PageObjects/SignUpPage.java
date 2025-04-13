@@ -1,26 +1,29 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import Utilities.TestConstants;
 import org.openqa.selenium.By;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 public class SignUpPage extends BaseClass {
 
     // Elements
     private By signUpFormField(String name) {
-        return By.cssSelector(String.format("[name='%s']", name));
+        return LocatorFactory.createLocator(CSS_SELECTOR, String.format("[name='%s']", name));
     }
 
     private By maleGender() {
-        return By.cssSelector("input#field-id_gender-1");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-id_gender-1");
     }
 
     private By tosCheckbox() {
-        return By.cssSelector("input[name='psgdpr']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='psgdpr']");
     }
 
     private By saveBtn() {
-        return By.cssSelector("button.form-control-submit");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "button.form-control-submit");
     }
 
 

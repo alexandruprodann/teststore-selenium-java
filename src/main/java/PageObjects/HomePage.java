@@ -1,6 +1,7 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,47 +9,50 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Objects;
 
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
+import static Utilities.LocatorFactory.LocatorType.XPATH;
+
 public class HomePage extends BaseClass {
 
     // Elements
     private By productItemsList() {
-        return By.cssSelector(".products > div");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".products > div");
     }
 
     private By searchBar() {
-        return By.cssSelector(".ui-autocomplete-input");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".ui-autocomplete-input");
     }
 
     private By clothesLink() {
-        return By.cssSelector("#category-3");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#category-3");
     }
 
     private By accessoriesLink() {
-        return By.cssSelector("#category-6");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#category-6");
     }
 
     private By signInLink() {
-        return By.cssSelector(".user-info a");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".user-info a");
     }
 
     private By cartLink() {
-        return By.cssSelector(".blockcart");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".blockcart");
     }
 
     private By contactUsLink() {
-        return By.cssSelector("div#contact-link a");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "div#contact-link a");
     }
 
     private By hamburgerMenu() {
-        return By.cssSelector("#menu-icon");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#menu-icon");
     }
 
     public By myAccountLink() {
-        return By.cssSelector("a[title='View my customer account']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "a[title='View my customer account']");
     }
 
     private By allProductsLink() {
-        return By.xpath("//a[contains(.,'All products')]");
+        return LocatorFactory.createLocator(XPATH, "//a[contains(.,'All products')]");
     }
 
 

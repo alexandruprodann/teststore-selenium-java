@@ -1,60 +1,63 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 
 public class ShoppingCartPage extends BaseClass {
 
     // Elements
     private By proceedToCheckoutBtn() {
-        return By.cssSelector(".js-cart-detailed-actions .btn-primary");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".js-cart-detailed-actions .btn-primary");
     }
 
     private By removeFromCartBtn() {
-        return By.cssSelector(".remove-from-cart");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".remove-from-cart");
     }
 
     private By promoCodeLink() {
-        return By.cssSelector(".promo-code-button .collapse-button");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".promo-code-button .collapse-button");
     }
 
     private By promoCodeInput() {
-        return By.cssSelector("input[name='discount_name']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='discount_name']");
     }
 
     private By promoCodeLabel() {
-        return By.cssSelector(".promo-name .label");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".promo-name .label");
     }
 
     public By itemsInCartSpan() {
-        return By.cssSelector(".js-subtotal");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".js-subtotal");
     }
 
     private By cartItemTitles() {
-        return By.cssSelector("[data-id_customization]");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "[data-id_customization]");
     }
 
     private By subTotalProductsValue() {
-        return By.cssSelector("#cart-subtotal-products .value");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#cart-subtotal-products .value");
     }
 
     private By discountValue() {
-        return By.cssSelector("#cart-subtotal-discount .value");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#cart-subtotal-discount .value");
     }
 
     private By shippingPrice() {
-        return By.cssSelector("#cart-subtotal-shipping .value");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#cart-subtotal-shipping .value");
     }
 
     private By cartTotal() {
-        return By.cssSelector(".cart-summary-line.cart-total .value");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".cart-summary-line.cart-total .value");
     }
 
     private By quantityInput() {
-        return By.cssSelector("input.js-cart-line-product-quantity");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input.js-cart-line-product-quantity");
     }
 
 

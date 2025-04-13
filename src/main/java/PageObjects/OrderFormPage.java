@@ -1,70 +1,74 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
+import static Utilities.LocatorFactory.LocatorType.XPATH;
 
 public class OrderFormPage extends BaseClass {
 
     // Elements
     private By maleGender() {
-        return By.cssSelector("[for='field-id_gender-1']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "[for='field-id_gender-1']");
     }
 
     private By firstNameField() {
-        return By.cssSelector("input#field-firstname");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-firstname");
     }
 
     private By lastNameField() {
-        return By.cssSelector("input#field-lastname");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-lastname");
     }
 
     private By emailField() {
-        return By.cssSelector("input#field-email");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-email");
     }
 
     private By termsConditionsCheckbox() {
-        return By.cssSelector("input[name='psgdpr']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='psgdpr']");
     }
 
     private By continueBtn() {
-        return By.xpath("//form[@id='customer-form']//button[@name='continue']");
+        return LocatorFactory.createLocator(XPATH, "//form[@id='customer-form']//button[@name='continue']");
     }
 
     private By addressField() {
-        return By.cssSelector("input[name='address1']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='address1']");
     }
 
     private By cityField() {
-        return By.cssSelector("input#field-city");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-city");
     }
 
     private By stateSelector() {
-        return By.cssSelector("select#field-id_state");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "select#field-id_state");
     }
 
     private By postCodeField() {
-        return By.cssSelector("input#field-postcode");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-postcode");
     }
 
     private By confirmAddressBtn() {
-        return By.cssSelector("button[name='confirm-addresses']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "button[name='confirm-addresses']");
     }
 
     private By payByCheck() {
-        return By.cssSelector("#payment-option-2-container>label");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#payment-option-2-container>label");
     }
 
     private By tosFinal() {
-        return By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
+        return LocatorFactory.createLocator(XPATH, "//input[@id='conditions_to_approve[terms-and-conditions]']");
     }
 
     private By placeOrderBtn() {
-        return By.cssSelector(".btn-primary.center-block");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".btn-primary.center-block");
     }
 
     private By confirmShippingMethodBtn() {
-        return By.cssSelector("[name='confirmDeliveryOption']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "[name='confirmDeliveryOption']");
     }
 
 

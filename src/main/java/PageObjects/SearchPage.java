@@ -1,12 +1,16 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
+import static Utilities.LocatorFactory.LocatorType.XPATH;
 
 public class SearchPage extends BaseClass {
 
@@ -30,35 +34,35 @@ public class SearchPage extends BaseClass {
 
     // Elements
     public By productTitle() {
-        return By.cssSelector(".product-title");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".product-title");
     }
 
     private By sortByDropdown() {
-        return By.cssSelector(".sort-by-row button");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".sort-by-row button");
     }
 
     private By dropdownOption(String optionName) {
-        return By.xpath(String.format("//a[normalize-space()='%s']", optionName));
+        return LocatorFactory.createLocator(XPATH, String.format("//a[normalize-space()='%s']", optionName));
     }
 
     private By productPrice() {
-        return By.cssSelector(".product-price-and-shipping .price");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".product-price-and-shipping .price");
     }
 
     private By loadingIcon() {
-        return By.cssSelector("#auto-clicker-autofill-popup-tr");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#auto-clicker-autofill-popup-tr");
     }
 
     public By productSearchNoMatches() {
-        return By.cssSelector("#product-search-no-matches");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#product-search-no-matches");
     }
 
     public By paginationControls() {
-        return By.cssSelector(".page-list");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".page-list");
     }
 
     private By nextPage() {
-        return By.cssSelector(".next.js-search-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".next.js-search-link");
     }
 
 

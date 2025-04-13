@@ -1,42 +1,45 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import Utilities.TestConstants;
 import org.openqa.selenium.By;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 public class PersonalDetailsPage extends BaseClass {
 
     // Elements
     public By firstNameField() {
-        return By.cssSelector("input#field-firstname");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-firstname");
     }
 
     private By lastNameField() {
-        return By.cssSelector("input#field-lastname");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-lastname");
     }
 
     private By emailField() {
-        return By.cssSelector("input#field-email");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-email");
     }
 
     private By passwordField() {
-        return By.cssSelector("input#field-password");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-password");
     }
 
     private By newPasswordField() {
-        return By.cssSelector("input#field-new_password");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-new_password");
     }
 
     private By birthDateField() {
-        return By.cssSelector("input#field-birthday");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-birthday");
     }
 
     private By termsAndConditionsCheckbox() {
-        return By.cssSelector("input[name='psgdpr']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input[name='psgdpr']");
     }
 
     private By saveBtn() {
-        return By.cssSelector("button[type='submit']");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "button[type='submit']");
     }
 
 

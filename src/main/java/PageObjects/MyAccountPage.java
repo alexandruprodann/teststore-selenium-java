@@ -1,41 +1,44 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 public class MyAccountPage extends BaseClass {
 
     // Elements
     public By informationBtn() {
-        return By.cssSelector("#identity-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#identity-link");
     }
 
     private By addFirstAddressBtn() {
-        return By.cssSelector("#address-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#address-link");
     }
 
     private By orderHistoryBtn() {
-        return By.cssSelector("#history-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#history-link");
     }
 
     private By creditSlipsBtn() {
-        return By.cssSelector("#order-slips-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#order-slips-link");
     }
 
     private By vouchersBtn() {
-        return By.cssSelector("#discounts-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#discounts-link");
     }
 
     private By myWishlistsBtn() {
-        return By.cssSelector("#wishlist-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#wishlist-link");
     }
 
     private By gdprBtn() {
-        return By.cssSelector("#psgdpr-link");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#psgdpr-link");
     }
 
     private By myAlertsBtn() {
-        return By.cssSelector("#emailsalerts");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "#emailsalerts");
     }
 
 

@@ -1,33 +1,36 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
+
+import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
 public class LoginPage extends BaseClass {
 
     // Elements
     private By emailField() {
-        return By.cssSelector("input#field-email");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-email");
     }
 
     private By passwordField() {
-        return By.cssSelector("input#field-password");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "input#field-password");
     }
 
     private By loginBtn() {
-        return By.cssSelector("button#submit-login");
+        return LocatorFactory.createLocator(CSS_SELECTOR, "button#submit-login");
     }
 
     private By createAccountLink() {
-        return By.cssSelector(".no-account a");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".no-account a");
     }
 
     public By signOutBtn() {
-        return By.cssSelector(".logout");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".logout");
     }
 
     public By authFailedAlert() {
-        return By.cssSelector(".alert.alert-danger");
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".alert.alert-danger");
     }
 
 
