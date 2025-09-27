@@ -43,7 +43,7 @@ public class LoginTests extends BaseClass {
         Reporter.log("Proceed to " + TestConstants.LOGIN_URL);
         getDriver().get(TestConstants.LOGIN_URL);
 
-        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + TestConstants.TEST_PASSWORD + ")");
+        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + invalidPassword + ")");
         loginPage.enterEmail(TestConstants.TEST_EMAIL);
         loginPage.enterPassword(invalidPassword);
         loginPage.clickLogin();
