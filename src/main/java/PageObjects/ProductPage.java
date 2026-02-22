@@ -122,13 +122,15 @@ public class ProductPage extends BaseClass {
     }
 
     public void proceedToCart() {
-        waitUntilElementIsVisible(proceedToCheckoutBtn());
-        getDriver().findElement(proceedToCheckoutBtn()).click();
+        waitUntilElementIsClickable(proceedToCheckoutBtn());
+        //getDriver().findElement(proceedToCheckoutBtn()).click();
+        jsClick(proceedToCheckoutBtn());
     }
 
     public void clickContinueShoppingBtn() {
-        waitUntilElementIsVisible(continueShoppingBtn());
-        getDriver().findElement(continueShoppingBtn()).click();
+        waitUntilElementIsClickable(continueShoppingBtn());
+//        getDriver().findElement(continueShoppingBtn()).click();
+        jsClick(continueShoppingBtn());
     }
 
     public void clickHomeLink() {
