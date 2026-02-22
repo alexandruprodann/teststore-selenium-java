@@ -45,6 +45,6 @@ public class RemoveItemFromCartTest extends BaseClass {
         shoppingCartPage.removeItemsFromCart(1);
 
         Reporter.log("Ensure that there is only 1 item in the Shopping Cart");
-        Assert.assertEquals(shoppingCartPage.getCartItemCount(), 1, "There is more than 1 item in the Shopping Cart!");
+        Assert.assertEquals(shoppingCartPage.getItemListSize(), 1, "There is more than 1 item in the Shopping Cart!");
     }
 }

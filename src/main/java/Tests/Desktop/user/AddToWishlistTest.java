@@ -13,7 +13,7 @@ import static Utilities.TestConstants.PRINTED_SWEATER;
 public class AddToWishlistTest extends BaseClass {
 
     @Test(groups = {Platform.PC})
-    public void signUp() {
+    public void addToWishlist() {
 
         // Pages
         HomePage homePage = new HomePage();

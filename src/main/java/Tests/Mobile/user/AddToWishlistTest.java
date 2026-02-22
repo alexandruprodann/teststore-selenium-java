@@ -16,7 +16,7 @@ import static Utilities.TestConstants.PRINTED_SWEATER;
 public class AddToWishlistTest extends BaseClass {
 
     @Test(groups = {Platform.MOBILE})
-    public void signUp() {
+    public void addToWishlist() {
 
         // Pages
         HomePage homePage = new HomePage();
