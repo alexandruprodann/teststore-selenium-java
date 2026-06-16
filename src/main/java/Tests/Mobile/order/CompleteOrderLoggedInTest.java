@@ -29,6 +29,9 @@ public class CompleteOrderLoggedInTest extends BaseClass {
         loginPage.enterPassword(TestConstants.TEST_PASSWORD);
         loginPage.clickLogin();
 
+        Reporter.log("Proceed to Homepage");
+        navigateToUrl(TestConstants.BASE_URL);
+
         Reporter.log("Select a random clothing item and size");
         homePage.chooseRandomClothing();
         productPage.selectSize("M");
@@ -51,7 +54,7 @@ public class CompleteOrderLoggedInTest extends BaseClass {
         orderFormPage.clickContinueBtnShipping();
 
         Reporter.log("Complete the order");
-        orderFormPage.selectPayByCheck();
+        orderFormPage.selectFirstPaymentOption();
         orderFormPage.agreeTOS();
         orderFormPage.clickPlaceOrderBtn();
 

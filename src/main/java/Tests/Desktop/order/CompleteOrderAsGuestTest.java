@@ -50,7 +50,7 @@ public class CompleteOrderAsGuestTest extends BaseClass {
         orderFormPage.clickContinueBtnShipping();
 
         Reporter.log("Complete the order");
-        orderFormPage.selectPayByCheck();
+        orderFormPage.selectFirstPaymentOption();
         orderFormPage.agreeTOS();
         orderFormPage.clickPlaceOrderBtn();
 

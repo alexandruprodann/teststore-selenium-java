@@ -5,6 +5,7 @@ import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
@@ -86,11 +87,13 @@ public class ShoppingCartPage extends BaseClass {
     }
 
     public void removeItemsFromCart(int numberOfItems) {
-        for (int i = 0; i <= numberOfItems; i++) {
+        int expectedItemListSize = getItemListSize() - numberOfItems;
+
+        for (int i = 0; i < numberOfItems; i++) {
             waitUntilElementIsClickable(removeFromCartBtn());
             getDriver().findElement(removeFromCartBtn()).click();
         }
-        waitForElementToHaveText(itemsInCartSpan(), String.valueOf((getCartItemCount() - numberOfItems)));
+        waiter().until(ExpectedConditions.numberOfElementsToBe(cartItemTitles(), expectedItemListSize));
     }
 
     public int getItemListSize() {

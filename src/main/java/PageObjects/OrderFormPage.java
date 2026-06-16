@@ -3,7 +3,11 @@ package PageObjects;
 import Utilities.BaseClass;
 import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 import static Utilities.LocatorFactory.LocatorType.XPATH;
@@ -55,8 +59,8 @@ public class OrderFormPage extends BaseClass {
         return LocatorFactory.createLocator(CSS_SELECTOR, "button[name='confirm-addresses']");
     }
 
-    private By payByCheck() {
-        return LocatorFactory.createLocator(CSS_SELECTOR, "#payment-option-2-container>label");
+    private By paymentOption() {
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".payment-options label");
     }
 
     private By tosFinal() {
@@ -139,18 +143,32 @@ public class OrderFormPage extends BaseClass {
         waitUntilElementIsClickable(stateSelector());
         Select select = new Select(getDriver().findElement(stateSelector()));
         int numberOfOptions = select.getOptions().size();
-        int randomIndex = random.nextInt(numberOfOptions - 1);
-        select.selectByIndex(randomIndex);
+        List<Integer> enabledOptionIndexes = new ArrayList<>();
+
+        for (int i = 1; i < numberOfOptions; i++) {
+            WebElement option = select.getOptions().get(i);
+
+            if (option.isEnabled()) {
+                enabledOptionIndexes.add(i);
+            }
+        }
+
+        if (enabledOptionIndexes.isEmpty()) {
+            throw new IllegalStateException("No enabled state options are available");
+        }
+
+        select.selectByIndex(enabledOptionIndexes.get(random.nextInt(enabledOptionIndexes.size())));
     }
 
 
     /*
     * Last step fields
     * */
-    public void selectPayByCheck() {
-        scrollToElementCenter(payByCheck());
-        waitUntilElementIsClickable(payByCheck());
-        getDriver().findElement(payByCheck()).click();
+    public void selectFirstPaymentOption() {
+        waitUntilElementIsVisible(paymentOption());
+        scrollToElementCenter(paymentOption());
+        waitUntilElementIsClickable(paymentOption());
+        jsClick(paymentOption());
     }
 
     public void agreeTOS() {
@@ -180,8 +198,9 @@ public class OrderFormPage extends BaseClass {
 
     // Continue Button - Shipping
     public void clickContinueBtnShipping() {
-        scrollToElementCenter(confirmShippingMethodBtn());
         waitUntilElementIsClickable(confirmShippingMethodBtn());
-        getDriver().findElement(confirmShippingMethodBtn()).click();
+        scrollToElementCenter(confirmShippingMethodBtn());
+        jsClick(confirmShippingMethodBtn());
+        waitUntilElementIsVisible(paymentOption());
     }
 }
