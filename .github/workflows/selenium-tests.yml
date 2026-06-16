@@ -1,6 +1,20 @@
 name: Selenium Tests
 
-run-name: ${{ github.event_name == 'workflow_dispatch' && format('Selenium Tests - {0} - {1} / {2} / {3} threads', github.ref_name, inputs.platform, inputs.feature, inputs.thread_count) || format('Selenium Tests - {0}', github.head_ref || github.ref_name) }}
+run-name: >-
+  ${{
+    github.event_name == 'workflow_dispatch'
+      && format(
+        'Selenium Tests - {0} - {1} / {2} / {3} threads',
+        github.ref_name,
+        inputs.platform,
+        inputs.feature,
+        inputs.thread_count
+      )
+      || format(
+        'Selenium Tests - {0}',
+        github.head_ref || github.ref_name
+      )
+  }}
 
 on:
   push:
@@ -9,6 +23,9 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    # 06:17 UTC, Monday through Friday.
+    - cron: "17 6 * * 1-5"
   workflow_dispatch:
     inputs:
       platform:
@@ -90,20 +107,36 @@ jobs:
           echo "Headless: true"
           echo "Thread count: $RUN_THREAD_COUNT"
 
-      - name: Validate parallel account isolation
+      - name: Validate configured test accounts
         shell: bash
         run: |
           set -euo pipefail
 
-          if [[ "$RUN_PLATFORM" == "all" && "$RUN_THREAD_COUNT" != "1" ]]; then
-            if [[ -z "${DESKTOP_TEST_EMAIL}" || -z "${DESKTOP_TEST_PASSWORD}" || -z "${MOBILE_TEST_EMAIL}" || -z "${MOBILE_TEST_PASSWORD}" ]]; then
-              echo "Parallel all-platform runs require these GitHub Secrets:" >&2
-              echo "DESKTOP_TEST_EMAIL, DESKTOP_TEST_PASSWORD, MOBILE_TEST_EMAIL, MOBILE_TEST_PASSWORD" >&2
-              exit 1
-            fi
+          required_secrets=(
+            DESKTOP_TEST_EMAIL
+            DESKTOP_TEST_PASSWORD
+            MOBILE_TEST_EMAIL
+            MOBILE_TEST_PASSWORD
+          )
 
+          missing_secrets=()
+
+          for secret_name in "${required_secrets[@]}"; do
+            if [[ -z "${!secret_name}" ]]; then
+              missing_secrets+=("$secret_name")
+            fi
+          done
+
+          if (( ${#missing_secrets[@]} > 0 )); then
+            echo "Missing required GitHub Secrets:" >&2
+            printf '  - %s\n' "${missing_secrets[@]}" >&2
+            exit 1
+          fi
+
+          if [[ "$RUN_PLATFORM" == "all" && "$RUN_THREAD_COUNT" != "1" ]]; then
             if [[ "$DESKTOP_TEST_EMAIL" == "$MOBILE_TEST_EMAIL" ]]; then
-              echo "DESKTOP_TEST_EMAIL and MOBILE_TEST_EMAIL must be different for parallel all-platform runs." >&2
+              echo "DESKTOP_TEST_EMAIL and MOBILE_TEST_EMAIL must be different" \
+                "for parallel all-platform runs." >&2
               exit 1
             fi
           fi
@@ -116,6 +149,7 @@ jobs:
           mkdir -p target
 
           packages=()
+
           add_package() {
             packages+=("$1")
           }
