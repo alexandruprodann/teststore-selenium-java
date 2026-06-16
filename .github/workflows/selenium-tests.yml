@@ -39,14 +39,6 @@ on:
           - search
           - sort
           - user
-      headless:
-        description: Run Chrome in headless mode
-        required: true
-        default: 'true'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
       thread_count:
         description: TestNG class-level parallel thread count
         required: true
@@ -69,7 +61,6 @@ jobs:
     env:
       RUN_PLATFORM: ${{ inputs.platform || 'all' }}
       RUN_FEATURE: ${{ inputs.feature || 'all' }}
-      RUN_HEADLESS: ${{ inputs.headless || 'true' }}
       RUN_THREAD_COUNT: ${{ inputs.thread_count || '3' }}
 
     steps:
@@ -90,14 +81,8 @@ jobs:
         run: |
           echo "Platform: $RUN_PLATFORM"
           echo "Feature: $RUN_FEATURE"
-          echo "Headless: $RUN_HEADLESS"
+          echo "Headless: true"
           echo "Thread count: $RUN_THREAD_COUNT"
-
-      - name: Install Xvfb for headed runs
-        if: env.RUN_HEADLESS == 'false'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb
 
       - name: Generate TestNG suite
         shell: bash
@@ -153,7 +138,7 @@ jobs:
             echo
             echo "<suite name=\"CI Test Suite\" parallel=\"classes\" thread-count=\"${RUN_THREAD_COUNT}\">"
             echo "  <test name=\"${RUN_PLATFORM}-${RUN_FEATURE}\">"
-            echo "    <parameter name=\"headless\" value=\"${RUN_HEADLESS}\"/>"
+            echo '    <parameter name="headless" value="true"/>'
             echo "    <packages>"
 
             for package_name in "${packages[@]}"; do
@@ -172,12 +157,7 @@ jobs:
         run: |
           set -euo pipefail
           chmod +x mvnw
-
-          if [[ "$RUN_HEADLESS" == "true" ]]; then
-            ./mvnw -B "-Dsurefire.suiteXmlFiles=target/ci-testng.xml" test
-          else
-            xvfb-run --auto-servernum ./mvnw -B "-Dsurefire.suiteXmlFiles=target/ci-testng.xml" test
-          fi
+          ./mvnw -B "-Dsurefire.suiteXmlFiles=target/ci-testng.xml" test
 
       - name: Upload Surefire and TestNG reports
         if: always()
