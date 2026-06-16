@@ -53,6 +53,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: teststore-selenium-suite
+  cancel-in-progress: false
+
 jobs:
   test:
     name: TestNG suite
@@ -62,6 +66,10 @@ jobs:
       RUN_PLATFORM: ${{ inputs.platform || 'all' }}
       RUN_FEATURE: ${{ inputs.feature || 'all' }}
       RUN_THREAD_COUNT: ${{ inputs.thread_count || '3' }}
+      DESKTOP_TEST_EMAIL: ${{ secrets.DESKTOP_TEST_EMAIL }}
+      DESKTOP_TEST_PASSWORD: ${{ secrets.DESKTOP_TEST_PASSWORD }}
+      MOBILE_TEST_EMAIL: ${{ secrets.MOBILE_TEST_EMAIL }}
+      MOBILE_TEST_PASSWORD: ${{ secrets.MOBILE_TEST_PASSWORD }}
 
     steps:
       - name: Checkout repository
@@ -83,6 +91,24 @@ jobs:
           echo "Feature: $RUN_FEATURE"
           echo "Headless: true"
           echo "Thread count: $RUN_THREAD_COUNT"
+
+      - name: Validate parallel account isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$RUN_PLATFORM" == "all" && "$RUN_THREAD_COUNT" != "1" ]]; then
+            if [[ -z "${DESKTOP_TEST_EMAIL}" || -z "${DESKTOP_TEST_PASSWORD}" || -z "${MOBILE_TEST_EMAIL}" || -z "${MOBILE_TEST_PASSWORD}" ]]; then
+              echo "Parallel all-platform runs require these GitHub Secrets:" >&2
+              echo "DESKTOP_TEST_EMAIL, DESKTOP_TEST_PASSWORD, MOBILE_TEST_EMAIL, MOBILE_TEST_PASSWORD" >&2
+              exit 1
+            fi
+
+            if [[ "$DESKTOP_TEST_EMAIL" == "$MOBILE_TEST_EMAIL" ]]; then
+              echo "DESKTOP_TEST_EMAIL and MOBILE_TEST_EMAIL must be different for parallel all-platform runs." >&2
+              exit 1
+            fi
+          fi
 
       - name: Generate TestNG suite
         shell: bash

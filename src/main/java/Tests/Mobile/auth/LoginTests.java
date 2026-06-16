@@ -24,9 +24,9 @@ public class LoginTests extends BaseClass {
         Reporter.log("Proceed to " + TestConstants.LOGIN_URL);
         getDriver().get(TestConstants.LOGIN_URL);
 
-        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + TestConstants.TEST_PASSWORD + ")");
-        loginPage.enterEmail(TestConstants.TEST_EMAIL);
-        loginPage.enterPassword(TestConstants.TEST_PASSWORD);
+        Reporter.log("Log in as configured test account");
+        loginPage.enterEmail(TestConstants.getTestEmail());
+        loginPage.enterPassword(TestConstants.getTestPassword());
         loginPage.clickLogin();
 
         Reporter.log("Check if the user is successfully logged in");
@@ -48,8 +48,8 @@ public class LoginTests extends BaseClass {
         Reporter.log("Proceed to " + TestConstants.LOGIN_URL);
         getDriver().get(TestConstants.LOGIN_URL);
 
-        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + TestConstants.TEST_PASSWORD + ")");
-        loginPage.enterEmail(TestConstants.TEST_EMAIL);
+        Reporter.log("Log in with invalid password as configured test account");
+        loginPage.enterEmail(TestConstants.getTestEmail());
         loginPage.enterPassword(invalidPassword);
         loginPage.clickLogin();
 

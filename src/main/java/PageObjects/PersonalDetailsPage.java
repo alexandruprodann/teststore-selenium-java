@@ -45,7 +45,7 @@ public class PersonalDetailsPage extends BaseClass {
 
     // Actions
     public void saveChanges() {
-        enterPassword(TestConstants.TEST_PASSWORD);
+        enterPassword(TestConstants.getTestPassword());
         scrollToElementCenter(termsAndConditionsCheckbox());
         agreeTermsConditions();
         clickSaveBtn();

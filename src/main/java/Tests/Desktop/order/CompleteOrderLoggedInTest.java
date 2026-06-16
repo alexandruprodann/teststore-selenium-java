@@ -24,9 +24,9 @@ public class CompleteOrderLoggedInTest extends BaseClass {
         Reporter.log("Proceed to " + TestConstants.LOGIN_URL);
         navigateToUrl(TestConstants.LOGIN_URL);
 
-        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + TestConstants.TEST_PASSWORD + ")");
-        loginPage.enterEmail(TestConstants.TEST_EMAIL);
-        loginPage.enterPassword(TestConstants.TEST_PASSWORD);
+        Reporter.log("Log in as configured test account");
+        loginPage.enterEmail(TestConstants.getTestEmail());
+        loginPage.enterPassword(TestConstants.getTestPassword());
         loginPage.clickLogin();
 
         Reporter.log("Select a random clothing item and size");

@@ -29,8 +29,8 @@ public class OrderHistoryTest extends BaseClass {
         Reporter.log("Click Sign In button");
         homePage.clickSignIn();
 
-        Reporter.log("Login as (" + TestConstants.TEST_EMAIL + "/" + TestConstants.TEST_PASSWORD + ")");
-        loginPage.loginAs(TestConstants.TEST_EMAIL, TestConstants.TEST_PASSWORD);
+        Reporter.log("Log in as configured test account");
+        loginPage.loginAs(TestConstants.getTestEmail(), TestConstants.getTestPassword());
 
         Reporter.log("Proceed to My Account -> Order History and Details");
         homePage.clickMyAccountLink();

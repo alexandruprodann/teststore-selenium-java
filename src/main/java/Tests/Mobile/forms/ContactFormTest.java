@@ -28,7 +28,7 @@ public class ContactFormTest extends BaseClass {
 
         Reporter.log("Complete the 'CONTACT US' form with required information");
         contactUsPage.chooseDropdownOption("Customer service");
-        contactUsPage.enterEmailAddress(TestConstants.TEST_EMAIL);
+        contactUsPage.enterEmailAddress(TestConstants.getTestEmail());
         contactUsPage.enterTestMessage();
 
         Reporter.log("Click 'Send' button to submit the form");
