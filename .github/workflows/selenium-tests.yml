@@ -1,0 +1,199 @@
+name: Selenium Tests
+
+run-name: Selenium Tests - ${{ inputs.platform || 'all' }} / ${{ inputs.feature || 'all' }}
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Tests to run by viewport
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - desktop
+          - mobile
+      feature:
+        description: Feature package to run
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - auth
+          - cart
+          - filter
+          - forms
+          - linkvalidator
+          - order
+          - product
+          - search
+          - sort
+          - user
+      headless:
+        description: Run Chrome in headless mode
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      thread_count:
+        description: TestNG class-level parallel thread count
+        required: true
+        default: '3'
+        type: choice
+        options:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: TestNG suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUN_PLATFORM: ${{ inputs.platform || 'all' }}
+      RUN_FEATURE: ${{ inputs.feature || 'all' }}
+      RUN_HEADLESS: ${{ inputs.headless || 'true' }}
+      RUN_THREAD_COUNT: ${{ inputs.thread_count || '3' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Show Chrome version
+        run: google-chrome --version
+
+      - name: Show selected options
+        run: |
+          echo "Platform: $RUN_PLATFORM"
+          echo "Feature: $RUN_FEATURE"
+          echo "Headless: $RUN_HEADLESS"
+          echo "Thread count: $RUN_THREAD_COUNT"
+
+      - name: Install Xvfb for headed runs
+        if: env.RUN_HEADLESS == 'false'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+
+      - name: Generate TestNG suite
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p target
+
+          packages=()
+          add_package() {
+            packages+=("$1")
+          }
+
+          add_feature_packages() {
+            local platform="$1"
+            local feature="$2"
+
+            if [[ "$feature" == "all" ]]; then
+              add_package "Tests.${platform}.*"
+              return
+            fi
+
+            add_package "Tests.${platform}.${feature}"
+          }
+
+          case "$RUN_PLATFORM:$RUN_FEATURE" in
+            all:linkvalidator)
+              add_package "Tests.Desktop.linkvalidator"
+              ;;
+            mobile:linkvalidator)
+              echo "The linkvalidator feature exists only under Tests.Desktop.linkvalidator." >&2
+              exit 1
+              ;;
+            desktop:*)
+              add_feature_packages "Desktop" "$RUN_FEATURE"
+              ;;
+            mobile:*)
+              add_feature_packages "Mobile" "$RUN_FEATURE"
+              ;;
+            all:*)
+              add_feature_packages "Desktop" "$RUN_FEATURE"
+              add_feature_packages "Mobile" "$RUN_FEATURE"
+              ;;
+            *)
+              echo "Unsupported platform/feature selection: $RUN_PLATFORM/$RUN_FEATURE" >&2
+              exit 1
+              ;;
+          esac
+
+          {
+            echo '<?xml version="1.0" encoding="UTF-8"?>'
+            echo '<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">'
+            echo
+            echo "<suite name=\"CI Test Suite\" parallel=\"classes\" thread-count=\"${RUN_THREAD_COUNT}\">"
+            echo "  <test name=\"${RUN_PLATFORM}-${RUN_FEATURE}\">"
+            echo "    <parameter name=\"headless\" value=\"${RUN_HEADLESS}\"/>"
+            echo "    <packages>"
+
+            for package_name in "${packages[@]}"; do
+              echo "      <package name=\"${package_name}\"/>"
+            done
+
+            echo "    </packages>"
+            echo "  </test>"
+            echo '</suite>'
+          } > target/ci-testng.xml
+
+          cat target/ci-testng.xml
+
+      - name: Run TestNG suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x mvnw
+
+          if [[ "$RUN_HEADLESS" == "true" ]]; then
+            ./mvnw -B "-Dsurefire.suiteXmlFiles=target/ci-testng.xml" test
+          else
+            xvfb-run --auto-servernum ./mvnw -B "-Dsurefire.suiteXmlFiles=target/ci-testng.xml" test
+          fi
+
+      - name: Upload Surefire and TestNG reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            target/ci-testng.xml
+            target/surefire-reports/**
+          if-no-files-found: ignore
+
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots
+          path: |
+            Screenshots/**
+          if-no-files-found: ignore
