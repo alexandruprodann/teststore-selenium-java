@@ -1,16 +1,14 @@
 name: Selenium Tests
 
-run-name: Selenium Tests - ${{ inputs.platform || 'all' }} / ${{ inputs.feature || 'all' }}
+run-name: ${{ github.event_name == 'workflow_dispatch' && format('Selenium Tests - {0} - {1} / {2} / {3} threads', github.ref_name, inputs.platform, inputs.feature, inputs.thread_count) || format('Selenium Tests - {0}', github.head_ref || github.ref_name) }}
 
 on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
   workflow_dispatch:
     inputs:
       platform:
