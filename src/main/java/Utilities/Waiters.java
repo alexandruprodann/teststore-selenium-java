@@ -61,15 +61,6 @@ public interface Waiters {
     }
 
     /**
-     * Wait until element is removed from DOM
-     *
-     * @param element Web Element
-     */
-    default void waitForStalenessOfElement(WebElement element) {
-        waiter().until(ExpectedConditions.stalenessOf(element));
-    }
-
-    /**
      * Wait until element is clickable
      *
      * @param element Web Element

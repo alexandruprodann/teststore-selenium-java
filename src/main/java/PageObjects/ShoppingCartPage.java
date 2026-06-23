@@ -93,14 +93,12 @@ public class ShoppingCartPage extends BaseClass {
             waitForPresenceOfElement(cartItems());
             List<WebElement> cartItems = getDriver().findElements(cartItems());
             int expectedItemListSize = cartItems.size() - 1;
-            WebElement itemToRemove = cartItems.get(0);
-            WebElement removeButton = itemToRemove.findElement(removeFromCartBtn());
+            WebElement removeButton = cartItems.get(0).findElement(removeFromCartBtn());
 
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", removeButton);
             waitUntilElementIsClickable(removeButton);
             removeButton.click();
 
-            waitForStalenessOfElement(itemToRemove);
             waitForNumberOfElements(cartItems(), expectedItemListSize);
         }
     }
