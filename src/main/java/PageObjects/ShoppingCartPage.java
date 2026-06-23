@@ -3,7 +3,6 @@ package PageObjects;
 import Utilities.BaseClass;
 import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -93,11 +92,10 @@ public class ShoppingCartPage extends BaseClass {
             waitForPresenceOfElement(cartItems());
             List<WebElement> cartItems = getDriver().findElements(cartItems());
             int expectedItemListSize = cartItems.size() - 1;
-            WebElement removeButton = cartItems.get(0).findElement(removeFromCartBtn());
 
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", removeButton);
-            waitUntilElementIsClickable(removeButton);
-            removeButton.click();
+            scrollToElementCenter(removeFromCartBtn());
+            waitUntilElementIsClickable(removeFromCartBtn());
+            getDriver().findElement(removeFromCartBtn()).click();
 
             waitForNumberOfElements(cartItems(), expectedItemListSize);
         }
