@@ -3,9 +3,11 @@ package PageObjects;
 import Utilities.BaseClass;
 import Utilities.LocatorFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 import static Utilities.LocatorFactory.LocatorType.CSS_SELECTOR;
 
@@ -37,8 +39,8 @@ public class ShoppingCartPage extends BaseClass {
         return LocatorFactory.createLocator(CSS_SELECTOR, ".js-subtotal");
     }
 
-    private By cartItemTitles() {
-        return LocatorFactory.createLocator(CSS_SELECTOR, "[data-id_customization]");
+    private By cartItems() {
+        return LocatorFactory.createLocator(CSS_SELECTOR, ".cart-item");
     }
 
     private By subTotalProductsValue() {
@@ -87,17 +89,28 @@ public class ShoppingCartPage extends BaseClass {
     }
 
     public void removeItemsFromCart(int numberOfItems) {
-        int expectedItemListSize = getItemListSize() - numberOfItems;
-
         for (int i = 0; i < numberOfItems; i++) {
-            waitUntilElementIsClickable(removeFromCartBtn());
-            getDriver().findElement(removeFromCartBtn()).click();
+            waitForPresenceOfElement(cartItems());
+            List<WebElement> cartItems = getDriver().findElements(cartItems());
+            int expectedItemListSize = cartItems.size() - 1;
+            WebElement itemToRemove = cartItems.get(0);
+            WebElement removeButton = itemToRemove.findElement(removeFromCartBtn());
+
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", removeButton);
+            waitUntilElementIsClickable(removeButton);
+            removeButton.click();
+
+            waitForStalenessOfElement(itemToRemove);
+            waitForNumberOfElements(cartItems(), expectedItemListSize);
         }
-        waiter().until(ExpectedConditions.numberOfElementsToBe(cartItemTitles(), expectedItemListSize));
     }
 
     public int getItemListSize() {
-        return getDriver().findElements(cartItemTitles()).size();
+        return getDriver().findElements(cartItems()).size();
+    }
+
+    public void waitForItemListSize(int expectedItemListSize) {
+        waitForNumberOfElements(cartItems(), expectedItemListSize);
     }
 
     public double getExpectedTotalAfterDiscount(int discountValue) {

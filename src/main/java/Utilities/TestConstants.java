@@ -31,6 +31,8 @@ public class TestConstants {
 
     // Products
     public static final String PRINTED_SWEATER = "Hummingbird printed sweater";
+    public static final String HUMMINGBIRD_TSHIRT = "Hummingbird printed t-shirt";
+    public static final String TODAY_MUG = "Mug Today is a good day";
 
     public static String getTestEmail() {
         return isMobileTest() ? MOBILE_TEST_EMAIL : DESKTOP_TEST_EMAIL;

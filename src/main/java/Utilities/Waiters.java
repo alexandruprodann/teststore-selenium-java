@@ -51,6 +51,25 @@ public interface Waiters {
     }
 
     /**
+     * Wait for number of elements by locator
+     *
+     * @param locator By
+     * @param expectedNumberOfElements int
+     */
+    default void waitForNumberOfElements(By locator, int expectedNumberOfElements) {
+        waiter().until(ExpectedConditions.numberOfElementsToBe(locator, expectedNumberOfElements));
+    }
+
+    /**
+     * Wait until element is removed from DOM
+     *
+     * @param element Web Element
+     */
+    default void waitForStalenessOfElement(WebElement element) {
+        waiter().until(ExpectedConditions.stalenessOf(element));
+    }
+
+    /**
      * Wait until element is clickable
      *
      * @param element Web Element

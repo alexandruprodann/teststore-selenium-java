@@ -24,27 +24,23 @@ public class RemoveItemFromCartTest extends BaseClass {
         Reporter.log("Proceed to Homepage: " + TestConstants.BASE_URL);
         navigateToUrl(TestConstants.BASE_URL);
 
-        Reporter.log("Select two random products and add them to the Shopping Cart");
-        homePage.chooseRandomProduct();
+        Reporter.log("Select two products and add them to the Shopping Cart");
+        homePage.clickProductByName(TestConstants.TODAY_MUG);
         productPage.addItemToCart();
         productPage.clickContinueShoppingBtn();
         productPage.clickHomeLink();
-        homePage.chooseRandomProduct();
+        homePage.clickProductByName(TestConstants.HUMMINGBIRD_TSHIRT);
         productPage.addItemToCart();
 
         Reporter.log("Proceed to Shopping Cart Page and remove 1 item");
         productPage.proceedToCart();
 
-        // Ensure at least two items are in the cart
-        if (shoppingCartPage.getItemListSize() < 2) {
-            getDriver().get(TestConstants.BASE_URL);
-            homePage.chooseRandomProduct();
-            productPage.addItemToCart();
-            productPage.proceedToCart();
-        }
+        Reporter.log("Ensure that exactly 2 items are in the Shopping Cart");
+        shoppingCartPage.waitForItemListSize(2);
         shoppingCartPage.removeItemsFromCart(1);
 
         Reporter.log("Ensure that there is only 1 item in the Shopping Cart");
+        shoppingCartPage.waitForItemListSize(1);
         Assert.assertEquals(shoppingCartPage.getItemListSize(), 1, "There is more than 1 item in the Shopping Cart!");
     }
 }
